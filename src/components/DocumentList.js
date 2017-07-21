@@ -1,6 +1,4 @@
 import React from 'react';
-import { gql, graphql } from 'react-apollo';
-
 
 
 function Document( { id, title, url, description } )
@@ -16,33 +14,24 @@ function Document( { id, title, url, description } )
 }
 
 
-function DocumentList( { data: { loading, allDocuments } } )
+export default class DocumentList extends React.Component
 {
-    if ( loading )
+    render()
     {
-        return <p>Loading...</p>;
+        const { loading, documents } = this.props;
+
+        if ( loading )
+        {
+            return <p>Loading...</p>;
+        }
+
+        return (
+
+            <section>
+                { documents.map( document => <Document key={ document.id } { ...document } /> ) }
+            </section>
+
+        );
     }
-
-    return (
-
-        <section>
-            { allDocuments.map( document => <Document { ...document } /> ) }
-        </section>
-
-    );
 }
 
-
-const allDocuments = gql`query allDocuments
-{
-    allDocuments(orderBy: createdAt_DESC)
-    {
-        id
-        title
-        url
-        description
-    }
-}`;
-
-
-export default graphql( allDocuments )( DocumentList );

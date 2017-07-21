@@ -1,5 +1,7 @@
-import React from 'react';
-import DocumentList from './DocumentList';
+import React                 from 'react';
+import { Link, Route }       from 'react-router-dom';
+import DocumentFormContainer from './DocumentFormContainer';
+import DocumentListContainer from './DocumentListContainer';
 
 
 export default class App extends React.Component
@@ -9,7 +11,16 @@ export default class App extends React.Component
         return (
 
             <div>
-                <DocumentList />
+
+                <nav>
+                    <Link to="/">Home</Link>
+                    { ' ' }
+                    <Link to="/create">Create</Link>
+                </nav>
+
+                <Route exact path="/" component={ DocumentListContainer } />
+                <Route path="/create" component={ DocumentFormContainer } />
+
             </div>
 
         );
