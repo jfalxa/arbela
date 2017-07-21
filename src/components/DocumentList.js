@@ -1,20 +1,9 @@
-import React from 'react';
+import React            from 'react';
+import withAllDocuments from '../graphcool/allDocuments';
+import Document         from './Document';
 
 
-function Document( { id, title, url, description } )
-{
-    return (
-
-        <div>
-            <a href={ url }>{ title }</a>
-            <p>{ description }</p>
-        </div>
-
-    );
-}
-
-
-export default class DocumentList extends React.Component
+class DocumentList extends React.Component
 {
     render()
     {
@@ -35,3 +24,5 @@ export default class DocumentList extends React.Component
     }
 }
 
+
+export default withAllDocuments( DocumentList );

@@ -1,7 +1,7 @@
 import React              from 'react';
 import { ApolloProvider } from 'react-apollo';
 import { BrowserRouter }  from 'react-router-dom';
-import client             from '../services/graphcool/client';
+import client             from '../graphcool/client';
 import App                from './App';
 
 

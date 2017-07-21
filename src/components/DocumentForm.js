@@ -1,7 +1,8 @@
-import React from 'react';
+import React           from 'react';
+import withAddDocument from '../graphcool/addDocument';
 
 
-export default class DocumentForm extends React.Component
+class DocumentForm extends React.Component
 {
     state =
     {
@@ -21,9 +22,9 @@ export default class DocumentForm extends React.Component
     {
         e.preventDefault();
 
-        const { createDocument, history } = this.props;
+        const { addDocument, history } = this.props;
 
-        createDocument( this.state )
+        addDocument( this.state )
             .then( () => history.push( '/' ) );
     }
 
@@ -45,3 +46,5 @@ export default class DocumentForm extends React.Component
     }
 }
 
+
+export default withAddDocument( DocumentForm );
