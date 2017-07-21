@@ -2,7 +2,7 @@ import { gql, graphql } from 'react-apollo';
 import { allDocuments } from './allDocuments';
 
 
-export const addDocument = gql`mutation addDocument( $title: String!, $url: String!, $description: String! )
+export const createDocument = gql`mutation createDocument( $title: String!, $url: String!, $description: String! )
 {
     createDocument( title: $title, url: $url, description: $description )
     {
@@ -16,7 +16,7 @@ export const addDocument = gql`mutation addDocument( $title: String!, $url: Stri
 
 function mapProps( { mutate } )
 {
-    const addDocument = document =>
+    const createDocument = document =>
     {
         const options =
         {
@@ -27,8 +27,8 @@ function mapProps( { mutate } )
         return mutate( options );
     }
 
-    return { addDocument };
+    return { createDocument };
 }
 
 
-export default graphql( addDocument, { props: mapProps } );
+export default graphql( createDocument, { props: mapProps } );

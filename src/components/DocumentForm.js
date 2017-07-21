@@ -1,5 +1,5 @@
-import React           from 'react';
-import withAddDocument from '../graphcool/addDocument';
+import React              from 'react';
+import withCreateDocument from '../graphcool/createDocument';
 
 
 class DocumentForm extends React.Component
@@ -22,9 +22,9 @@ class DocumentForm extends React.Component
     {
         e.preventDefault();
 
-        const { addDocument, history } = this.props;
+        const { createDocument, history } = this.props;
 
-        addDocument( this.state )
+        createDocument( this.state )
             .then( () => history.push( '/' ) );
     }
 
@@ -38,7 +38,7 @@ class DocumentForm extends React.Component
             <form onChange={ this.handleChange } onSubmit={ this.handleSubmit }>
                 <input name="title" placeholder="title" value={ title } />
                 <input name="url" placeholder="url" value={ url } />
-                <input name="description" placeholder="description" value={ description } />
+                <textarea name="description" placeholder="description" value={ description } />
                 <button type="submit">Save</button>
             </form>
 
@@ -47,4 +47,4 @@ class DocumentForm extends React.Component
 }
 
 
-export default withAddDocument( DocumentForm );
+export default withCreateDocument( DocumentForm );

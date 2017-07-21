@@ -1,6 +1,6 @@
 import React            from 'react';
 import withAllDocuments from '../graphcool/allDocuments';
-import Document         from './Document';
+import DocumentCard     from './DocumentCard';
 
 
 class DocumentList extends React.Component
@@ -17,7 +17,7 @@ class DocumentList extends React.Component
         return (
 
             <section>
-                { documents.map( document => <Document key={ document.id } { ...document } /> ) }
+                { documents.map( document => <DocumentCard key={ document.id } { ...document } /> ) }
             </section>
 
         );
