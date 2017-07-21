@@ -1,4 +1,5 @@
 import React from 'react';
+import DocumentList from './DocumentList';
 
 
 export default class App extends React.Component
@@ -7,7 +8,9 @@ export default class App extends React.Component
     {
         return (
 
-            <div>Hi.</div>
+            <div>
+                <DocumentList />
+            </div>
 
         );
     }
