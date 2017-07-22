@@ -5,40 +5,51 @@ import withUpdateDocument from '../graphcool/updateDocument';
 import withDeleteDocument from '../graphcool/deleteDocument';
 
 
-function DocumentEditor( { loading, document, updateDocument, deleteDocument, history } )
+class DocumentEditor extends React.Component
 {
-    if ( loading )
+    handleSubmit = ( update ) =>
     {
-        return <p>Loading...</p>;
-    }
+        const { document, updateDocument, history } = this.props;
 
-    const handleSubmit = update =>
-    {
         updateDocument( { ...document, ...update } )
             .then( () => history.push( '/' ) );
-    };
+    }
 
-    const handleDelete = () =>
+
+    handleDelete = () =>
     {
+        const { document, deleteDocument, history } = this.props;
+
         deleteDocument( document.id )
             .then( () => history.push( '/' ) );
     }
 
-    return (
 
-        <section>
+    render()
+    {
+        if ( this.props.loading )
+        {
+            return <p>Loading...</p>;
+        }
 
-            <DocumentForm
-                title={ document.title }
-                url={ document.url }
-                description={ document.description }
-                onSubmit={ handleSubmit } />
+        const { title, url, description } = this.props.document;
 
-            <button onClick={ handleDelete }>DELETE</button>
+        return (
 
-        </section>
+            <section>
 
-    );
+                <DocumentForm
+                    title={ title }
+                    url={ url }
+                    description={ description }
+                    onSubmit={ this.handleSubmit } />
+
+                <button onClick={ this.handleDelete }>DELETE</button>
+
+            </section>
+
+        );
+    }
 }
 
 
