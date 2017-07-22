@@ -1,9 +1,9 @@
 import { gql, graphql } from 'react-apollo';
 
 
-export const updateDocument = gql`mutation updateDocument( $title: String!, $url: String!, $description: String! )
+export const updateDocument = gql`mutation updateDocument( $id: ID!, $title: String!, $url: String!, $description: String! )
 {
-    updateDocument( title: $title, url: $url, description: $description )
+    updateDocument( id: $id, title: $title, url: $url, description: $description )
     {
         id
         title
@@ -13,13 +13,13 @@ export const updateDocument = gql`mutation updateDocument( $title: String!, $url
 }`;
 
 
-function mapProps( { mutate } )
+function mapProps( { ownProps, mutate } )
 {
     const updateDocument = document =>
     {
         const options =
         {
-            variables : document,
+            variables : document
         };
 
         return mutate( options );

@@ -1,4 +1,5 @@
-import React from 'react';
+import React    from 'react';
+import { Link } from 'react-router-dom';
 
 
 export default function DocumentCard( { id, title, url, description } )
@@ -8,8 +9,8 @@ export default function DocumentCard( { id, title, url, description } )
         <article>
 
             <header>
-                <h3>{ title }</h3>
-                <a href={ url }>{ url }</a>
+                <Link to={ `/edit/${ id }` }>{ title }</Link>
+                <Link to={ url }>{ url }</Link>
             </header>
 
             <p>{ description }</p>

@@ -1,14 +1,28 @@
-import React              from 'react';
-import withCreateDocument from '../graphcool/createDocument';
+import React from 'react';
 
 
-class DocumentForm extends React.Component
+export default class DocumentForm extends React.Component
 {
-    state =
+    constructor( props )
     {
-        title       : '',
-        url         : '',
-        description : ''
+        super();
+
+        this.state =
+        {
+            title       : props.title || '',
+            url         : props.url || '',
+            description : props.description || ''
+        }
+    }
+
+
+    componentWillReceiveProps( nextProps )
+    {
+        this.setState( {
+            title       : nextProps.title || '',
+            url         : nextProps.url || '',
+            description : nextProps.description || ''
+        } );
     }
 
 
@@ -21,11 +35,7 @@ class DocumentForm extends React.Component
     handleSubmit = ( e ) =>
     {
         e.preventDefault();
-
-        const { createDocument, history } = this.props;
-
-        createDocument( this.state )
-            .then( () => history.push( '/' ) );
+        this.props.onSubmit( this.state );
     }
 
 
@@ -46,5 +56,3 @@ class DocumentForm extends React.Component
     }
 }
 
-
-export default withCreateDocument( DocumentForm );
