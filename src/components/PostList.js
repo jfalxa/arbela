@@ -1,5 +1,5 @@
-import React            from 'react';
-import withAllPosts from '../graphcool/allPosts';
+import React        from 'react';
+import withAllPosts from '../graphcool/post/allPosts';
 import PostCard     from './PostCard';
 
 

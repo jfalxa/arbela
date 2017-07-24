@@ -1,9 +1,13 @@
 import React                 from 'react';
 import ReactDOM              from 'react-dom';
+import { ApolloClient }      from 'react-apollo';
 import Root                  from './components/Root';
+import networkInterface      from './graphcool/networkInterface';
 import registerServiceWorker from './services/registerServiceWorker';
 
 
-ReactDOM.render( <Root />, document.getElementById( 'root' ) );
+const client = new ApolloClient( { networkInterface } );
+
+ReactDOM.render( <Root client={ client } />, document.getElementById( 'root' ) );
 
 registerServiceWorker();

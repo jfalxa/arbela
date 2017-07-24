@@ -1,8 +1,8 @@
 import React          from 'react';
 import PostForm       from './PostForm';
-import withReadPost   from '../graphcool/readPost';
-import withUpdatePost from '../graphcool/updatePost';
-import withDeletePost from '../graphcool/deletePost';
+import withReadPost   from '../graphcool/post/readPost';
+import withUpdatePost from '../graphcool/post/updatePost';
+import withDeletePost from '../graphcool/post/deletePost';
 
 
 class PostEditor extends React.Component
