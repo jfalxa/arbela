@@ -1,7 +1,7 @@
 import React from 'react';
 
 
-export default class DocumentForm extends React.Component
+export default class PostForm extends React.Component
 {
     constructor( props )
     {

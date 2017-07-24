@@ -2,7 +2,7 @@ import React    from 'react';
 import { Link } from 'react-router-dom';
 
 
-export default function DocumentCard( { id, title, url, description } )
+export default function PostCard( { id, title, url, description } )
 {
     return (
 

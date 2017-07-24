@@ -1,9 +1,9 @@
 import { gql, graphql } from 'react-apollo';
 
 
-export const readDocument = gql`query readDocument( $id: ID! )
+export const readPost = gql`query readPost( $id: ID! )
 {
-    Document( id: $id )
+    Post( id: $id )
     {
         id
         title
@@ -15,7 +15,7 @@ export const readDocument = gql`query readDocument( $id: ID! )
 
 function mapProps( { data } )
 {
-    return { loading: data.loading, document: data.Document };
+    return { loading: data.loading, post: data.Post };
 }
 
 
@@ -25,5 +25,5 @@ function mapOptions( { match } )
 }
 
 
-export default graphql( readDocument, { props: mapProps, options: mapOptions } );
+export default graphql( readPost, { props: mapProps, options: mapOptions } );
 

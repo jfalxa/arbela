@@ -1,8 +1,8 @@
 import React           from 'react';
 import { Link, Route } from 'react-router-dom';
-import DocumentList    from './DocumentList';
-import DocumentCreator from './DocumentCreator';
-import DocumentEditor  from './DocumentEditor';
+import PostList        from './PostList';
+import PostCreator     from './PostCreator';
+import PostEditor      from './PostEditor';
 
 
 export default class App extends React.Component
@@ -19,9 +19,9 @@ export default class App extends React.Component
                 </nav>
 
                 <main>
-                    <Route exact path="/" component={ DocumentList } />
-                    <Route path="/create" component={ DocumentCreator } />
-                    <Route path="/edit/:id" component={ DocumentEditor } />
+                    <Route exact path="/" component={ PostList } />
+                    <Route path="/create" component={ PostCreator } />
+                    <Route path="/edit/:id" component={ PostEditor } />
                 </main>
 
             </div>
