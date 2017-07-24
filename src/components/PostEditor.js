@@ -1,6 +1,6 @@
 import React          from 'react';
 import PostForm       from './PostForm';
-import withReadPost   from '../graphcool/post/readPost';
+import withPost       from '../graphcool/post/post';
 import withUpdatePost from '../graphcool/post/updatePost';
 import withDeletePost from '../graphcool/post/deletePost';
 
@@ -53,4 +53,4 @@ class PostEditor extends React.Component
 }
 
 
-export default withReadPost( withUpdatePost( withDeletePost( PostEditor ) ) );
+export default withPost( withUpdatePost( withDeletePost( PostEditor ) ) );

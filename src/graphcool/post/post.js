@@ -1,7 +1,7 @@
 import { gql, graphql } from 'react-apollo';
 
 
-export const readPost = gql`query readPost( $id: ID! )
+export const post = gql`query post( $id: ID! )
 {
     Post( id: $id )
     {
@@ -25,5 +25,5 @@ function mapOptions( { match } )
 }
 
 
-export default graphql( readPost, { props: mapProps, options: mapOptions } );
+export default graphql( post, { props: mapProps, options: mapOptions } );
 
