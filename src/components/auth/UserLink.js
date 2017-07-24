@@ -1,5 +1,6 @@
 import React      from 'react';
-import { Link }   from 'react-router-dom';
+import NavBox     from '../utilities/NavBox';
+import NavLink    from '../utilities/NavLink';
 import withUser   from '../../graphcool/auth/user';
 import logoutUser from '../../graphcool/auth/logoutUser';
 
@@ -8,10 +9,10 @@ function LoggedInLink( { user } )
 {
     return (
 
-        <nav>
-            <Link to={ `/users/${ user.name }` }>{ user.name }</Link>
-            <Link to="/" onClick={ logoutUser }>Logout</Link>
-        </nav>
+        <NavBox>
+            <NavLink to={ `/users/${ user.name }` }>{ user.name }</NavLink>
+            <NavLink to="/" onClick={ logoutUser }>Logout</NavLink>
+        </NavBox>
 
     );
 }
@@ -21,10 +22,10 @@ function LoggedOutLink()
 {
     return (
 
-        <nav>
-            <Link to="/login">Login</Link>
-            <Link to="/register">Register</Link>
-        </nav>
+        <NavBox>
+            <NavLink to="/login">Login</NavLink>
+            <NavLink to="/register">Register</NavLink>
+        </NavBox>
 
     );
 }

@@ -5,6 +5,8 @@ import Root                  from './components/Root';
 import networkInterface      from './graphcool/networkInterface';
 import registerServiceWorker from './services/registerServiceWorker';
 
+import './style/global';
+
 
 const client = new ApolloClient( { networkInterface } );
 
