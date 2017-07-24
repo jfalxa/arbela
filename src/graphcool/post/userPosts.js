@@ -23,14 +23,12 @@ export const userPosts = gql`query userPosts( $name: String! )
 
 function mapProps( { data } )
 {
-    console.log( data )
     return { loading: data.loading, posts: data.User && data.User.posts };
 }
 
 
 function mapOptions( { match } )
 {
-    console.log( match.params.name )
     return { variables: { name: match.params.name } };
 }
 
