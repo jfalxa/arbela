@@ -1,5 +1,11 @@
 import React            from 'react';
+import AuthBox          from './AuthBox';
+import AuthForm         from './AuthForm';
+import Input            from '../utilities/Input';
+import SubmitButton     from '../utilities/SubmitButton';
+import ButtonLink       from '../utilities/ButtonLink';
 import withRegisterUser from '../../graphcool/auth/registerUser';
+
 
 
 class UserRegister extends React.Component
@@ -37,12 +43,18 @@ class UserRegister extends React.Component
 
         return (
 
-            <form onChange={ this.handleChange } onSubmit={ this.handleSubmit }>
-                <input name="name" placeholder="name" value={ name } />
-                <input name="email" placeholder="email" value={ email } />
-                <input name="password" placeholder="password" value={ password } />
-                <button type="submit">Register</button>
-            </form>
+            <AuthBox>
+
+                <AuthForm onChange={ this.handleChange } onSubmit={ this.handleSubmit }>
+                    <Input name="name" placeholder="name" value={ name } />
+                    <Input name="email" placeholder="email" value={ email } />
+                    <Input name="password" placeholder="password" value={ password } />
+                    <SubmitButton>Register</SubmitButton>
+                </AuthForm>
+
+                <ButtonLink to="/login">or Login</ButtonLink>
+
+            </AuthBox>
 
         );
     }

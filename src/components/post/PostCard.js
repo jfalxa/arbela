@@ -17,6 +17,7 @@ const TitleLink = styled( Link )`
 
     margin-right: 7px;
 
+    font-family: ${ theme.titleFont };
     font-size: 1.2em;
     font-weight: bold;
     text-decoration: none;

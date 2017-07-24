@@ -4,6 +4,7 @@ import * as theme from '../../style/theme';
 
 const Input = styled.input`
 
+    min-width: 300px;
     height: 40px;
 
     margin: 10px 0;
