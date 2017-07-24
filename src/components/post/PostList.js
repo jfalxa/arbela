@@ -1,9 +1,8 @@
-import React        from 'react';
-import PostCard     from './PostCard';
-import withAllPosts from '../../graphcool/post/allPosts';
+import React    from 'react';
+import PostCard from './PostCard';
 
 
-class PostList extends React.Component
+export default class PostList extends React.Component
 {
     render()
     {
@@ -23,7 +22,4 @@ class PostList extends React.Component
         );
     }
 }
-
-
-export default withAllPosts( PostList );
 

@@ -1,6 +1,7 @@
 import React           from 'react';
 import { Link, Route } from 'react-router-dom';
-import PostList        from './post/PostList';
+import PostFeed        from './post/PostFeed';
+import UserPostFeed    from './post/UserPostFeed';
 import PostCreator     from './post/PostCreator';
 import PostEditor      from './post/PostEditor';
 import UserLink        from './auth/UserLink';
@@ -23,11 +24,12 @@ export default class App extends React.Component
                 </nav>
 
                 <main>
-                    <Route exact path="/" component={ PostList } />
-                    <Route path="/create" component={ PostCreator } />
-                    <Route path="/edit/:id" component={ PostEditor } />
-                    <Route path="/register" component={ UserRegister } />
-                    <Route path="/login" component={ UserLogin } />
+                    <Route exact path="/" component={ PostFeed } />
+                    <Route exact path="/register" component={ UserRegister } />
+                    <Route exact path="/login" component={ UserLogin } />
+                    <Route exact path="/create" component={ PostCreator } />
+                    <Route exact path="/edit/:id" component={ PostEditor } />
+                    <Route exact path="/users/:name" component={ UserPostFeed } />
                 </main>
 
             </div>
