@@ -1,5 +1,5 @@
 # project: cj5czadq5gaop0122guw2uqfp
-# version: 10
+# version: 11
 
 type Document implements Node {
   description: String!
@@ -24,5 +24,8 @@ type File implements Node {
 type User implements Node {
   createdAt: DateTime!
   id: ID! @isUnique
+  name: String!
+  email: String!
+  emailSubscription: Boolean!
   updatedAt: DateTime!
 }
