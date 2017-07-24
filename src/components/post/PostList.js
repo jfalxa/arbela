@@ -1,6 +1,10 @@
-import React    from 'react';
-import Loader   from '../utilities/Loader';
-import PostCard from './PostCard';
+import React      from 'react';
+import Box        from '../utilities/Box';
+import Loader     from '../utilities/Loader';
+import PostCard   from './PostCard';
+
+
+const PostBox = Box.withComponent( 'section' );
 
 
 export default class PostList extends React.Component
@@ -16,9 +20,9 @@ export default class PostList extends React.Component
 
         return (
 
-            <section>
+            <PostBox flex column>
                 { posts.map( post => <PostCard key={ post.id } { ...post } /> ) }
-            </section>
+            </PostBox>
 
         );
     }

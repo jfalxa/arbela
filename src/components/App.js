@@ -10,6 +10,14 @@ import UserLogin    from './auth/UserLogin';
 import Topbar       from './Topbar';
 
 
+const MainBox = Box.withComponent( 'main' ).extend`
+
+    padding: 0 50px;
+    margin-top: 70px;
+
+`
+
+
 export default class App extends React.Component
 {
     render()
@@ -20,14 +28,14 @@ export default class App extends React.Component
 
                 <Topbar />
 
-                <main>
+                <MainBox flex>
                     <Route exact path="/" component={ PostFeed } />
                     <Route exact path="/register" component={ UserRegister } />
                     <Route exact path="/login" component={ UserLogin } />
                     <Route exact path="/create" component={ PostCreator } />
                     <Route exact path="/edit/:id" component={ PostEditor } />
                     <Route exact path="/users/:name" component={ UserPostFeed } />
-                </main>
+                </MainBox>
 
             </Box>
 

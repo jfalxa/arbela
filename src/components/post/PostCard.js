@@ -1,22 +1,87 @@
-import React    from 'react';
-import { Link } from 'react-router-dom';
+import React      from 'react';
+import styled     from 'styled-components';
+import { Link }   from 'react-router-dom';
+import * as theme from '../../style/theme';
+import Box        from '../utilities/Box';
+
+
+const Header = Box.withComponent( 'header' );
+
+const PostCardBox = Box.withComponent( 'article' ).extend`
+
+    margin-bottom: 25px;
+
+`
+
+const TitleLink = styled( Link )`
+
+    font-size: 1.2em;
+    font-weight: bold;
+    text-decoration: none;
+
+    &:hover
+    {
+        text-decoration: underline;
+    }
+
+`;
+
+const Url = styled.span`
+
+    font-size: 0.8em;
+    color: ${ theme.secondaryText };
+    text-decoration: underline;
+
+`;
+
+const AuthorLink = styled( Link )`
+
+    font-size: 0.8em;
+    text-decoration: none;
+
+    &:hover
+    {
+        text-decoration: underline;
+    }
+`;
+
+
+const Description = styled.p`
+
+    margin: 0;
+    margin-top: 5px;
+
+`;
+
+
+const Separator = styled.span.attrs( { children: '-' } )`
+
+    margin: 0 7px;
+
+`;
 
 
 export default function PostCard( { id, title, url, description, author } )
 {
     return (
 
-        <article>
+        <PostCardBox column>
 
-            <header>
-                <Link to={ `/edit/${ id }` }>{ title }</Link>
-                <Link to={ url }>{ url }</Link>
-                <Link to={ `/users/${ author.name }` }>{ author.name }</Link>
-            </header>
+            <Header column>
 
-            <p>{ description }</p>
+                <TitleLink to={ url } target="blank">{ title }</TitleLink>
 
-        </article>
+                <Box row alignCenter>
+                    <Url>{ url }</Url>
+                    <Separator />
+                    <AuthorLink to={ `/users/${ author.name }` }>by { author.name }</AuthorLink>
+                </Box>
+
+            </Header>
+
+            <Description>{ description }</Description>
+
+        </PostCardBox>
 
     );
 }

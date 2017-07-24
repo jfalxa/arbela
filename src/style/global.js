@@ -25,6 +25,6 @@ injectGlobal`
     {
         display: flex;
         min-height: 100%;
-        background-color: ${ theme.background };
+        background-color: ${ theme.lightBackground };
     }
 `;
