@@ -9,6 +9,11 @@ export const allPosts = gql`query allPosts
         title
         url
         description
+
+        author
+        {
+            name
+        }
     }
 }`;
 

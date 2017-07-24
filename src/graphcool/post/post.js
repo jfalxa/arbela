@@ -9,6 +9,11 @@ export const post = gql`query post( $id: ID! )
         title
         url
         description
+
+        author
+        {
+            name
+        }
     }
 }`;
 
