@@ -32,6 +32,14 @@ const TitleLink = styled( Link )`
 const EditLink = styled( Link ).attrs( { children: '(edit)' } )`
 
     font-size: 0.8em;
+    text-decoration: none;
+
+    &:hover
+    {
+        font-weight: bold;
+    }
+
+
 
 `
 
@@ -59,6 +67,8 @@ const Description = styled.p`
 
     margin: 0;
     margin-top: 5px;
+
+    font-size: 0.9em;
 
 `;
 

@@ -9,7 +9,7 @@ const TopNavBox = NavBox.extend`
 
     position: fixed;
     width: 100%;
-    padding: 15px 50px;
+    padding: 15px 100px;
     background-color: ${ theme.lightBackground };
     box-shadow: 0px 0px 2px ${ theme.darkBackground };
 

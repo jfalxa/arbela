@@ -1,17 +1,37 @@
 import React          from 'react';
 import { Redirect }   from 'react-router-dom';
+import Box            from '../utilities/Box';
 import PostForm       from './PostForm';
 import withUser       from '../../graphcool/auth/user';
 import withCreatePost from '../../graphcool/post/createPost';
 
 
+const PostCreatorBox = Box.withComponent( 'section' );
+
+
 class PostCreator extends React.Component
 {
-    handleSubmit = ( post ) =>
+    state =
     {
+        title       : '',
+        url         : '',
+        description : ''
+    }
+
+
+    handleChange = ( e ) =>
+    {
+        this.setState( { [e.target.name]: e.target.value } );
+    }
+
+
+    handleSubmit = ( e ) =>
+    {
+        e.preventDefault();
+
         const { createPost, user, history } = this.props;
 
-        createPost( { ...post, authorId: user.id } )
+        createPost( { ...this.state, authorId: user.id } )
             .then( () => history.push( '/' ) );
     }
 
@@ -23,7 +43,17 @@ class PostCreator extends React.Component
             return <Redirect to="/" />
         }
 
-        return <PostForm onSubmit={ this.handleSubmit } />;
+        return (
+
+            <PostCreatorBox flex>
+
+                <PostForm
+                    onChange={ this.handleChange }
+                    onSubmit={ this.handleSubmit } />
+
+            </PostCreatorBox>
+
+        );
     }
 }
 

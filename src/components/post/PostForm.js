@@ -1,58 +1,26 @@
-import React from 'react';
+import React    from 'react';
+import Box      from '../utilities/Box';
+import Input    from '../utilities/Input';
+import TextArea from '../utilities/TextArea';
+import Button   from '../utilities/Button';
 
 
-export default class PostForm extends React.Component
+const PostFormBox = Box.withComponent( 'form' );
+
+
+export default function PostForm( { title, url, description, onChange, onSubmit } )
 {
-    constructor( props )
-    {
-        super();
+    return (
 
-        this.state =
-        {
-            title       : props.title || '',
-            url         : props.url || '',
-            description : props.description || ''
-        }
-    }
+        <PostFormBox column onChange={ onChange } onSubmit={ onSubmit }>
 
+            <Input name="title" placeholder="title" value={ title } />
+            <Input name="url" placeholder="url" value={ url } />
+            <TextArea name="description" placeholder="description" value={ description } />
 
-    componentWillReceiveProps( nextProps )
-    {
-        this.setState( {
-            title       : nextProps.title || '',
-            url         : nextProps.url || '',
-            description : nextProps.description || ''
-        } );
-    }
+            <Button type="submit">Save</Button>
 
+        </PostFormBox>
 
-    handleChange = ( e ) =>
-    {
-        this.setState( { [e.target.name]: e.target.value } );
-    }
-
-
-    handleSubmit = ( e ) =>
-    {
-        e.preventDefault();
-        this.props.onSubmit( this.state );
-    }
-
-
-    render()
-    {
-        const { title, url, description } = this.state;
-
-        return (
-
-            <form onChange={ this.handleChange } onSubmit={ this.handleSubmit }>
-                <input name="title" placeholder="title" value={ title } />
-                <input name="url" placeholder="url" value={ url } />
-                <textarea name="description" placeholder="description" value={ description } />
-                <button type="submit">Save</button>
-            </form>
-
-        );
-    }
+    );
 }
-
