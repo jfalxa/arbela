@@ -15,6 +15,8 @@ const PostCardBox = Box.withComponent( 'article' ).extend`
 
 const TitleLink = styled( Link )`
 
+    margin-right: 7px;
+
     font-size: 1.2em;
     font-weight: bold;
     text-decoration: none;
@@ -25,6 +27,13 @@ const TitleLink = styled( Link )`
     }
 
 `;
+
+
+const EditLink = styled( Link ).attrs( { children: '(edit)' } )`
+
+    font-size: 0.8em;
+
+`
 
 const Url = styled.span`
 
@@ -69,7 +78,10 @@ export default function PostCard( { id, title, url, description, author } )
 
             <Header column>
 
-                <TitleLink to={ url } target="blank">{ title }</TitleLink>
+                <Box row alignCenter>
+                    <TitleLink to={ url } target="blank">{ title }</TitleLink>
+                    <EditLink to={ `/edit/${ id }` }>(edit)</EditLink>
+                </Box>
 
                 <Box row alignCenter>
                     <Url>{ url }</Url>
