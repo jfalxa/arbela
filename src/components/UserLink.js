@@ -4,20 +4,8 @@ import withUser   from '../graphcool/auth/user';
 import logoutUser from '../graphcool/auth/logoutUser';
 
 
-function UserLink( { user } )
+function LoggedInLink( { user } )
 {
-    if ( !user )
-    {
-        return (
-
-            <nav>
-                <Link to="/login">Login</Link>
-                <Link to="/register">Register</Link>
-            </nav>
-
-        );
-    }
-
     return (
 
         <nav>
@@ -26,7 +14,27 @@ function UserLink( { user } )
         </nav>
 
     );
+}
 
+
+function LoggedOutLink()
+{
+    return (
+
+        <nav>
+            <Link to="/login">Login</Link>
+            <Link to="/register">Register</Link>
+        </nav>
+
+    );
+}
+
+
+function UserLink( { user } )
+{
+    return user
+        ? <LoggedInLink user={ user } />
+        : <LoggedOutLink />;
 }
 
 
