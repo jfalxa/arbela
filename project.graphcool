@@ -1,5 +1,5 @@
 # project: cj5czadq5gaop0122guw2uqfp
-# version: 12
+# version: 20
 
 type Post implements Node {
   description: String!
@@ -8,15 +8,17 @@ type Post implements Node {
   updatedAt: DateTime!
   title: String!
   url: String!
+  author: User! @relation(name: "UserPost")
 }
 
 type User implements Node {
   createdAt: DateTime!
   id: ID! @isUnique
   name: String!
-  email: String!
-  emailSubscription: Boolean!
   updatedAt: DateTime!
+  email: String @isUnique
+  password: String
+  posts: [Post!]! @relation(name: "UserPost")
 }
 
 type File implements Node {
