@@ -1,5 +1,5 @@
 import React         from 'react';
-import withLoginUser from '../graphcool/auth/loginUser';
+import withLoginUser from '../../graphcool/auth/loginUser';
 
 
 class UserLogin extends React.Component

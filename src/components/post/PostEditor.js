@@ -1,6 +1,6 @@
 import React        from 'react';
 import PostForm     from './PostForm';
-import withEditPost from '../graphcool/post/editPost';
+import withEditPost from '../../graphcool/post/editPost';
 
 
 class PostEditor extends React.Component

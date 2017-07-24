@@ -1,5 +1,5 @@
 import React            from 'react';
-import withRegisterUser from '../graphcool/auth/registerUser';
+import withRegisterUser from '../../graphcool/auth/registerUser';
 
 
 class UserRegister extends React.Component

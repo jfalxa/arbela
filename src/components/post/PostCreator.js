@@ -1,6 +1,6 @@
 import React          from 'react';
 import PostForm       from './PostForm';
-import withCreatePost from '../graphcool/post/createPost';
+import withCreatePost from '../../graphcool/post/createPost';
 
 
 class PostCreator extends React.Component

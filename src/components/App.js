@@ -1,11 +1,11 @@
 import React           from 'react';
 import { Link, Route } from 'react-router-dom';
-import PostList        from './PostList';
-import PostCreator     from './PostCreator';
-import PostEditor      from './PostEditor';
-import UserLink        from './UserLink';
-import UserRegister    from './UserRegister';
-import UserLogin       from './UserLogin';
+import PostList        from './post/PostList';
+import PostCreator     from './post/PostCreator';
+import PostEditor      from './post/PostEditor';
+import UserLink        from './auth/UserLink';
+import UserRegister    from './auth/UserRegister';
+import UserLogin       from './auth/UserLogin';
 
 
 export default class App extends React.Component

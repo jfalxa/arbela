@@ -1,6 +1,6 @@
 import React        from 'react';
-import withAllPosts from '../graphcool/post/allPosts';
 import PostCard     from './PostCard';
+import withAllPosts from '../../graphcool/post/allPosts';
 
 
 class PostList extends React.Component

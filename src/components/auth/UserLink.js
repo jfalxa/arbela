@@ -1,7 +1,7 @@
 import React      from 'react';
 import { Link }   from 'react-router-dom';
-import withUser   from '../graphcool/auth/user';
-import logoutUser from '../graphcool/auth/logoutUser';
+import withUser   from '../../graphcool/auth/user';
+import logoutUser from '../../graphcool/auth/logoutUser';
 
 
 function LoggedInLink( { user } )
