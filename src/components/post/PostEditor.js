@@ -1,4 +1,5 @@
 import React        from 'react';
+import Loader       from '../utilities/Loader';
 import PostForm     from './PostForm';
 import withEditPost from '../../graphcool/post/editPost';
 
@@ -27,7 +28,7 @@ class PostEditor extends React.Component
     {
         if ( this.props.loading )
         {
-            return <p>Loading...</p>;
+            return <Loader />;
         }
 
         const { title, url, description } = this.props.post;

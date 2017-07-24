@@ -1,4 +1,5 @@
 import React    from 'react';
+import Loader   from '../utilities/Loader';
 import PostCard from './PostCard';
 
 
@@ -10,7 +11,7 @@ export default class PostList extends React.Component
 
         if ( loading )
         {
-            return <p>Loading...</p>;
+            return <Loader />;
         }
 
         return (
