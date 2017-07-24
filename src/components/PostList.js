@@ -26,3 +26,4 @@ class PostList extends React.Component
 
 
 export default withAllPosts( PostList );
+
