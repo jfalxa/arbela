@@ -1,5 +1,5 @@
 # project: cj5czadq5gaop0122guw2uqfp
-# version: 25
+# version: 26
 
 type Post implements Node {
   description: String!
@@ -9,6 +9,16 @@ type Post implements Node {
   title: String!
   url: String!
   author: User! @relation(name: "UserPost")
+  boards: [Board!]! @relation(name: "BoardPost")
+}
+
+type Board implements Node {
+  title: String!
+  description: String!
+  posts: [Post!]! @relation(name: "BoardPost")
+  createdAt: DateTime!
+  id: ID! @isUnique
+  updatedAt: DateTime!
 }
 
 type User implements Node {
