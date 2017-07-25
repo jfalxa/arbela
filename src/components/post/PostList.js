@@ -4,7 +4,11 @@ import Loader     from '../utilities/Loader';
 import PostCard   from './PostCard';
 
 
-const PostBox = Box.withComponent( 'section' );
+const PostBox = Box.withComponent( 'section' ).extend`
+
+    max-width: 700px;
+
+`;
 
 
 export default class PostList extends React.Component

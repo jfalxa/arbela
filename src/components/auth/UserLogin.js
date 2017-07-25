@@ -1,5 +1,4 @@
 import React         from 'react';
-import { Link }      from 'react-router-dom';
 import AuthBox       from './AuthBox';
 import AuthForm      from './AuthForm';
 import Input         from '../utilities/Input';

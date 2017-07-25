@@ -14,7 +14,6 @@ const MainBox = Box.withComponent( 'main' ).extend`
 
     padding: 0 100px;
     margin-top: 100px;
-    max-width: 800px;
 
 `
 

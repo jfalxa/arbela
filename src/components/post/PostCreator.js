@@ -1,5 +1,4 @@
 import React          from 'react';
-import { Redirect }   from 'react-router-dom';
 import Box            from '../utilities/Box';
 import PostForm       from './PostForm';
 import withUser       from '../../graphcool/auth/user';

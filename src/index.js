@@ -4,9 +4,10 @@ import { ApolloClient }      from 'react-apollo';
 import Root                  from './components/Root';
 import networkInterface      from './graphcool/networkInterface';
 import registerServiceWorker from './services/registerServiceWorker';
+import injectGlobalStyle     from './style/global';
 
-import './style/global';
 
+injectGlobalStyle();
 
 const client = new ApolloClient( { networkInterface } );
 
