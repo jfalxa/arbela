@@ -7,6 +7,8 @@ import PostCreator  from './post/PostCreator';
 import PostEditor   from './post/PostEditor';
 import UserRegister from './auth/UserRegister';
 import UserLogin    from './auth/UserLogin';
+import BoardList    from './board/BoardList';
+import Board        from './board/Board';
 import Topbar       from './Topbar';
 
 
@@ -35,6 +37,8 @@ export default class App extends React.Component
                     <Route exact path="/create" component={ PostCreator } />
                     <Route exact path="/edit/:id" component={ PostEditor } />
                     <Route exact path="/users/:name" component={ UserPostFeed } />
+                    <Route exact path="/boards" component={ BoardList } />
+                    <Route exact path="/boards/:id" component={ Board } />
                 </MainBox>
 
             </Box>

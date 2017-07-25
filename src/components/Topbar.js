@@ -24,6 +24,7 @@ export default function Topbar()
 
             <NavBox>
                 <NavLink to="/">Home</NavLink>
+                <NavLink to="/boards">Boards</NavLink>
                 <NavLink to="/create">New Post</NavLink>
             </NavBox>
 
