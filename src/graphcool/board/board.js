@@ -9,7 +9,7 @@ export const board = gql`query board( $id: ID! )
         title
         description
 
-        posts
+        posts( orderBy: updatedAt_DESC )
         {
             id
             title
@@ -33,7 +33,7 @@ function mapProps( { data } )
 
 function mapOptions( { match } )
 {
-    return { variables: { id: match.params.id } };
+    return { variables: { id: match.params.id }, fetchPolicy: 'cache-and-network' };
 }
 
 

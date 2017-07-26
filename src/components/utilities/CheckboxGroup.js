@@ -1,26 +1,43 @@
-import React  from 'react';
-import keys   from 'lodash/keys';
-import pickBy from 'lodash/pickBy';
+import React     from 'react';
+import keys      from 'lodash/keys';
+import times     from 'lodash/times';
+import pickBy    from 'lodash/pickBy';
+import zipObject from 'lodash/zipObject';
 
 
-const listChecked = checked => keys( pickBy( checked ) );
+const toCheckList  = checkIndex => keys( pickBy( checkIndex ) );
+const toCheckIndex = checkList => zipObject( checkList, times( checkList.length, () => true ) );
 
 
 export default class CheckboxGroup extends React.Component
 {
-    state = {}
+    constructor( props )
+    {
+        super();
+
+        this.state =
+        {
+            checked : toCheckIndex( props.checked )
+        };
+    }
+
+
+    componentWillReceiveProps( nextProps )
+    {
+        this.setState( { checked: toCheckIndex( nextProps.checked ) } );
+    }
 
 
     handleChange = ( e ) =>
     {
         const checked =
         {
-            ...this.state,
+            ...this.state.checked,
             [e.target.value] : e.target.checked
         };
 
-        this.setState( checked );
-        this.props.onCheck( listChecked( checked ) );
+        this.setState( { checked } );
+        this.props.onCheck( toCheckList( checked ) );
     }
 
 
@@ -37,7 +54,7 @@ export default class CheckboxGroup extends React.Component
             const props =
             {
                 ...extraProps,
-                checked : this.state[child.props.value]
+                checked : this.state.checked[child.props.value]
             };
 
             return React.cloneElement( child, props );

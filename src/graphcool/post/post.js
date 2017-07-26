@@ -1,4 +1,5 @@
 import { gql, graphql } from 'react-apollo';
+import map              from 'lodash/map';
 
 
 export const post = gql`query post( $id: ID! )
@@ -14,13 +15,26 @@ export const post = gql`query post( $id: ID! )
         {
             name
         }
+
+        boards
+        {
+            id
+        }
     }
 }`;
 
 
 function mapProps( { data } )
 {
-    return { loading: data.loading, post: data.Post };
+    if ( data.loading )
+    {
+        return { loading: true };
+    }
+
+    const boards = map( data.Post.boards, 'id' );
+    const post   = { ...data.Post, boards };
+
+    return { post };
 }
 
 

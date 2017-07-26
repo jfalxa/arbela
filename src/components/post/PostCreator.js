@@ -1,7 +1,6 @@
 import React          from 'react';
 import Box            from '../utilities/Box';
 import PostForm       from './PostForm';
-import BoardSelector  from '../board/BoardSelector';
 import withUser       from '../../graphcool/auth/user';
 import withCreatePost from '../../graphcool/post/createPost';
 
@@ -15,38 +14,41 @@ class PostCreator extends React.Component
     {
         title       : '',
         url         : '',
-        description : ''
+        description : '',
+        boards      : []
     }
 
 
-    handleChange = ( e ) =>
+    handleChange = ( field, value ) =>
     {
-        this.setState( { [e.target.name]: e.target.value } );
+        this.setState( { [field]: value } );
     }
 
 
-    handleSubmit = ( e ) =>
+    handleSubmit = () =>
     {
-        e.preventDefault();
-
         const { createPost, user, history } = this.props;
 
-        createPost( { ...this.state, authorId: user.id } )
+        createPost( { ...this.state, author: user.id } )
             .then( () => history.push( '/' ) );
     }
 
 
     render()
     {
+        const { title, url, description, boards } = this.state;
+
         return (
 
             <PostCreatorBox flex column>
 
                 <PostForm
+                    title={ title }
+                    url={ url }
+                    description={ description }
+                    boards={ boards }
                     onChange={ this.handleChange }
                     onSubmit={ this.handleSubmit } />
-
-                <BoardSelector />
 
             </PostCreatorBox>
 

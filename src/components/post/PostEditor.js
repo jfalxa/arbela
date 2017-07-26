@@ -25,16 +25,14 @@ class PostEditor extends React.Component
     }
 
 
-    handleChange = ( e ) =>
+    handleChange = ( field, value ) =>
     {
-        this.setState( { [e.target.name]: e.target.value } );
+        this.setState( { [field]: value } );
     }
 
 
-    handleSubmit = ( e ) =>
+    handleSubmit = () =>
     {
-        e.preventDefault();
-
         const { post, updatePost, history } = this.props;
 
         updatePost( { ...post, ...this.state } )
@@ -58,7 +56,7 @@ class PostEditor extends React.Component
             return <Loader />;
         }
 
-        const { title, url, description } = this.state;
+        const { title, url, description, boards } = this.state;
 
         return (
 
@@ -68,6 +66,7 @@ class PostEditor extends React.Component
                     title={ title }
                     url={ url }
                     description={ description }
+                    boards={ boards }
                     onChange={ this.handleChange }
                     onSubmit={ this.handleSubmit } />
 

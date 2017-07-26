@@ -10,7 +10,7 @@ const BoardSelectorBox = Box.withComponent( CheckboxGroup ).extend`
 `;
 
 
-function BoardCheckbox( { id, title, name, checked, onChange } )
+function BoardCheckbox( { value, title, name, checked, onChange } )
 {
     return (
 
@@ -19,7 +19,7 @@ function BoardCheckbox( { id, title, name, checked, onChange } )
             <input
                 type="checkbox"
                 name={ name }
-                value={ id }
+                value={ value }
                 checked={ checked }
                 onChange={ onChange } />
 
@@ -32,15 +32,6 @@ function BoardCheckbox( { id, title, name, checked, onChange } )
 
 class BoardSelector extends React.Component
 {
-    renderBoards()
-    {
-        return this.props.boards.map( board =>
-        (
-            <BoardCheckbox key={ board.id } { ...board } />
-        ) );
-    }
-
-
     render()
     {
         if ( this.props.loading )
@@ -48,15 +39,25 @@ class BoardSelector extends React.Component
             return <Loader />;
         }
 
+        const { boards, selection, onCheck } = this.props;
+
         return (
 
             <BoardSelectorBox flex column
                 name="boards"
-                onCheck={ this.props.onCheck }>
+                checked={ selection }
+                onCheck={ onCheck }>
 
                 <legend>Boards</legend>
 
-                { this.renderBoards() }
+                { boards.map( board => (
+
+                    <BoardCheckbox
+                        key={ board.id }
+                        value={ board.id }
+                        { ...board } />
+
+                ) ) }
 
             </BoardSelectorBox>
 

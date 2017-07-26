@@ -2,9 +2,9 @@ import { gql, graphql } from 'react-apollo';
 import { allPosts }     from './allPosts';
 
 
-export const createPost = gql`mutation createPost( $title: String!, $url: String!, $description: String!, $authorId: ID! )
+export const createPost = gql`mutation createPost( $title: String!, $url: String!, $description: String!, $author: ID!, $boards: [ID!]! )
 {
-    createPost( title: $title, url: $url, description: $description, authorId: $authorId )
+    createPost( title: $title, url: $url, description: $description, authorId: $author, boardsIds: $boards )
     {
         id
     }
