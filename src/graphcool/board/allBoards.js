@@ -14,7 +14,7 @@ export const allBoards = gql`query allBoards
 
 function mapProps( { data } )
 {
-    return { loading: data.loading, posts: data.allBoards };
+    return { loading: data.loading, boards: data.allBoards };
 }
 
 

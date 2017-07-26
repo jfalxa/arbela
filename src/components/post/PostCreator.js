@@ -1,6 +1,7 @@
 import React          from 'react';
 import Box            from '../utilities/Box';
 import PostForm       from './PostForm';
+import BoardSelector  from '../board/BoardSelector';
 import withUser       from '../../graphcool/auth/user';
 import withCreatePost from '../../graphcool/post/createPost';
 
@@ -39,11 +40,13 @@ class PostCreator extends React.Component
     {
         return (
 
-            <PostCreatorBox flex>
+            <PostCreatorBox flex column>
 
                 <PostForm
                     onChange={ this.handleChange }
                     onSubmit={ this.handleSubmit } />
+
+                <BoardSelector />
 
             </PostCreatorBox>
 

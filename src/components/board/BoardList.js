@@ -16,7 +16,7 @@ class BoardList extends React.Component
 {
     render()
     {
-        const { loading, posts } = this.props;
+        const { loading, boards } = this.props;
 
         if ( loading )
         {
@@ -26,7 +26,7 @@ class BoardList extends React.Component
         return (
 
             <BoardBox flex column>
-                { posts.map( post => <BoardCard key={ post.id } { ...post } /> ) }
+                { boards.map( board => <BoardCard key={ board.id } { ...board } /> ) }
             </BoardBox>
 
         );
