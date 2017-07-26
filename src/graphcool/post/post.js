@@ -40,7 +40,7 @@ function mapProps( { data } )
 
 function mapOptions( { match } )
 {
-    return { variables: { id: match.params.id } };
+    return { variables: { id: match.params.id }, fetchPolicy: 'cache-and-network' };
 }
 
 

@@ -24,5 +24,5 @@ function mapProps( { data } )
 }
 
 
-export default graphql( allPosts, { props: mapProps } );
+export default graphql( allPosts, { props: mapProps, options: { fetchPolicy: 'cache-and-network' } } );
 

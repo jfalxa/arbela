@@ -29,7 +29,7 @@ function mapProps( { data } )
 
 function mapOptions( { match } )
 {
-    return { variables: { name: match.params.name } };
+    return { variables: { name: match.params.name }, fetchPolicy: 'cache-and-network' };
 }
 
 

@@ -1,5 +1,4 @@
 import { gql, graphql } from 'react-apollo';
-import { allPosts }     from './allPosts';
 
 
 export const createPost = gql`mutation createPost( $title: String!, $url: String!, $description: String!, $author: ID!, $boards: [ID!]! )
@@ -17,8 +16,7 @@ function mapProps( { mutate } )
     {
         const options =
         {
-            variables      : post,
-            refetchQueries : [{ query: allPosts }]
+            variables : post
         };
 
         return mutate( options );

@@ -17,8 +17,7 @@ function mapProps( { mutate } )
     {
         const options =
         {
-            variables      : { id: postID },
-            refetchQueries : [{ query: allPosts }]
+            variables : { id: postID }
         };
 
         return mutate( options );
