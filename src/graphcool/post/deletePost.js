@@ -1,5 +1,4 @@
 import { gql, graphql } from 'react-apollo';
-import { allPosts }     from './allPosts';
 
 
 export const deletePost = gql`mutation deletePost( $id: ID! )
