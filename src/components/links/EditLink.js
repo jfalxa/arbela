@@ -1,44 +1,17 @@
-import React          from 'react';
-import LinkForm       from './LinkForm';
-import withLink       from './withLink';
-import withUpdateLink from './withUpdateLink';
-import withDeleteLink from './withDeleteLink';
+import React             from 'react';
+import LinkFormContainer from './LinkFormContainer';
+import withLink          from './withLink';
+import withUpdateLink    from './withUpdateLink';
+import withDeleteLink    from './withDeleteLink';
 
 
 class EditLink extends React.Component
 {
-    state =
+    handleSubmit = ( linkUpdate ) =>
     {
-        title       : '',
-        url         : '',
-        description : ''
-    }
-
-
-    componentWillReceiveProps( { link } )
-    {
-        this.setState( {
-            title       : link.title,
-            url         : link.url,
-            description : link.description
-        } );
-    }
-
-
-    handleChange = ( e ) =>
-    {
-        this.setState( { [e.target.name]: e.target.value } );
-    }
-
-
-    handleSubmit = ( e ) =>
-    {
-        e.preventDefault();
-
         const { link, updateLink, history } = this.props;
-        const { title, url, description }   = this.state;
 
-        updateLink( { id: link.id, title, url, description } )
+        updateLink( { id: link.id, ...linkUpdate } )
             .then( res => console.log( 'Link updated', res ) )
             .then( () => history.push( '/' ) )
             .catch( err => console.log( 'Failed updating link', err ) );
@@ -63,7 +36,7 @@ class EditLink extends React.Component
             return <p>Loading...</p>;
         }
 
-        const { title, url, description } = this.state;
+        const { title, url, description } = this.props.link;
 
         return (
 
@@ -71,14 +44,13 @@ class EditLink extends React.Component
 
                 <h2>Edit link</h2>
 
-                <LinkForm
+                <LinkFormContainer
                     title={ title }
                     url={ url }
                     description={ description }
-                    onChange={ this.handleChange }
                     onSubmit={ this.handleSubmit } />
 
-                <button onClick={ this.handleDelete }>DELETE</button>
+                <button onClick={ this.handleDelete }>Delete</button>
 
             </section>
 
