@@ -2,6 +2,7 @@ import React          from 'react';
 import LinkForm       from './LinkForm';
 import withLink       from './link';
 import withUpdateLink from './updateLink';
+import withDeleteLink from './deleteLink';
 
 
 class EditLink extends React.Component
@@ -43,6 +44,16 @@ class EditLink extends React.Component
     }
 
 
+    handleDelete = ( e ) =>
+    {
+        const { link, deleteLink } = this.props;
+
+        deleteLink( link.id )
+            .then( res => console.log( 'Link deleted', res ) )
+            .catch( err => console.log( 'Failed deleting link', err ) );
+    }
+
+
     render()
     {
         if ( this.props.loading && !this.props.link )
@@ -65,6 +76,8 @@ class EditLink extends React.Component
                     onChange={ this.handleChange }
                     onSubmit={ this.handleSubmit } />
 
+                <button onClick={ this.handleDelete }>DELETE</button>
+
             </section>
 
         );
@@ -72,4 +85,4 @@ class EditLink extends React.Component
 }
 
 
-export default withLink( withUpdateLink( EditLink ) );
+export default withLink( withUpdateLink( withDeleteLink( EditLink ) ) );
