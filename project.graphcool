@@ -1,5 +1,5 @@
 # project: cj5wnhjzb7vg80183gyux1vf6
-# version: 9
+# version: 10
 
 type File implements Node {
   contentType: String!
@@ -30,4 +30,5 @@ type Link implements Node {
   updatedAt: DateTime!
   url: String!
   author: User! @relation(name: "UserLinks")
+  hidden: Boolean!
 }
