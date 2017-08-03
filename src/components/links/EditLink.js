@@ -45,6 +45,11 @@ class EditLink extends React.Component
 
     render()
     {
+        if ( this.props.loading && !this.props.link )
+        {
+            return <p>Loading...</p>;
+        }
+
         const { title, url, description } = this.state;
 
         return (
