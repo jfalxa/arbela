@@ -1,9 +1,10 @@
 import React      from 'react';
 import { Route }  from 'react-router-dom';
 import Navigation from './Navigation';
+import FeedLinks  from './links/FeedLinks';
+import PostLink   from './links/PostLink';
 import Login      from './auth/Login';
 import Register   from './auth/Register';
-import PostLink   from './links/PostLink';
 
 
 class App extends React.Component
@@ -17,9 +18,10 @@ class App extends React.Component
                 <Navigation />
 
                 <main>
+                    <Route exact path="/" component={ FeedLinks } />
+                    <Route path="/post" component={ PostLink } />
                     <Route path="/login" component={ Login } />
                     <Route path="/register" component={ Register } />
-                    <Route path="/post" component={ PostLink } />
                 </main>
 
             </div>
