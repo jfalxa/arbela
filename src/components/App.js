@@ -1,14 +1,15 @@
-import React, { Component } from 'react';
+import React    from 'react';
+import Register from './Register';
 
 
-class App extends Component
+class App extends React.Component
 {
     render()
     {
         return (
 
             <div>
-                <span>hey</span>
+                <Register />
             </div>
 
         );
