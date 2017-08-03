@@ -1,17 +1,18 @@
 import React from 'react';
 
 
-function List( { data, renderItem:Item } )
+function List( Item )
 {
-    return (
+    return ( { items } ) =>
+    (
 
         <ul>
 
-            { data.map( data => (
+            { items.map( item => (
 
                 <Item
-                    key={ data.id }
-                    { ...data } />
+                    key={ item.id }
+                    { ...item } />
 
             ) ) }
 

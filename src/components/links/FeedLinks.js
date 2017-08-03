@@ -4,14 +4,14 @@ import LinkCard     from './LinkCard';
 import withAllLinks from './allLinks';
 
 
+const LinkList = List( LinkCard );
+
+
 class FeedLinks extends React.Component
 {
     render()
     {
-        if ( this.props.loading )
-        {
-            return <p>Loading...</p>;
-        }
+        const { loading, links } = this.props;
 
         return (
 
@@ -19,9 +19,8 @@ class FeedLinks extends React.Component
 
                 <h2>All links</h2>
 
-                <List
-                    data={ this.props.links }
-                    renderItem={ LinkCard } />
+                { links && <LinkList items={ links } /> }
+                { loading && <p>Loading...</p> }
 
             </section>
 
