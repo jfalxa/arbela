@@ -1,6 +1,7 @@
 import { gql, graphql } from 'react-apollo';
 import { setAuthToken } from '../../services/graphcool/token';
 
+
 export const signinUser = gql`mutation signinUser( $email: String!, $password: String! )
 {
     signinUser( email: { email: $email, password: $password } )
