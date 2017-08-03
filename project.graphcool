@@ -1,5 +1,5 @@
 # project: cj5wnhjzb7vg80183gyux1vf6
-# version: 3
+# version: 7
 
 type File implements Node {
   contentType: String!
@@ -19,4 +19,13 @@ type User implements Node {
   id: ID! @isUnique
   password: String
   updatedAt: DateTime!
+}
+
+type Link implements Node {
+  createdAt: DateTime!
+  description: String!
+  id: ID! @isUnique
+  title: String!
+  updatedAt: DateTime!
+  url: String!
 }
