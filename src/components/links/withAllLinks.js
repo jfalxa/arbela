@@ -9,6 +9,11 @@ export const allLinks = gql`query allLinks
         title
         url
         description
+
+        author
+        {
+            name
+        }
     }
 }`;
 

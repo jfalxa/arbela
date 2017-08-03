@@ -2,7 +2,7 @@ import React    from 'react';
 import { Link } from 'react-router-dom';
 
 
-function LinkCard( { id, title, url, description } )
+function LinkCard( { id, title, url, description, author } )
 {
     return (
 
@@ -12,7 +12,10 @@ function LinkCard( { id, title, url, description } )
 
             <p>{ description }</p>
 
-            <Link to={ `/edit/${ id }` }>edit</Link>
+            <aside>
+                <Link to={ `/users/${ author.name }` }>{ author.name }</Link>
+                <Link to={ `/edit/${ id }` }>(edit)</Link>
+            </aside>
 
         </li>
 
