@@ -1,5 +1,5 @@
 # project: cj5wnhjzb7vg80183gyux1vf6
-# version: 7
+# version: 8
 
 type File implements Node {
   contentType: String!
@@ -19,6 +19,7 @@ type User implements Node {
   id: ID! @isUnique
   password: String
   updatedAt: DateTime!
+  links: [Link!]! @relation(name: "UserLinks")
 }
 
 type Link implements Node {
@@ -28,4 +29,5 @@ type Link implements Node {
   title: String!
   updatedAt: DateTime!
   url: String!
+  author: User! @relation(name: "UserLinks")
 }
