@@ -38,12 +38,18 @@ class Register extends React.Component
 
         return (
 
-            <RegisterForm
-                name={ name }
-                email={ email }
-                password={ password }
-                onChange={ this.handleChange }
-                onSubmit={ this.handleSubmit } />
+            <section>
+
+                <h2>Register</h2>
+
+                <RegisterForm
+                    name={ name }
+                    email={ email }
+                    password={ password }
+                    onChange={ this.handleChange }
+                    onSubmit={ this.handleSubmit } />
+
+            </section>
 
         );
     }

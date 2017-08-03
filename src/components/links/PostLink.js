@@ -38,12 +38,18 @@ class PostLink extends React.Component
 
         return (
 
-            <LinkForm
-                title={ title }
-                url={ url }
-                description={ description }
-                onChange={ this.handleChange }
-                onSubmit={ this.handleSubmit } />
+            <section>
+
+                <h2>Post new link</h2>
+
+                <LinkForm
+                    title={ title }
+                    url={ url }
+                    description={ description }
+                    onChange={ this.handleChange }
+                    onSubmit={ this.handleSubmit } />
+
+            </section>
 
         );
     }
