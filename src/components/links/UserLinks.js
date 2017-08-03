@@ -1,10 +1,6 @@
 import React         from 'react';
-import List          from '../generic/List';
-import LinkCard      from './LinkCard';
+import LinkList      from './LinkList';
 import withUserLinks from './withUserLinks';
-
-
-const LinkList = List( LinkCard );
 
 
 class UserLinks extends React.Component

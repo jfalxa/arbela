@@ -1,5 +1,6 @@
 import React    from 'react';
 import { Link } from 'react-router-dom';
+import List     from '../generic/List';
 
 
 function LinkCard( { id, title, url, description, author } )
@@ -23,4 +24,4 @@ function LinkCard( { id, title, url, description, author } )
 }
 
 
-export default LinkCard;
+export default List( LinkCard );
