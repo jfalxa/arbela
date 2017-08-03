@@ -1,7 +1,7 @@
 import React        from 'react';
 import List         from '../generic/List';
 import LinkCard     from './LinkCard';
-import withAllLinks from './allLinks';
+import withAllLinks from './withAllLinks';
 
 
 const LinkList = List( LinkCard );

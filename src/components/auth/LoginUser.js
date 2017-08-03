@@ -1,6 +1,6 @@
 import React          from 'react';
 import LoginForm      from './LoginForm';
-import withSigninUser from './signinUser';
+import withSigninUser from './withSigninUser';
 
 
 class Login extends React.Component

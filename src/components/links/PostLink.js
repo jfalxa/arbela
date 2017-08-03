@@ -1,6 +1,6 @@
 import React          from 'react';
 import LinkForm       from './LinkForm';
-import withCreateLink from './createLink';
+import withCreateLink from './withCreateLink';
 
 
 class PostLink extends React.Component

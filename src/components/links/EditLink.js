@@ -1,8 +1,8 @@
 import React          from 'react';
 import LinkForm       from './LinkForm';
-import withLink       from './link';
-import withUpdateLink from './updateLink';
-import withDeleteLink from './deleteLink';
+import withLink       from './withLink';
+import withUpdateLink from './withUpdateLink';
+import withDeleteLink from './withDeleteLink';
 
 
 class EditLink extends React.Component
