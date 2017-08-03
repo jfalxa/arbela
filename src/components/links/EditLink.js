@@ -35,21 +35,23 @@ class EditLink extends React.Component
     {
         e.preventDefault();
 
-        const { link, updateLink }        = this.props;
-        const { title, url, description } = this.state;
+        const { link, updateLink, history } = this.props;
+        const { title, url, description }   = this.state;
 
         updateLink( { id: link.id, title, url, description } )
             .then( res => console.log( 'Link updated', res ) )
+            .then( () => history.push( '/' ) )
             .catch( err => console.log( 'Failed updating link', err ) );
     }
 
 
     handleDelete = ( e ) =>
     {
-        const { link, deleteLink } = this.props;
+        const { link, deleteLink, history } = this.props;
 
         deleteLink( link.id )
             .then( res => console.log( 'Link deleted', res ) )
+            .then( () => history.push( '/' ) )
             .catch( err => console.log( 'Failed deleting link', err ) );
     }
 

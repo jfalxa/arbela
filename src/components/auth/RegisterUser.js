@@ -23,11 +23,12 @@ class Register extends React.Component
     {
         e.preventDefault();
 
-        const { createUser }            = this.props;
+        const { createUser, history }   = this.props;
         const { name, email, password } = this.state;
 
         createUser( { name, email, password } )
             .then( res => console.log( 'User created', res ) )
+            .then( () => history.push( '/' ) )
             .catch( err => console.log( 'Failed creating user', err ) );
     }
 

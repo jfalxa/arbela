@@ -22,11 +22,12 @@ class Login extends React.Component
     {
         e.preventDefault();
 
-        const { signinUser }      = this.props;
-        const { email, password } = this.state;
+        const { signinUser, history } = this.props;
+        const { email, password }     = this.state;
 
         signinUser( { email, password } )
             .then( () => console.log( 'User signed in' ) )
+            .then( () => history.push( '/' ) )
             .catch( err => console.log( 'Failed signing in user', err ) );
     }
 

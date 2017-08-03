@@ -23,11 +23,12 @@ class PostLink extends React.Component
     {
         e.preventDefault();
 
-        const { createLink }              = this.props;
+        const { createLink, history }     = this.props;
         const { title, url, description } = this.state;
 
         createLink( { title, url, description } )
             .then( res => console.log( 'Link created', res ) )
+            .then( () => history.push( '/' ) )
             .catch( err => console.log( 'Failed creating link', err ) );
     }
 
