@@ -1,5 +1,6 @@
 import React          from 'react';
 import LinkForm       from './LinkForm';
+import withUser       from '../auth/withUser';
 import withCreateLink from './withCreateLink';
 
 
@@ -23,10 +24,10 @@ class PostLink extends React.Component
     {
         e.preventDefault();
 
-        const { createLink, history }     = this.props;
-        const { title, url, description } = this.state;
+        const { user, createLink, history } = this.props;
+        const { title, url, description }   = this.state;
 
-        createLink( { title, url, description } )
+        createLink( { title, url, description, author: user.id } )
             .then( res => console.log( 'Link created', res ) )
             .then( () => history.push( '/' ) )
             .catch( err => console.log( 'Failed creating link', err ) );
@@ -57,4 +58,4 @@ class PostLink extends React.Component
 }
 
 
-export default withCreateLink( PostLink );
+export default withUser( withCreateLink( PostLink ) );

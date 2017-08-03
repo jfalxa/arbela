@@ -1,9 +1,9 @@
 import { gql, graphql } from 'react-apollo';
 
 
-export const createLink = gql`mutation createLink( $title: String!, $url: String!, $description: String! )
+export const createLink = gql`mutation createLink( $title: String!, $url: String!, $description: String!, $author: ID! )
 {
-    createLink( title: $title, url: $url, description: $description )
+    createLink( title: $title, url: $url, description: $description, authorId: $author )
     {
         id
     }
