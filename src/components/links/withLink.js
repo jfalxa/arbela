@@ -15,7 +15,7 @@ export const link = gql`query link( $id: ID! )
 
 function mapProps( { data } )
 {
-    return { loading: data.loading, link: data.Link };
+    return { loadingLink: data.loading, link: data.Link };
 }
 
 

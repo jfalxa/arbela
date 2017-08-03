@@ -11,7 +11,7 @@ class FeedLinks extends React.Component
 {
     render()
     {
-        const { loading, links } = this.props;
+        const { loadingLinks, links } = this.props;
 
         return (
 
@@ -20,7 +20,7 @@ class FeedLinks extends React.Component
                 <h2>All links</h2>
 
                 { links && <LinkList items={ links } /> }
-                { loading && <p>Loading...</p> }
+                { loadingLinks && <p>Loading...</p> }
 
             </section>
 

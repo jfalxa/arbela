@@ -58,7 +58,7 @@ class EditLink extends React.Component
 
     render()
     {
-        if ( this.props.loading && !this.props.link )
+        if ( this.props.loadingLink && !this.props.link )
         {
             return <p>Loading...</p>;
         }

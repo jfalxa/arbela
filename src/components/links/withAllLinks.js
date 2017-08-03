@@ -15,7 +15,7 @@ export const allLinks = gql`query allLinks
 
 function mapProps( { data } )
 {
-    return { loading: data.loading, links: data.allLinks };
+    return { loadingLinks: data.loading, links: data.allLinks };
 }
 
 
