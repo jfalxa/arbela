@@ -1,6 +1,8 @@
-import React    from 'react';
-import Login    from './auth/Login';
-import Register from './auth/Register';
+import React      from 'react';
+import { Route }  from 'react-router-dom';
+import Navigation from './Navigation';
+import Login      from './auth/Login';
+import Register   from './auth/Register';
 
 
 class App extends React.Component
@@ -10,8 +12,14 @@ class App extends React.Component
         return (
 
             <div>
-                <Login />
-                <Register />
+
+                <Navigation />
+
+                <main>
+                    <Route path="/login" component={ Login } />
+                    <Route path="/register" component={ Register } />
+                </main>
+
             </div>
 
         );
