@@ -26,7 +26,7 @@ class Login extends React.Component
         const { email, password } = this.state;
 
         signinUser( { email, password } )
-            .then( res => console.log( 'User signed in', res ) )
+            .then( () => console.log( 'User signed in' ) )
             .catch( err => console.log( 'Failed signing in user', err ) );
     }
 

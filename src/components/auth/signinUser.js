@@ -1,5 +1,5 @@
 import { gql, graphql } from 'react-apollo';
-
+import { setAuthToken } from '../../services/graphcool/token';
 
 export const signinUser = gql`mutation signinUser( $email: String!, $password: String! )
 {
@@ -19,7 +19,8 @@ function mapProps( { mutate, ownProps } )
             variables : user,
         };
 
-        return mutate( options );
+        return mutate( options )
+            .then( res => setAuthToken( res.data.signinUser.token ) )
     }
 
     return { signinUser };
