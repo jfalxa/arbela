@@ -3,6 +3,7 @@ import { Route }  from 'react-router-dom';
 import Navigation from './Navigation';
 import FeedLinks  from './links/FeedLinks';
 import PostLink   from './links/PostLink';
+import EditLink   from './links/EditLink';
 import Login      from './auth/Login';
 import Register   from './auth/Register';
 
@@ -20,6 +21,7 @@ class App extends React.Component
                 <main>
                     <Route exact path="/" component={ FeedLinks } />
                     <Route path="/post" component={ PostLink } />
+                    <Route path="/edit/:id" component={ EditLink } />
                     <Route path="/login" component={ Login } />
                     <Route path="/register" component={ Register } />
                 </main>
