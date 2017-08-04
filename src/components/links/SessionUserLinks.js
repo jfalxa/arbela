@@ -3,25 +3,20 @@ import LinkList             from './LinkList';
 import withSessionUserLinks from './withSessionUserLinks';
 
 
-class SessionUserLinks extends React.Component
+function SessionUserLinks( { loadingLinks, links } )
 {
-    render()
-    {
-        const { loadingLinks, links } = this.props;
+    return (
 
-        return (
+        <section>
 
-            <section>
+            <h2>My links</h2>
 
-                <h2>My links</h2>
+            { links && <LinkList items={ links } /> }
+            { loadingLinks && <p>Loading...</p> }
 
-                { links && <LinkList items={ links } /> }
-                { loadingLinks && <p>Loading...</p> }
+        </section>
 
-            </section>
-
-        );
-    }
+    );
 }
 
 

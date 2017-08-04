@@ -10,30 +10,27 @@ import LoginUser        from './auth/LoginUser';
 import RegisterUser     from './auth/RegisterUser';
 
 
-class App extends React.Component
+function App()
 {
-    render()
-    {
-        return (
+    return (
 
-            <div>
+        <div>
 
-                <Navigation />
+            <Navigation />
 
-                <main>
-                    <Route exact path="/" component={ FeedLinks } />
-                    <Route path="/post" component={ PostLink } />
-                    <Route path="/edit/:id" component={ EditLink } />
-                    <Route path="/me" component={ SessionUserLinks } />
-                    <Route path="/users/:name" component={ UserLinks } />
-                    <Route path="/login" component={ LoginUser } />
-                    <Route path="/register" component={ RegisterUser } />
-                </main>
+            <main>
+                <Route exact path="/" component={ FeedLinks } />
+                <Route path="/post" component={ PostLink } />
+                <Route path="/edit/:id" component={ EditLink } />
+                <Route path="/me" component={ SessionUserLinks } />
+                <Route path="/users/:name" component={ UserLinks } />
+                <Route path="/login" component={ LoginUser } />
+                <Route path="/register" component={ RegisterUser } />
+            </main>
 
-            </div>
+        </div>
 
-        );
-    }
+    );
 }
 
 

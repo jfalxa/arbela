@@ -3,25 +3,20 @@ import LinkList      from './LinkList';
 import withUserLinks from './withUserLinks';
 
 
-class UserLinks extends React.Component
+function UserLinks( { loadingLinks, user, links } )
 {
-    render()
-    {
-        const { loadingLinks, user, links } = this.props;
+    return (
 
-        return (
+        <section>
 
-            <section>
+            <h2>{ user }'s links</h2>
 
-                <h2>{ user }'s links</h2>
+            { links && <LinkList items={ links } /> }
+            { loadingLinks && <p>Loading...</p> }
 
-                { links && <LinkList items={ links } /> }
-                { loadingLinks && <p>Loading...</p> }
+        </section>
 
-            </section>
-
-        );
-    }
+    );
 }
 
 

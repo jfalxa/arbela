@@ -3,25 +3,20 @@ import LinkList     from './LinkList';
 import withAllLinks from './withAllLinks';
 
 
-class FeedLinks extends React.Component
+function FeedLinks( { loadingLinks, links } )
 {
-    render()
-    {
-        const { loadingLinks, links } = this.props;
+    return (
 
-        return (
+        <section>
 
-            <section>
+            <h2>All links</h2>
 
-                <h2>All links</h2>
+            { links && <LinkList items={ links } /> }
+            { loadingLinks && <p>Loading...</p> }
 
-                { links && <LinkList items={ links } /> }
-                { loadingLinks && <p>Loading...</p> }
+        </section>
 
-            </section>
-
-        );
-    }
+    );
 }
 
 
