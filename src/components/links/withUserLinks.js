@@ -4,9 +4,12 @@ import get              from 'lodash/get';
 
 export const userLinks = gql`query userLinks( $name: String! )
 {
-    User(name: $name)
+    User( name: $name )
     {
-        links( orderBy: createdAt_DESC )
+        links(
+            orderBy: createdAt_DESC,
+            filter: { hidden: false }
+        )
         {
             id
             title

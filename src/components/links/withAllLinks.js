@@ -3,7 +3,10 @@ import { gql, graphql } from 'react-apollo';
 
 export const allLinks = gql`query allLinks
 {
-    allLinks(orderBy: createdAt_DESC)
+    allLinks(
+        orderBy: createdAt_DESC,
+        filter: { hidden: false }
+    )
     {
         id
         title
