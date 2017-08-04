@@ -15,7 +15,7 @@ function LinkCard( { id, title, url, description, author } )
 
             <aside>
                 <Link to={ `/users/${ author.name }` }>{ author.name }</Link>
-                <Link to={ `/edit/${ id }` }>(edit)</Link>
+                <Link to={ `/links/${ id }/edit` }>(edit)</Link>
             </aside>
 
         </li>

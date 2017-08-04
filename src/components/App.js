@@ -24,7 +24,7 @@ function App()
             <main>
                 <Route exact path="/" component={ FeedLinks } />
                 <Route path="/new-link" component={ PostLink } />
-                <Route path="/edit/:id" component={ EditLink } />
+                <Route path="/links/:id/edit" component={ EditLink } />
                 <Route path="/users/:name" component={ UserLinks } />
                 <Route path="/me" component={ SessionUserLinks } />
                 <Route path="/new-board" component={ CreateBoard } />
