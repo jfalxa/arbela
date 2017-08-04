@@ -6,6 +6,8 @@ export const userLinks = gql`query userLinks( $name: String! )
 {
     User( name: $name )
     {
+        name
+
         links(
             orderBy: createdAt_DESC,
             filter: { hidden: false }
@@ -27,7 +29,14 @@ export const userLinks = gql`query userLinks( $name: String! )
 
 function mapProps( { data } )
 {
-    return { loadingLinks: data.loading, links: get( data, 'User.links' ) };
+    const props =
+    {
+        loadingLinks: data.loading,
+        user: get( data, 'User.name' ),
+        links: get( data, 'User.links' )
+    };
+
+    return props;
 }
 
 
