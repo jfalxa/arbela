@@ -11,10 +11,10 @@ class LinkFormContainer extends React.Component
 
         this.state =
         {
-            title       : props.title,
-            url         : props.url,
-            description : props.description,
-            hidden      : props.hidden
+            title       : props.title || '',
+            url         : props.url || '',
+            description : props.description || '',
+            hidden      : props.hidden || false
         };
     }
 
