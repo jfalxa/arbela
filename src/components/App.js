@@ -22,16 +22,20 @@ function App()
             <Navigation />
 
             <main>
+
                 <Route exact path="/" component={ FeedLinks } />
                 <Route path="/new-link" component={ PostLink } />
                 <Route path="/links/:id/edit" component={ EditLink } />
                 <Route path="/users/:name" component={ UserLinks } />
                 <Route path="/me" component={ SessionUserLinks } />
-                <Route path="/new-board" component={ CreateBoard } />
+
                 <Route exact path="/boards" component={ FeedBoards } />
+                <Route path="/new-board" component={ CreateBoard } />
                 <Route path="/boards/:id/edit" component={ EditBoard } />
+
                 <Route path="/login" component={ LoginUser } />
                 <Route path="/register" component={ RegisterUser } />
+
             </main>
 
         </div>
