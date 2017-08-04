@@ -1,7 +1,7 @@
 import React from 'react';
 
 
-function LoginForm( { title, url, description, hidden, onChange, onSubmit } )
+function LinkForm( { title, url, description, hidden, onChange, onSubmit } )
 {
     return (
 
@@ -27,4 +27,4 @@ function LoginForm( { title, url, description, hidden, onChange, onSubmit } )
 }
 
 
-export default LoginForm;
+export default LinkForm;
