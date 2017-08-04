@@ -7,6 +7,7 @@ import EditLink         from './links/EditLink';
 import UserLinks        from './links/UserLinks';
 import SessionUserLinks from './links/SessionUserLinks';
 import CreateBoard      from './boards/CreateBoard';
+import EditBoard        from './boards/EditBoard';
 import FeedBoards       from './boards/FeedBoards';
 import LoginUser        from './auth/LoginUser';
 import RegisterUser     from './auth/RegisterUser';
@@ -27,7 +28,8 @@ function App()
                 <Route path="/users/:name" component={ UserLinks } />
                 <Route path="/me" component={ SessionUserLinks } />
                 <Route path="/new-board" component={ CreateBoard } />
-                <Route path="/boards" component={ FeedBoards } />
+                <Route exact path="/boards" component={ FeedBoards } />
+                <Route path="/boards/:id/edit" component={ EditBoard } />
                 <Route path="/login" component={ LoginUser } />
                 <Route path="/register" component={ RegisterUser } />
             </main>

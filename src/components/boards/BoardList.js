@@ -10,6 +10,7 @@ function BoardCard( { id, title, description } )
         <li>
             <h3><Link to={ `/boards/${ id }` }>{ title }</Link></h3>
             <p>{ description }</p>
+            <Link to={ `/boards/${ id }/edit` }>(edit)</Link>
         </li>
 
     );
