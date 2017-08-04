@@ -16,7 +16,7 @@ function LinkForm( { title, url, description, hidden, onChange, onSubmit } )
             <label htmlFor="link-description">Description</label>
             <input id="link-description" name="description" value={ description } />
 
-            <input id="link-hidden" name="hidden" type="checkbox" checked={ hidden } style={ { display: 'inline' } } />
+            <input id="link-hidden" name="hidden" type="checkbox" checked={ hidden } />
             <label htmlFor="link-hidden">Private</label>
 
             <button type="submit">Save</button>
