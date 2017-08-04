@@ -19,6 +19,11 @@ class PostLink extends React.Component
 
     render()
     {
+        if ( this.props.loadingUser )
+        {
+            return <p>Loading...</p>
+        }
+
         return (
 
             <section>

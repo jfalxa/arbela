@@ -36,7 +36,7 @@ class EditLink extends React.Component
             return <p>Loading...</p>;
         }
 
-        const { title, url, description } = this.props.link;
+        const { title, url, description, hidden } = this.props.link;
 
         return (
 
@@ -48,6 +48,7 @@ class EditLink extends React.Component
                     title={ title }
                     url={ url }
                     description={ description }
+                    hidden={ hidden }
                     onSubmit={ this.handleSubmit } />
 
                 <button onClick={ this.handleDelete }>Delete</button>

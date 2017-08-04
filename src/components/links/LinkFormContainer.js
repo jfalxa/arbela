@@ -43,7 +43,7 @@ class LinkFormContainer extends React.Component
 
     render()
     {
-        const { title, url, description } = this.state;
+        const { title, url, description, hidden } = this.state;
 
         return (
 
@@ -51,6 +51,7 @@ class LinkFormContainer extends React.Component
                 title={ title }
                 url={ url }
                 description={ description }
+                hidden={ hidden }
                 onChange={ this.handleChange }
                 onSubmit={ this.handleSubmit } />
 

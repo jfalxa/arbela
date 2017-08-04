@@ -1,7 +1,7 @@
 import React from 'react';
 
 
-function LoginForm( { title, url, description, onChange, onSubmit } )
+function LoginForm( { title, url, description, hidden, onChange, onSubmit } )
 {
     return (
 
@@ -15,6 +15,9 @@ function LoginForm( { title, url, description, onChange, onSubmit } )
 
             <label htmlFor="link-description">Description</label>
             <input id="link-description" name="description" value={ description } />
+
+            <input id="link-hidden" name="hidden" type="checkbox" checked={ hidden } style={ { display: 'inline' } } />
+            <label htmlFor="link-hidden">Private</label>
 
             <button type="submit">Save</button>
 
