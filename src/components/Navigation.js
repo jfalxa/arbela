@@ -1,5 +1,6 @@
-import React    from 'react';
-import { Link } from 'react-router-dom';
+import React      from 'react';
+import { Link }   from 'react-router-dom';
+import LogoutUser from './auth/LogoutUser';
 
 
 function Navigation( props )
@@ -15,6 +16,7 @@ function Navigation( props )
                 <li><Link to="/login">Login</Link></li>
                 <li><Link to="/register">Register</Link></li>
                 <li><Link to="/me">My links</Link></li>
+                <li><LogoutUser /></li>
             </ul>
         </nav>
 
