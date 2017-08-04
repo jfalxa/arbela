@@ -1,7 +1,8 @@
-import React             from 'react';
+import React              from 'react';
 import BoardFormContainer from './BoardFormContainer';
 import withBoard          from './withBoard';
 import withUpdateBoard    from './withUpdateBoard';
+import withDeleteBoard    from './withDeleteBoard';
 
 
 class EditBoard extends React.Component
@@ -14,6 +15,17 @@ class EditBoard extends React.Component
             .then( res => console.log( 'Board updated', res ) )
             .then( () => history.push( '/' ) )
             .catch( err => console.log( 'Failed updating board', err ) );
+    }
+
+
+    handleDelete = ( e ) =>
+    {
+        const { board, deleteBoard, history } = this.props;
+
+        deleteBoard( board.id )
+            .then( res => console.log( 'Board deleted', res ) )
+            .then( () => history.push( '/' ) )
+            .catch( err => console.log( 'Failed deleting board', err ) );
     }
 
 
@@ -37,6 +49,8 @@ class EditBoard extends React.Component
                     description={ description }
                     onSubmit={ this.handleSubmit } />
 
+                <button onClick={ this.handleDelete }>Delete</button>
+
             </section>
 
         );
@@ -44,4 +58,4 @@ class EditBoard extends React.Component
 }
 
 
-export default withBoard( withUpdateBoard( EditBoard ) );
+export default withBoard( withUpdateBoard( withDeleteBoard( EditBoard ) ) );
