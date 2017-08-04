@@ -31,9 +31,9 @@ function mapProps( { data } )
 {
     const props =
     {
-        loadingLinks: data.loading,
-        user: get( data, 'User.name' ),
-        links: get( data, 'User.links' )
+        loadingLinks : data.loading,
+        user         : get( data, 'User.name' ),
+        links        : get( data, 'User.links' )
     };
 
     return props;
