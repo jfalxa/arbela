@@ -6,6 +6,8 @@ export const sessionUserLinks = gql`query sessionUserLinks
 {
     user
     {
+        id
+
         links( orderBy: createdAt_DESC )
         {
             id
