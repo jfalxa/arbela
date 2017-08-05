@@ -1,8 +1,8 @@
-import React            from 'react';
-import BoardChoiceGroup from './BoardChoiceGroup';
-import withLink         from './withLink';
-import withAllBoards    from '../boards/withAllBoards';
-import withShareLink    from './withShareLink';
+import React         from 'react';
+import LinkSharer    from './LinkSharer';
+import withLink      from './withLink';
+import withAllBoards from '../boards/withAllBoards';
+import withShareLink from './withShareLink';
 
 
 class ShareLink extends React.Component
@@ -46,36 +46,22 @@ class ShareLink extends React.Component
 
     render()
     {
-        const { checked }                        = this.state;
-        const { loadingBoards, link, boards=[] } = this.props;
+        const { loadingLink, loadingBoards, link, boards=[] } = this.props;
 
         return (
 
-            <section>
-
-                <h2>Share "{ link ? link.title : '' }"</h2>
-
-                { loadingBoards && <p>Loading...</p> }
-
-                <form onSubmit={ this.handleSubmit }>
-
-                    <BoardChoiceGroup
-                        items={ boards }
-                        checked={ checked }
-                        onCheck={ this.handleCheck } />
-
-                    <button type="submit">Share</button>
-
-                </form>
-
-            </section>
+            <LinkSharer
+                link={ link }
+                boards={ boards }
+                checked={ this.state.checked }
+                loadingLink={ loadingLink }
+                loadingBoards={ loadingBoards }
+                onCheck={ this.handleCheck }
+                onSubmit={ this.handleSubmit } />
 
         );
     }
 }
-
-
-
 
 
 export default withLink( withAllBoards( withShareLink( ShareLink ) ) );

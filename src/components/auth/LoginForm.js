@@ -5,17 +5,23 @@ function LoginForm( { email, password, onChange, onSubmit } )
 {
     return (
 
-        <form onChange={ onChange } onSubmit={ onSubmit }>
+        <section>
 
-            <label htmlFor="user-email">Email address</label>
-            <input id="user-email" name="email" value={ email } />
+            <h2>Login</h2>
 
-            <label htmlFor="user-password">Password</label>
-            <input id="user-password" name="password" value={ password } />
+            <form onChange={ onChange } onSubmit={ onSubmit }>
 
-            <button type="submit">Login</button>
+                <label htmlFor="user-email">Email address</label>
+                <input id="user-email" name="email" value={ email } />
 
-        </form>
+                <label htmlFor="user-password">Password</label>
+                <input id="user-password" name="password" value={ password } />
+
+                <button type="submit">Login</button>
+
+            </form>
+
+        </section>
 
     );
 }

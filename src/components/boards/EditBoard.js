@@ -1,8 +1,9 @@
-import React              from 'react';
-import BoardFormContainer from './BoardFormContainer';
-import withBoard          from './withBoard';
-import withUpdateBoard    from './withUpdateBoard';
-import withDeleteBoard    from './withDeleteBoard';
+import React           from 'react';
+import BoardEditor     from './BoardEditor';
+import withUser        from '../auth/withUser';
+import withBoard       from './withBoard';
+import withUpdateBoard from './withUpdateBoard';
+import withDeleteBoard from './withDeleteBoard';
 
 
 class EditBoard extends React.Component
@@ -31,31 +32,20 @@ class EditBoard extends React.Component
 
     render()
     {
-        if ( this.props.loadingBoard && !this.props.board )
-        {
-            return <p>Loading...</p>;
-        }
-
-        const { title, description } = this.props.board;
+        const { board, loadingBoard, loadingUser } = this.props;
 
         return (
 
-            <section>
-
-                <h2>Edit board</h2>
-
-                <BoardFormContainer
-                    title={ title }
-                    description={ description }
-                    onSubmit={ this.handleSubmit } />
-
-                <button onClick={ this.handleDelete }>Delete</button>
-
-            </section>
+            <BoardEditor
+                board={ board }
+                loadingBoard={ loadingBoard }
+                loadingUser={ loadingUser }
+                onSubmit={ this.handleSubmit }
+                onDelete={ this.handleDelete } />
 
         );
     }
 }
 
 
-export default withBoard( withUpdateBoard( withDeleteBoard( EditBoard ) ) );
+export default withUser( withBoard( withUpdateBoard( withDeleteBoard( EditBoard ) ) ) );

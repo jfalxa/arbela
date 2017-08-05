@@ -1,7 +1,7 @@
-import React              from 'react';
-import BoardFormContainer from './BoardFormContainer';
-import withUser           from '../auth/withUser';
-import withCreateBoard    from './withCreateBoard';
+import React           from 'react';
+import BoardCreator    from './BoardCreator';
+import withUser        from '../auth/withUser';
+import withCreateBoard from './withCreateBoard';
 
 
 class CreateBoard extends React.Component
@@ -19,22 +19,11 @@ class CreateBoard extends React.Component
 
     render()
     {
-        if ( this.props.loadingUser )
-        {
-            return <p>Loading...</p>;
-        }
-
         return (
 
-            <section>
-
-                <h2>Create new board</h2>
-
-                <BoardFormContainer
-                    onSubmit={ this.handleSubmit } />
-
-            </section>
-
+            <BoardCreator
+                loadingUser={ this.props.loadingUser }
+                onSubmit={ this.handleSubmit } />
         );
     }
 }

@@ -38,17 +38,11 @@ class Login extends React.Component
 
         return (
 
-            <section>
-
-                <h2>Login</h2>
-
-                <LoginForm
-                    email={ email }
-                    password={ password }
-                    onChange={ this.handleChange }
-                    onSubmit={ this.handleSubmit } />
-
-            </section>
+            <LoginForm
+                email={ email }
+                password={ password }
+                onChange={ this.handleChange }
+                onSubmit={ this.handleSubmit } />
 
         );
     }

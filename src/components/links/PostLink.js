@@ -1,7 +1,7 @@
-import React             from 'react';
-import LinkFormContainer from './LinkFormContainer';
-import withUser          from '../auth/withUser';
-import withCreateLink    from './withCreateLink';
+import React          from 'react';
+import LinkCreator    from './LinkCreator';
+import withUser       from '../auth/withUser';
+import withCreateLink from './withCreateLink';
 
 
 class PostLink extends React.Component
@@ -19,21 +19,11 @@ class PostLink extends React.Component
 
     render()
     {
-        if ( this.props.loadingUser )
-        {
-            return <p>Loading...</p>
-        }
-
         return (
 
-            <section>
-
-                <h2>Post new link</h2>
-
-                <LinkFormContainer
-                    onSubmit={ this.handleSubmit } />
-
-            </section>
+            <LinkCreator
+                loadingUser={ this.props.loadingUser }
+                onSubmit={ this.handleSubmit } />
 
         );
     }

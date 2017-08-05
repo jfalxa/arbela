@@ -5,20 +5,26 @@ function RegisterForm( { name, email, password, onChange, onSubmit } )
 {
     return (
 
-        <form onChange={ onChange } onSubmit={ onSubmit }>
+        <section>
 
-            <label htmlFor="user-name">User name</label>
-            <input id="user-name" name="name" value={ name } />
+            <h2>Register</h2>
 
-            <label htmlFor="user-email">Email address</label>
-            <input id="user-email" name="email" value={ email } />
+            <form onChange={ onChange } onSubmit={ onSubmit }>
 
-            <label htmlFor="user-password">Password</label>
-            <input id="user-password" name="password" value={ password } />
+                <label htmlFor="user-name">User name</label>
+                <input id="user-name" name="name" value={ name } />
 
-            <button type="submit">Register</button>
+                <label htmlFor="user-email">Email address</label>
+                <input id="user-email" name="email" value={ email } />
 
-        </form>
+                <label htmlFor="user-password">Password</label>
+                <input id="user-password" name="password" value={ password } />
+
+                <button type="submit">Register</button>
+
+            </form>
+
+        </section>
 
     );
 }

@@ -1,8 +1,9 @@
-import React             from 'react';
-import LinkFormContainer from './LinkFormContainer';
-import withLink          from './withLink';
-import withUpdateLink    from './withUpdateLink';
-import withDeleteLink    from './withDeleteLink';
+import React          from 'react';
+import LinkEditor     from './LinkEditor';
+import withUser       from '../auth/withUser';
+import withLink       from './withLink';
+import withUpdateLink from './withUpdateLink';
+import withDeleteLink from './withDeleteLink';
 
 
 class EditLink extends React.Component
@@ -31,33 +32,20 @@ class EditLink extends React.Component
 
     render()
     {
-        if ( this.props.loadingLink && !this.props.link )
-        {
-            return <p>Loading...</p>;
-        }
-
-        const { title, url, description, hidden } = this.props.link;
+        const { link, loadingLink, loadingUser } = this.props;
 
         return (
 
-            <section>
-
-                <h2>Edit link</h2>
-
-                <LinkFormContainer
-                    title={ title }
-                    url={ url }
-                    description={ description }
-                    hidden={ hidden }
-                    onSubmit={ this.handleSubmit } />
-
-                <button onClick={ this.handleDelete }>Delete</button>
-
-            </section>
+            <LinkEditor
+                link={ link }
+                loadingLink={ loadingLink }
+                loadingUser={ loadingUser }
+                onSubmit={ this.handleSubmit }
+                onDelete={ this.handleDelete } />
 
         );
     }
 }
 
 
-export default withLink( withUpdateLink( withDeleteLink( EditLink ) ) );
+export default withUser( withLink( withUpdateLink( withDeleteLink( EditLink ) ) ) );
