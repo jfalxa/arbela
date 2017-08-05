@@ -34,7 +34,7 @@ function App()
 
                 <Route exact path="/boards" component={ FeedBoards } />
                 <Route path="/new-board" component={ CreateBoard } />
-                <Route path="/boards/:id" component={ BoardLinks } />
+                <Route exact path="/boards/:id" component={ BoardLinks } />
                 <Route path="/boards/:id/edit" component={ EditBoard } />
 
                 <Route path="/login" component={ LoginUser } />
