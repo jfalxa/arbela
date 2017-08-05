@@ -1,9 +1,8 @@
-import React          from 'react';
-import LinkList       from '../links/LinkList';
-import withBoardLinks from './withBoardLinks';
+import React         from 'react';
+import BoardLinkList from './BoardLinkList';
 
 
-function BoardLinks( { loadingBoard, board } )
+function BoardLinks( { loadingBoard, board, onRemoveLink } )
 {
     if ( loadingBoard && !board )
     {
@@ -20,7 +19,9 @@ function BoardLinks( { loadingBoard, board } )
 
             <p>{ description }</p>
 
-            <LinkList items={ links } />
+            <BoardLinkList
+                items={ links }
+                onRemoveLink={ onRemoveLink } />
 
         </section>
 
@@ -28,4 +29,5 @@ function BoardLinks( { loadingBoard, board } )
 }
 
 
-export default withBoardLinks( BoardLinks );
+export default BoardLinks;
+

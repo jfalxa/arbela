@@ -32,8 +32,9 @@ function mapProps( { data } )
 {
     const props =
     {
-        loadingBoard : data.loading,
-        board        : data.Board
+        loadingBoard      : data.loading,
+        board             : data.Board,
+        refetchBoardLinks : data.refetch
     };
 
     return props;

@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import withList from '../generic/withList';
 
 
-function LinkCard( { id, title, url, description, author } )
+export function LinkCard( { id, title, url, description, author, children } )
 {
     return (
 
@@ -18,6 +18,8 @@ function LinkCard( { id, title, url, description, author } )
             </aside>
 
             <p>{ description }</p>
+
+            { children }
 
         </li>
 

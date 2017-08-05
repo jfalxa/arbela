@@ -8,7 +8,7 @@ import ShareLink        from './links/ShareLink';
 import UserLinks        from './links/UserLinks';
 import SessionUserLinks from './links/SessionUserLinks';
 import CreateBoard      from './boards/CreateBoard';
-import BoardLinks       from './boards/BoardLinks';
+import ShowBoardLinks   from './boards/ShowBoardLinks';
 import EditBoard        from './boards/EditBoard';
 import FeedBoards       from './boards/FeedBoards';
 import LoginUser        from './auth/LoginUser';
@@ -34,7 +34,7 @@ function App()
 
                 <Route exact path="/boards" component={ FeedBoards } />
                 <Route path="/new-board" component={ CreateBoard } />
-                <Route exact path="/boards/:id" component={ BoardLinks } />
+                <Route exact path="/boards/:id" component={ ShowBoardLinks } />
                 <Route path="/boards/:id/edit" component={ EditBoard } />
 
                 <Route path="/login" component={ LoginUser } />
