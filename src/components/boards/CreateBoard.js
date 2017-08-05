@@ -12,7 +12,7 @@ class CreateBoard extends React.Component
 
         createBoard( { ...board, author: user.id } )
             .then( res => console.log( 'Board created', res ) )
-            .then( () => history.push( '/' ) )
+            .then( () => history.goBack() )
             .catch( err => console.log( 'Failed creating board', err ) );
     }
 

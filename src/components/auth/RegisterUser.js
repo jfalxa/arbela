@@ -28,7 +28,7 @@ class Register extends React.Component
 
         createUser( { name, email, password } )
             .then( res => console.log( 'User created', res ) )
-            .then( () => history.push( '/' ) )
+            .then( () => history.goBack() )
             .catch( err => console.log( 'Failed creating user', err ) );
     }
 

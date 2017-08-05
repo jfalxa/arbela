@@ -12,7 +12,7 @@ class PostLink extends React.Component
 
         createLink( { ...link, author: user.id } )
             .then( res => console.log( 'Link created', res ) )
-            .then( () => history.push( '/' ) )
+            .then( () => history.goBack() )
             .catch( err => console.log( 'Failed creating link', err ) );
     }
 

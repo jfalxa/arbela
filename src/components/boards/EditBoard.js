@@ -13,7 +13,7 @@ class EditBoard extends React.Component
 
         updateBoard( { id: board.id, ...boardUpdate } )
             .then( res => console.log( 'Board updated', res ) )
-            .then( () => history.push( '/' ) )
+            .then( () => history.goBack() )
             .catch( err => console.log( 'Failed updating board', err ) );
     }
 
@@ -24,7 +24,7 @@ class EditBoard extends React.Component
 
         deleteBoard( board.id )
             .then( res => console.log( 'Board deleted', res ) )
-            .then( () => history.push( '/' ) )
+            .then( () => history.goBack() )
             .catch( err => console.log( 'Failed deleting board', err ) );
     }
 

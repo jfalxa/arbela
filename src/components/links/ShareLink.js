@@ -39,7 +39,7 @@ class ShareLink extends React.Component
 
         shareLink( { ...link, boards: checked } )
             .then( res => console.log( 'Shared link', res ) )
-            .then( () => history.push( '/' ) )
+            .then( () => history.goBack() )
             .catch( err => console.log( 'Failed sharing link', err ) );
     }
 

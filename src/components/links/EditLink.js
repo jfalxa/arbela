@@ -13,7 +13,7 @@ class EditLink extends React.Component
 
         updateLink( { id: link.id, ...linkUpdate } )
             .then( res => console.log( 'Link updated', res ) )
-            .then( () => history.push( '/' ) )
+            .then( () => history.goBack() )
             .catch( err => console.log( 'Failed updating link', err ) );
     }
 
@@ -24,7 +24,7 @@ class EditLink extends React.Component
 
         deleteLink( link.id )
             .then( res => console.log( 'Link deleted', res ) )
-            .then( () => history.push( '/' ) )
+            .then( () => history.goBack() )
             .catch( err => console.log( 'Failed deleting link', err ) );
     }
 
