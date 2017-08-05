@@ -1,10 +1,10 @@
 import React               from 'react';
-import BoardLinks          from './BoardLinks';
+import Board               from './Board';
 import withBoardLinks      from './withBoardLinks';
 import withRemoveBoardLink from './withRemoveBoardLink';
 
 
-class ShowBoardLinks extends React.Component
+class ShowBoard extends React.Component
 {
     handleRemoveLink = ( linkID ) =>
     {
@@ -23,7 +23,7 @@ class ShowBoardLinks extends React.Component
 
         return (
 
-            <BoardLinks
+            <Board
                 board={ board }
                 loadingBoard={ loadingBoard }
                 onRemoveLink={ this.handleRemoveLink } />
@@ -33,4 +33,4 @@ class ShowBoardLinks extends React.Component
 }
 
 
-export default withBoardLinks( withRemoveBoardLink( ShowBoardLinks ) );
+export default withBoardLinks( withRemoveBoardLink( ShowBoard ) );

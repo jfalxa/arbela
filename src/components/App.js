@@ -1,18 +1,18 @@
-import React            from 'react';
-import { Route }        from 'react-router-dom';
-import Navigation       from './Navigation';
-import FeedLinks        from './links/FeedLinks';
-import PostLink         from './links/PostLink';
-import EditLink         from './links/EditLink';
-import ShareLink        from './links/ShareLink';
-import UserLinks        from './links/UserLinks';
-import SessionUserLinks from './links/SessionUserLinks';
-import CreateBoard      from './boards/CreateBoard';
-import ShowBoardLinks   from './boards/ShowBoardLinks';
-import EditBoard        from './boards/EditBoard';
-import FeedBoards       from './boards/FeedBoards';
-import LoginUser        from './auth/LoginUser';
-import RegisterUser     from './auth/RegisterUser';
+import React                from 'react';
+import { Route }            from 'react-router-dom';
+import Navigation           from './Navigation';
+import PostLink             from './links/PostLink';
+import ShowAllLinks         from './links/ShowAllLinks';
+import ShowUserLinks        from './links/ShowUserLinks';
+import ShowSessionUserLinks from './links/ShowSessionUserLinks';
+import EditLink             from './links/EditLink';
+import ShareLink            from './links/ShareLink';
+import CreateBoard          from './boards/CreateBoard';
+import ShowAllBoards        from './boards/ShowAllBoards';
+import ShowBoard            from './boards/ShowBoard';
+import EditBoard            from './boards/EditBoard';
+import LoginUser            from './auth/LoginUser';
+import RegisterUser         from './auth/RegisterUser';
 
 
 function App()
@@ -25,16 +25,16 @@ function App()
 
             <main>
 
-                <Route exact path="/" component={ FeedLinks } />
                 <Route path="/new-link" component={ PostLink } />
+                <Route exact path="/" component={ ShowAllLinks } />
+                <Route path="/users/:name" component={ ShowUserLinks } />
+                <Route path="/me" component={ ShowSessionUserLinks } />
                 <Route path="/links/:id/edit" component={ EditLink } />
                 <Route path="/links/:id/share" component={ ShareLink } />
-                <Route path="/users/:name" component={ UserLinks } />
-                <Route path="/me" component={ SessionUserLinks } />
 
-                <Route exact path="/boards" component={ FeedBoards } />
                 <Route path="/new-board" component={ CreateBoard } />
-                <Route exact path="/boards/:id" component={ ShowBoardLinks } />
+                <Route exact path="/boards" component={ ShowAllBoards } />
+                <Route exact path="/boards/:id" component={ ShowBoard } />
                 <Route path="/boards/:id/edit" component={ EditBoard } />
 
                 <Route path="/login" component={ LoginUser } />
