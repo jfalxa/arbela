@@ -4,6 +4,7 @@ import Navigation       from './Navigation';
 import FeedLinks        from './links/FeedLinks';
 import PostLink         from './links/PostLink';
 import EditLink         from './links/EditLink';
+import ShareLink        from './links/ShareLink';
 import UserLinks        from './links/UserLinks';
 import SessionUserLinks from './links/SessionUserLinks';
 import CreateBoard      from './boards/CreateBoard';
@@ -26,6 +27,7 @@ function App()
                 <Route exact path="/" component={ FeedLinks } />
                 <Route path="/new-link" component={ PostLink } />
                 <Route path="/links/:id/edit" component={ EditLink } />
+                <Route path="/links/:id/share" component={ ShareLink } />
                 <Route path="/users/:name" component={ UserLinks } />
                 <Route path="/me" component={ SessionUserLinks } />
 
