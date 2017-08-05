@@ -11,8 +11,8 @@ class PostLink extends React.Component
         const { user, createLink, history } = this.props;
 
         createLink( { ...link, author: user.id } )
-            .then( res => console.log( 'Link created', res ) )
-            .then( () => history.goBack() )
+            .then( newLink => history.replace( `/links/${ newLink.id }/share` ) )
+            .then( () => console.log( 'Link created' ) )
             .catch( err => console.log( 'Failed creating link', err ) );
     }
 

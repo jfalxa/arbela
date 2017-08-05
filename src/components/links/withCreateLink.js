@@ -19,7 +19,8 @@ function mapProps( { mutate } )
             variables : link
         };
 
-        return mutate( options );
+        return mutate( options )
+            .then( res => res.data.createLink );
     }
 
     return { createLink };
