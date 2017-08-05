@@ -17,4 +17,4 @@ function BoardCard( { id, title, description } )
 }
 
 
-export default List( BoardCard );
+export default List( p => BoardCard );

@@ -16,6 +16,7 @@ function LinkCard( { id, title, url, description, author } )
             <aside>
                 <Link to={ `/users/${ author.name }` }>{ author.name }</Link>
                 <Link to={ `/links/${ id }/edit` }>(edit)</Link>
+                <Link to={ `/links/${ id }/share` }>(share)</Link>
             </aside>
 
         </li>
@@ -24,4 +25,4 @@ function LinkCard( { id, title, url, description, author } )
 }
 
 
-export default List( LinkCard );
+export default List( p => LinkCard );

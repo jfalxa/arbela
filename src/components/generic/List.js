@@ -1,24 +1,26 @@
 import React from 'react';
 
 
-function List( Item )
+function List( generator )
 {
-    return ( { items } ) =>
-    (
+    return props =>
+    {
+        const createItem = generator( props );
 
-        <ul>
+        const renderItem = item =>
+        {
+            const element = createItem( item );
+            return React.cloneElement( element, { key: item.id } );
+        }
 
-            { items.map( item => (
+        return (
 
-                <Item
-                    key={ item.id }
-                    { ...item } />
+            <ul>
+                { props.items.map( renderItem ) }
+            </ul>
 
-            ) ) }
-
-        </ul>
-
-    );
+        )
+    }
 }
 
 
