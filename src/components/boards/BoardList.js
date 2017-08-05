@@ -1,6 +1,6 @@
 import React    from 'react';
 import { Link } from 'react-router-dom';
-import List     from '../generic/List';
+import withList from '../generic/withList';
 
 
 function BoardCard( { id, title, description } )
@@ -17,4 +17,4 @@ function BoardCard( { id, title, description } )
 }
 
 
-export default List( p => BoardCard );
+export default withList( p => BoardCard );

@@ -1,6 +1,6 @@
 import React    from 'react';
 import { Link } from 'react-router-dom';
-import List     from '../generic/List';
+import withList from '../generic/withList';
 
 
 function LinkCard( { id, title, url, description, author } )
@@ -11,13 +11,13 @@ function LinkCard( { id, title, url, description, author } )
 
             <h3><Link to={ url } target="blank">{ title }</Link></h3>
 
-            <p>{ description }</p>
-
             <aside>
                 <Link to={ `/users/${ author.name }` }>{ author.name }</Link>
                 <Link to={ `/links/${ id }/edit` }>(edit)</Link>
                 <Link to={ `/links/${ id }/share` }>(share)</Link>
             </aside>
+
+            <p>{ description }</p>
 
         </li>
 
@@ -25,4 +25,4 @@ function LinkCard( { id, title, url, description, author } )
 }
 
 
-export default List( p => LinkCard );
+export default withList( p => LinkCard );
