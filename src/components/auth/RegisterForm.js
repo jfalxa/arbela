@@ -9,16 +9,16 @@ function RegisterForm( { name, email, password, onChange, onSubmit } )
 
             <h2>Register</h2>
 
-            <form onChange={ onChange } onSubmit={ onSubmit }>
+            <form onSubmit={ onSubmit }>
 
                 <label htmlFor="user-name">User name</label>
-                <input id="user-name" name="name" value={ name } />
+                <input id="user-name" name="name" value={ name } onChange={ onChange } />
 
                 <label htmlFor="user-email">Email address</label>
-                <input id="user-email" name="email" value={ email } />
+                <input id="user-email" name="email" value={ email } onChange={ onChange } />
 
                 <label htmlFor="user-password">Password</label>
-                <input id="user-password" name="password" value={ password } />
+                <input id="user-password" name="password" value={ password } onChange={ onChange } />
 
                 <button type="submit">Register</button>
 
