@@ -2,14 +2,14 @@ import React         from 'react';
 import BoardLinkList from './BoardLinkList';
 
 
-function BoardLinks( { loadingBoard, board, onRemoveLink } )
+function BoardLinks( { loadingBoard, board, links, onRemoveLink } )
 {
     if ( loadingBoard && !board )
     {
         return <p>Loading...</p>;
     }
 
-    const { title, description, links } = board;
+    const { title, description } = board;
 
     return (
 

@@ -9,19 +9,21 @@ export const boardLinks = gql`query boardLinks( $id: ID! )
         title
         description
 
-        links(
-            orderBy: createdAt_DESC,
-            filter: { hidden: false }
-        )
+        links( orderBy: createdAt_DESC )
         {
-            id
-            title
-            url
-            description
+            score
 
-            author
+            link
             {
-                name
+                id
+                title
+                url
+                description
+
+                author
+                {
+                    name
+                }
             }
         }
     }
@@ -30,10 +32,26 @@ export const boardLinks = gql`query boardLinks( $id: ID! )
 
 function mapProps( { data } )
 {
+    if ( !data.Board )
+    {
+        return { loadingBoard: data.loading };
+    }
+
+    const board =
+    {
+        id          : data.Board.id,
+        title       : data.Board.title,
+        description : data.Board.description,
+    };
+
+    // flatten the description of links by merging data coming from BoardLink and its Link
+    const links = data.Board.links.map( ( { score, link } ) => ( { score, ...link } ) );
+
     const props =
     {
+        board,
+        links,
         loadingBoard      : data.loading,
-        board             : data.Board,
         refetchBoardLinks : data.refetch
     };
 

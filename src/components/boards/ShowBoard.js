@@ -19,12 +19,13 @@ class ShowBoard extends React.Component
 
     render()
     {
-        const { board, loadingBoard } = this.props;
+        const { board, links, loadingBoard } = this.props;
 
         return (
 
             <Board
                 board={ board }
+                links={ links }
                 loadingBoard={ loadingBoard }
                 onRemoveLink={ this.handleRemoveLink } />
 
