@@ -1,8 +1,8 @@
-import React         from 'react';
-import LinkSharer    from './LinkSharer';
-import withLink      from './withLink';
-import withAllBoards from '../boards/withAllBoards';
-import withShareLink from './withShareLink';
+import React               from 'react';
+import LinkSharer          from './LinkSharer';
+import withLink            from './withLink';
+import withShareLink       from './withShareLink';
+import withAvailableBoards from '../boards/withAvailableBoards';
 
 
 class ShareLink extends React.Component
@@ -10,17 +10,6 @@ class ShareLink extends React.Component
     state =
     {
         checked : []
-    }
-
-
-    componentWillReceiveProps( { link } )
-    {
-        if ( !link )
-        {
-            return;
-        }
-
-        this.setState( { checked: link.boards.map( board => board.id ) } );
     }
 
 
@@ -64,5 +53,5 @@ class ShareLink extends React.Component
 }
 
 
-export default withLink( withAllBoards( withShareLink( ShareLink ) ) );
+export default withLink( withAvailableBoards( withShareLink( ShareLink ) ) );
 
