@@ -11,6 +11,7 @@ export const boardLinks = gql`query boardLinks( $id: ID! )
 
         links( orderBy: createdAt_DESC )
         {
+            id
             score
 
             link
@@ -32,25 +33,9 @@ export const boardLinks = gql`query boardLinks( $id: ID! )
 
 function mapProps( { data } )
 {
-    if ( !data.Board )
-    {
-        return { loadingBoard: data.loading };
-    }
-
-    const board =
-    {
-        id          : data.Board.id,
-        title       : data.Board.title,
-        description : data.Board.description,
-    };
-
-    // flatten the description of links by merging data coming from BoardLink and its Link
-    const links = data.Board.links.map( ( { score, link } ) => ( { score, ...link } ) );
-
     const props =
     {
-        board,
-        links,
+        board             : data.Board,
         loadingBoard      : data.loading,
         refetchBoardLinks : data.refetch
     };

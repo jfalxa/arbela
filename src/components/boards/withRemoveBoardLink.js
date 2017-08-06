@@ -3,14 +3,14 @@ import { gql, graphql } from 'react-apollo';
 
 export const removeBoardLink = gql`mutation removeBoardLink( $board: ID!, $link: ID! )
 {
-    removeFromBoardLinks( boardsBoardId: $board, linksLinkId: $link )
+    removeFromBoardLinks( boardBoardId: $board, linksBoardLinkId: $link )
     {
-        boardsBoard
+        boardBoard
         {
             id
         }
 
-        linksLink
+        linksBoardLink
         {
             id
         }

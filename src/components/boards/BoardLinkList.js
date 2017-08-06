@@ -3,10 +3,10 @@ import { LinkCard } from '../links/LinkList';
 import withList     from '../generic/withList';
 
 
-export default withList( props => board => (
+export default withList( props => boardLink => (
 
-    <LinkCard { ...board }>
-        <button onClick={ () => props.onRemoveLink( board.id ) }>Remove</button>
+    <LinkCard { ...boardLink.link }>
+        <button onClick={ () => props.onRemoveLink( boardLink.id ) }>Remove</button>
     </LinkCard>
 ) );
 
