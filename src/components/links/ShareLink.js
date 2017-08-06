@@ -2,7 +2,7 @@ import React               from 'react';
 import LinkSharer          from './LinkSharer';
 import withLink            from './withLink';
 import withShareLink       from './withShareLink';
-import withAvailableBoards from '../boards/withAvailableBoards';
+import withAvailableBoards from './withAvailableBoards';
 
 
 class ShareLink extends React.Component
@@ -26,7 +26,9 @@ class ShareLink extends React.Component
         const { checked }                  = this.state;
         const { shareLink, link, history } = this.props;
 
-        shareLink( { ...link, boards: checked } )
+        const linkShares = checked.map( boardID => shareLink( boardID, link.id ) );
+
+        Promise.all( linkShares )
             .then( res => console.log( 'Shared link', res ) )
             .then( () => history.goBack() )
             .catch( err => console.log( 'Failed sharing link', err ) );

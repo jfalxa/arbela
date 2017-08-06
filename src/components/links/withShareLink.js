@@ -1,9 +1,9 @@
 import { gql, graphql } from 'react-apollo';
 
 
-export const shareLink = gql`mutation shareLink( $id: ID!, $title: String!, $boards: [ID!] )
+export const shareLink = gql`mutation shareLink( $board: ID!, $link: ID! )
 {
-    updateLink( id: $id, title: $title, boardsIds: $boards )
+    createBoardLink( boardId: $board, linkId: $link )
     {
         id
     }
@@ -12,11 +12,11 @@ export const shareLink = gql`mutation shareLink( $id: ID!, $title: String!, $boa
 
 function mapProps( { mutate } )
 {
-    const shareLink = link =>
+    const shareLink = ( board, link ) =>
     {
         const options =
         {
-            variables : link
+            variables : { board, link }
         };
 
         return mutate( options );
