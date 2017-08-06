@@ -15,11 +15,6 @@ export const link = gql`query link( $id: ID! )
         {
             name
         }
-
-        boards
-        {
-            id
-        }
     }
 }`;
 
