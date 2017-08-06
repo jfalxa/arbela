@@ -16,7 +16,7 @@ function BoardCreator( { loadingUser, onSubmit } )
             <h2>Create new board</h2>
 
             <BoardFormContainer
-                onSubmit={ this.handleSubmit } />
+                onSubmit={ onSubmit } />
 
         </section>
 

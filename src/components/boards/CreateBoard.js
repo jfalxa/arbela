@@ -8,9 +8,9 @@ class CreateBoard extends React.Component
 {
     handleSubmit = ( board ) =>
     {
-        const { user, createBoard, history } = this.props;
+        const { createBoard, history } = this.props;
 
-        createBoard( { ...board, author: user.id } )
+        createBoard( board )
             .then( res => console.log( 'Board created', res ) )
             .then( () => history.goBack() )
             .catch( err => console.log( 'Failed creating board', err ) );
