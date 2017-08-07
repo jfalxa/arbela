@@ -1,6 +1,8 @@
 import React          from 'react';
 import RegisterForm   from './RegisterForm';
+import withUser       from './withUser';
 import withCreateUser from './withCreateUser';
+import withSigninUser from './withSigninUser';
 
 
 class Register extends React.Component
@@ -23,12 +25,15 @@ class Register extends React.Component
     {
         e.preventDefault();
 
-        const { createUser, history }   = this.props;
-        const { name, email, password } = this.state;
+        const { createUser, signinUser, refetchUser, history } = this.props;
+        const { name, email, password }                        = this.state;
 
         createUser( { name, email, password } )
             .then( res => console.log( 'User created', res ) )
-            .then( () => history.goBack() )
+            .then( () => signinUser( { email, password } ) )
+            .then( () => console.log( 'User logged in' ) )
+            .then( refetchUser )
+            .then( () => history.push( '/' ) )
             .catch( err => console.log( 'Failed creating user', err ) );
     }
 
@@ -51,4 +56,4 @@ class Register extends React.Component
 }
 
 
-export default withCreateUser( Register );
+export default withUser( withCreateUser( withSigninUser( Register ) ) );

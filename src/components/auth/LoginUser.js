@@ -1,5 +1,6 @@
 import React          from 'react';
 import LoginForm      from './LoginForm';
+import withUser       from './withUser';
 import withSigninUser from './withSigninUser';
 
 
@@ -22,12 +23,13 @@ class Login extends React.Component
     {
         e.preventDefault();
 
-        const { signinUser, history } = this.props;
-        const { email, password }     = this.state;
+        const { signinUser, refetchUser, history } = this.props;
+        const { email, password }                  = this.state;
 
         signinUser( { email, password } )
             .then( () => console.log( 'User signed in' ) )
-            .then( () => history.goBack() )
+            .then( refetchUser )
+            .then( () => history.push( '/' ) )
             .catch( err => console.log( 'Failed signing in user', err ) );
     }
 
@@ -49,4 +51,4 @@ class Login extends React.Component
 }
 
 
-export default withSigninUser( Login );
+export default withUser( withSigninUser( Login ) );

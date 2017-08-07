@@ -21,7 +21,7 @@ function mapProps( { mutate, ownProps } )
         };
 
         return mutate( options )
-            .then( res => setAuthToken( res.data.signinUser.token ) )
+            .then( res => setAuthToken( res.data.signinUser.token ) );
     }
 
     return { signinUser };

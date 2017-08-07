@@ -1,4 +1,5 @@
-import React from 'react';
+import React    from 'react';
+import { Link } from 'react-router-dom';
 
 
 function LoginForm( { email, password, onChange, onSubmit } )
@@ -20,6 +21,8 @@ function LoginForm( { email, password, onChange, onSubmit } )
                 <button type="submit">Login</button>
 
             </form>
+
+            <Link to="/register">Register</Link>
 
         </section>
 
