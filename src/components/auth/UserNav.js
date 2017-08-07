@@ -9,7 +9,7 @@ function LoggedInNav( { user } )
     return (
 
         <nav>
-            <Link to={ `/users/${ user.name }` }>{ user.name }</Link>
+            <Link to="/me">{ user.name }</Link>
             <LogoutUser />
         </nav>
 
