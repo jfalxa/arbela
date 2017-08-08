@@ -3,7 +3,7 @@ import { Link }      from 'react-router-dom';
 import BoardLinkList from './BoardLinkList';
 
 
-function BoardLinks( { loadingBoard, board, onVote, onJoinBoard, onRemoveLink } )
+function BoardLinks( { loadingBoard, board, onVote, onJoinBoard, onLeaveBoard, onRemoveLink } )
 {
     if ( loadingBoard && !board )
     {
@@ -21,6 +21,7 @@ function BoardLinks( { loadingBoard, board, onVote, onJoinBoard, onRemoveLink } 
             <p>{ description }</p>
 
             <button onClick={ onJoinBoard }>Join board</button>
+            <button onClick={ onLeaveBoard }>Leave board</button>
 
             <Link to={ `/boards/${ id }/new-link` }>Post link to { title }</Link>
 

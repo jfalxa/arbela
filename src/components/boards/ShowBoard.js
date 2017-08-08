@@ -2,6 +2,7 @@ import React               from 'react';
 import Board               from './Board';
 import withUser            from '../auth/withUser';
 import withJoinBoard       from './withJoinBoard';
+import withLeaveBoard      from './withLeaveBoard';
 import withBoardLinks      from './withBoardLinks';
 import withUpdateScore     from './withUpdateScore';
 import withRemoveBoardLink from './withRemoveBoardLink';
@@ -16,6 +17,16 @@ class ShowBoard extends React.Component
         joinBoard( board.id, user.id )
             .then( res => console.log( 'Joined board', res ) )
             .catch( err => console.log( 'Failed joining board', err ) );
+    }
+
+
+    handleLeaveBoard = () =>
+    {
+        const { user, board, leaveBoard } = this.props;
+
+        leaveBoard( board.id, user.id )
+            .then( res => console.log( 'Leaved board', res ) )
+            .catch( err => console.log( 'Failed leaving board', err ) );
     }
 
 
@@ -51,6 +62,7 @@ class ShowBoard extends React.Component
                 loadingBoard={ loadingBoard }
                 onVote={ this.handleVote }
                 onJoinBoard={ this.handleJoinBoard }
+                onLeaveBoard={ this.handleLeaveBoard }
                 onRemoveLink={ this.handleRemoveLink } />
 
         );
@@ -58,4 +70,4 @@ class ShowBoard extends React.Component
 }
 
 
-export default withUser( withBoardLinks( withJoinBoard( withUpdateScore( withRemoveBoardLink( ShowBoard ) ) ) ) );
+export default withUser( withBoardLinks( withJoinBoard( withLeaveBoard( withUpdateScore( withRemoveBoardLink( ShowBoard ) ) ) ) ) )
