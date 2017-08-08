@@ -11,7 +11,7 @@ class PostBoardLink extends React.Component
     {
         const { board, user, createBoardLink, history } = this.props;
 
-        createBoardLink( board.id, link, user.id )
+        createBoardLink( link, board.id, user.id )
             .then( res => console.log( 'Link created', res ) )
             .then( history.goBack )
             .catch( err => console.log( 'Failed creating link', err ) );
