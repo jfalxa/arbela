@@ -1,9 +1,9 @@
 import { gql, graphql } from 'react-apollo';
 
 
-export const createBoard = gql`mutation createBoard( $title: String!, $description: String! )
+export const createBoard = gql`mutation createBoard( $title: String!, $description: String!, $owner: ID! )
 {
-    createBoard( title: $title, description: $description )
+    createBoard( title: $title, description: $description, ownerId: $owner )
     {
         id
     }
@@ -12,11 +12,11 @@ export const createBoard = gql`mutation createBoard( $title: String!, $descripti
 
 function mapProps( { mutate } )
 {
-    const createBoard = board =>
+    const createBoard = ( board, owner ) =>
     {
         const options =
         {
-            variables : board
+            variables : { ...board, owner }
         };
 
         return mutate( options );
