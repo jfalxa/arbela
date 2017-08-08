@@ -2,7 +2,7 @@ import React         from 'react';
 import BoardLinkList from './BoardLinkList';
 
 
-function BoardLinks( { loadingBoard, board, onRemoveLink } )
+function BoardLinks( { loadingBoard, board, onVote, onRemoveLink } )
 {
     if ( loadingBoard && !board )
     {
@@ -21,6 +21,7 @@ function BoardLinks( { loadingBoard, board, onRemoveLink } )
 
             <BoardLinkList
                 items={ links }
+                onVote={ onVote }
                 onRemoveLink={ onRemoveLink } />
 
         </section>

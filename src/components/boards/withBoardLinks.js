@@ -10,7 +10,7 @@ export const boardLinks = gql`query boardLinks( $id: ID! )
         description
 
         links(
-            orderBy: createdAt_DESC,
+            orderBy: score_DESC,
             filter: { link: { hidden: false } }
         )
         {

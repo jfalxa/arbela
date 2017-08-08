@@ -1,6 +1,7 @@
 import React               from 'react';
 import Board               from './Board';
 import withBoardLinks      from './withBoardLinks';
+import withUpdateScore     from './withUpdateScore';
 import withRemoveBoardLink from './withRemoveBoardLink';
 
 
@@ -17,6 +18,16 @@ class ShowBoard extends React.Component
     }
 
 
+    handleVote = ( boardLink, vote ) =>
+    {
+        const { updateScore } = this.props;
+
+        updateScore( boardLink.id, boardLink.score + vote )
+            .then( res => console.log( 'Vote was registered', res ) )
+            .catch( err => console.log( 'Failed voting' ) );
+    }
+
+
     render()
     {
         const { board, loadingBoard } = this.props;
@@ -26,6 +37,7 @@ class ShowBoard extends React.Component
             <Board
                 board={ board }
                 loadingBoard={ loadingBoard }
+                onVote={ this.handleVote }
                 onRemoveLink={ this.handleRemoveLink } />
 
         );
@@ -33,4 +45,4 @@ class ShowBoard extends React.Component
 }
 
 
-export default withBoardLinks( withRemoveBoardLink( ShowBoard ) );
+export default withBoardLinks( withUpdateScore( withRemoveBoardLink( ShowBoard ) ) );
