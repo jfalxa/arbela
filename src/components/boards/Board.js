@@ -1,4 +1,5 @@
 import React         from 'react';
+import { Link }      from 'react-router-dom';
 import BoardLinkList from './BoardLinkList';
 
 
@@ -9,7 +10,7 @@ function BoardLinks( { loadingBoard, board, onVote, onRemoveLink } )
         return <p>Loading...</p>;
     }
 
-    const { title, description, links } = board;
+    const { id, title, description, links } = board;
 
     return (
 
@@ -18,6 +19,8 @@ function BoardLinks( { loadingBoard, board, onVote, onRemoveLink } )
             <h2>{ title }</h2>
 
             <p>{ description }</p>
+
+            <Link to={ `/boards/${ id }/new-link` }>Post link to { title }</Link>
 
             <BoardLinkList
                 items={ links }

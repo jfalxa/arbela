@@ -19,7 +19,7 @@ class LinkFormContainer extends React.Component
     }
 
 
-    componentWillReceiveProps( { title, url, description, hidden } )
+    componentWillReceiveProps( { title, url, description, hidden=false } )
     {
         this.setState( { title, url, description, hidden } );
     }
