@@ -12,7 +12,7 @@ export const createBoardLink = gql`mutation createBoardLink( $board: ID!, $link:
 
 function mapProps( { mutate } )
 {
-    const createBoardLink = ( board, link, user ) =>
+    const createBoardLink = ( link, board, user ) =>
     {
         const options =
         {
