@@ -12,11 +12,11 @@ export const createLink = gql`mutation createLink( $title: String!, $url: String
 
 function mapProps( { mutate } )
 {
-    const createLink = link =>
+    const createLink = ( link, author ) =>
     {
         const options =
         {
-            variables : link
+            variables: { ...link, author }
         };
 
         return mutate( options )
