@@ -1,5 +1,5 @@
 # project: cj5wnhjzb7vg80183gyux1vf6
-# version: 78
+# version: 85
 
 type File implements Node {
   contentType: String!
@@ -27,19 +27,19 @@ type User implements Node {
 
 type Link implements Node {
   createdAt: DateTime!
-  description: String!
+  description: String
   id: ID! @isUnique
   title: String!
   updatedAt: DateTime!
   url: String!
   author: User! @relation(name: "UserLinks")
-  hidden: Boolean!
+  hidden: Boolean
   shares: [BoardLink!]! @relation(name: "LinkShares")
 }
 
 type Board implements Node {
   title: String!
-  description: String!
+  description: String
   createdAt: DateTime!
   id: ID! @isUnique
   updatedAt: DateTime!
@@ -49,11 +49,11 @@ type Board implements Node {
 }
 
 type BoardLink implements Node {
-  link: Link @relation(name: "LinkShares")
-  score: Int
+  link: Link! @relation(name: "LinkShares")
+  score: Int!
   voters: [User!]! @relation(name: "LinkVoters")
   createdAt: DateTime!
   id: ID! @isUnique
   updatedAt: DateTime!
-  board: Board @relation(name: "BoardLinks")
+  board: Board! @relation(name: "BoardLinks")
 }
