@@ -1,5 +1,6 @@
 import React               from 'react';
 import Board               from './Board';
+import withUser            from '../auth/withUser';
 import withBoardLinks      from './withBoardLinks';
 import withUpdateScore     from './withUpdateScore';
 import withRemoveBoardLink from './withRemoveBoardLink';
@@ -20,11 +21,11 @@ class ShowBoard extends React.Component
 
     handleVote = ( boardLink, vote ) =>
     {
-        const { updateScore } = this.props;
+        const { updateScore, user } = this.props;
 
-        updateScore( boardLink.id, boardLink.score + vote )
+        updateScore( boardLink.id, boardLink.score + vote, user.id )
             .then( res => console.log( 'Vote was registered', res ) )
-            .catch( err => console.log( 'Failed voting' ) );
+            .catch( err => console.log( 'Failed voting', err ) );
     }
 
 
@@ -45,4 +46,4 @@ class ShowBoard extends React.Component
 }
 
 
-export default withBoardLinks( withUpdateScore( withRemoveBoardLink( ShowBoard ) ) );
+export default withUser( withBoardLinks( withUpdateScore( withRemoveBoardLink( ShowBoard ) ) ) );
