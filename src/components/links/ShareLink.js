@@ -1,8 +1,8 @@
-import React               from 'react';
-import LinkSharer          from './LinkSharer';
-import withLink            from './withLink';
-import withShareLink       from './withShareLink';
-import withAvailableBoards from './withAvailableBoards';
+import React          from 'react';
+import LinkSharer     from './LinkSharer';
+import withLink       from './withLink';
+import withShareLink  from './withShareLink';
+import withUserBoards from './withUserBoards';
 
 
 class ShareLink extends React.Component
@@ -55,5 +55,5 @@ class ShareLink extends React.Component
 }
 
 
-export default withLink( withAvailableBoards( withShareLink( ShareLink ) ) );
+export default withLink( withUserBoards( withShareLink( ShareLink ) ) );
 
