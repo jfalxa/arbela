@@ -1,5 +1,5 @@
 # project: cj5wnhjzb7vg80183gyux1vf6
-# version: 85
+# version: 95
 
 type File implements Node {
   contentType: String!
@@ -43,6 +43,7 @@ type Board implements Node {
   createdAt: DateTime!
   id: ID! @isUnique
   updatedAt: DateTime!
+  hidden: Boolean!
   links: [BoardLink!]! @relation(name: "BoardLinks")
   owner: User! @relation(name: "UserBoards")
   members: [User!]! @relation(name: "BoardMembers")
