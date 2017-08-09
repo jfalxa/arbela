@@ -1,44 +1,20 @@
 import { gql, graphql } from 'react-apollo';
 
 
-export const userBoards = gql`query userBoards( $link: ID! )
+export const userBoards = gql`query
 {
     user
     {
         id
 
-        boards(
-            orderBy: createdAt_DESC,
-            filter:
-            {
-                links_none:
-                {
-                    link:
-                    {
-                        id: $link
-                    }
-                }
-            }
-        )
+        boards( orderBy: createdAt_DESC )
         {
             id
             title
             description
         }
 
-        joinedBoards(
-            orderBy: createdAt_DESC,
-            filter:
-            {
-                links_none:
-                {
-                    link:
-                    {
-                        id: $link
-                    }
-                }
-            }
-        )
+        joinedBoards( orderBy: createdAt_DESC )
         {
             id
             title
@@ -51,7 +27,7 @@ export const userBoards = gql`query userBoards( $link: ID! )
 
 function mapProps( { data } )
 {
-    if ( data.loading )
+    if ( data.loading || !data.user )
     {
         return { loadingBoards: true };
     }
