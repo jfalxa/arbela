@@ -1,8 +1,9 @@
-import React          from 'react';
-import LinkSharer     from './LinkSharer';
-import withLink       from './withLink';
-import withShareLink  from './withShareLink';
-import withUserBoards from './withUserBoards';
+import React                 from 'react';
+import unionBy               from 'lodash/unionBy';
+import LinkSharer            from './LinkSharer';
+import withLink              from './withLink';
+import withShareLink         from './withShareLink';
+import withSessionUserBoards from '../boards/withSessionUserBoards';
 
 
 class ShareLink extends React.Component
@@ -10,6 +11,13 @@ class ShareLink extends React.Component
     state =
     {
         checked : []
+    }
+
+
+    getBoards()
+    {
+        const { ownedBoards, joinedBoards } = this.props;
+        return unionBy( ownedBoards, joinedBoards, 'id' );
     }
 
 
@@ -37,13 +45,13 @@ class ShareLink extends React.Component
 
     render()
     {
-        const { loadingLink, loadingBoards, link, boards=[] } = this.props;
+        const { loadingLink, loadingBoards, link } = this.props;
 
         return (
 
             <LinkSharer
                 link={ link }
-                boards={ boards }
+                boards={ this.getBoards() }
                 checked={ this.state.checked }
                 loadingLink={ loadingLink }
                 loadingBoards={ loadingBoards }
@@ -55,5 +63,5 @@ class ShareLink extends React.Component
 }
 
 
-export default withLink( withUserBoards( withShareLink( ShareLink ) ) );
+export default withLink( withSessionUserBoards( withShareLink( ShareLink ) ) );
 

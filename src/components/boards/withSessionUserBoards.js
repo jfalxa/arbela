@@ -1,5 +1,4 @@
 import { gql, graphql } from 'react-apollo';
-import unionBy          from 'lodash/unionBy';
 
 
 export const userBoards = gql`query userBoards( $link: ID! )
@@ -57,11 +56,14 @@ function mapProps( { data } )
         return { loadingBoards: true };
     }
 
-    const ownedBoards  = data.user.boards;
-    const joinedBoards = data.user.joinedBoards;
-    const boards       = unionBy( ownedBoards, joinedBoards, 'id' );
+    const props =
+    {
+        loadingBoards : data.loading,
+        ownedBoards   : data.user.boards,
+        joinedBoards  : data.user.joinedBoards
+    };
 
-    return { loadingBoards: data.loading, boards };
+    return props;
 }
 
 
