@@ -3,7 +3,7 @@ import { gql, graphql } from 'react-apollo';
 
 export const createBoardLink = gql`mutation createBoardLink( $board: ID!, $link: BoardLinklinkLink! )
 {
-    createBoardLink( boardId: $board, link: $link )
+    createBoardLink( score: 0, boardId: $board, link: $link )
     {
         id
     }
