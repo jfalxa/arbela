@@ -2,9 +2,9 @@ import React             from 'react';
 import LinkFormContainer from '../links/LinkFormContainer';
 
 
-function BoardLinkCreator( { board, loadingUser, onSubmit } )
+function BoardLinkCreator( { board, loadingBoard, loadingUser, onSubmit } )
 {
-    if ( loadingUser )
+    if ( loadingBoard || loadingUser )
     {
         return <p>Loading...</p>;
     }
