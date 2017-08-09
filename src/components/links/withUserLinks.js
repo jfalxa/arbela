@@ -6,6 +6,7 @@ export const userLinks = gql`query userLinks( $name: String! )
 {
     User( name: $name )
     {
+        id
         name
 
         links(
