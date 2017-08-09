@@ -18,6 +18,8 @@ function BoardLinks( { loadingBoard, board, onVote, onJoinBoard, onLeaveBoard, o
 
             <h2>{ title }</h2>
 
+            <Link to={ `/boards/${ id }/edit` }>(edit)</Link>
+
             <p>{ description }</p>
 
             <Link to={ `/boards/${ id }/members` }>Members</Link>
