@@ -9,7 +9,7 @@ function ShowUserBoards( { user, ownedBoards, joinedBoards, loadingBoards } )
 
         <section>
 
-            <h2>{ user.name } boards</h2>
+            <h2>{ user.name }'s boards</h2>
 
             { loadingBoards && <p>Loading...</p> }
 

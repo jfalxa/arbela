@@ -29,13 +29,6 @@ function App()
 
             <main>
 
-                <Route path="/new-link" component={ PostLink } />
-                <Route exact path="/" component={ ShowAllLinks } />
-                <Route path="/users/:name/links" component={ ShowUserLinks } />
-                <Route path="/me/links" component={ ShowSessionUserLinks } />
-                <Route path="/links/:id/edit" component={ EditLink } />
-                <Route path="/links/:id/share" component={ ShareLink } />
-
                 <Route path="/new-board" component={ CreateBoard } />
                 <Route exact path="/boards" component={ ShowAllBoards } />
                 <Route path="/users/:name" component={ ShowUserBoards } />
@@ -44,6 +37,13 @@ function App()
                 <Route path="/boards/:id/edit" component={ EditBoard } />
                 <Route path="/boards/:id/new-link" component={ PostBoardLink } />
                 <Route path="/boards/:id/members" component={ ManageBoardMembers } />
+
+                <Route path="/new-link" component={ PostLink } />
+                <Route exact path="/" component={ ShowAllLinks } />
+                <Route path="/users/:name" component={ ShowUserLinks } />
+                <Route path="/me" component={ ShowSessionUserLinks } />
+                <Route path="/links/:id/edit" component={ EditLink } />
+                <Route path="/links/:id/share" component={ ShareLink } />
 
                 <Route path="/login" component={ LoginUser } />
                 <Route path="/register" component={ RegisterUser } />
