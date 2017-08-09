@@ -9,7 +9,7 @@ export function LinkCard( { id, title, url, description, author, children } )
 
         <li>
 
-            <h3><Link to={ url } target="blank">{ title }</Link></h3>
+            <h4><Link to={ url } target="blank">{ title }</Link></h4>
 
             <aside>
                 <Link to={ `/users/${ author.name }` }>{ author.name }</Link>
