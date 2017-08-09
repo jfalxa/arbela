@@ -8,6 +8,7 @@ export const board = gql`query board( $id: ID! )
         id
         title
         description
+        hidden
     }
 }`;
 

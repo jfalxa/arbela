@@ -3,7 +3,9 @@ import { gql, graphql } from 'react-apollo';
 
 export const allBoards = gql`query allBoards
 {
-    allBoards( orderBy: createdAt_DESC )
+    allBoards(
+        orderBy: createdAt_DESC
+    )
     {
         id
         title

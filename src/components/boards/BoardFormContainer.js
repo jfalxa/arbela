@@ -12,14 +12,15 @@ class BoardFormContainer extends React.Component
         this.state =
         {
             title       : props.title || '',
-            description : props.description || ''
+            description : props.description || '',
+            hidden      : props.hidden || false
         };
     }
 
 
-    componentWillReceiveProps( { title, description } )
+    componentWillReceiveProps( { title, description, hidden=false } )
     {
-        this.setState( { title, description } );
+        this.setState( { title, description, hidden } );
     }
 
 
@@ -41,13 +42,14 @@ class BoardFormContainer extends React.Component
 
     render()
     {
-        const { title, description } = this.state;
+        const { title, description, hidden } = this.state;
 
         return (
 
             <BoardForm
                 title={ title }
                 description={ description }
+                hidden={ hidden }
                 onChange={ this.handleChange }
                 onSubmit={ this.handleSubmit } />
 
