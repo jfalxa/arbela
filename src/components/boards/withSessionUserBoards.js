@@ -1,4 +1,5 @@
 import { gql, graphql } from 'react-apollo';
+import get              from 'lodash/get';
 
 
 export const userBoards = gql`query
@@ -27,16 +28,11 @@ export const userBoards = gql`query
 
 function mapProps( { data } )
 {
-    if ( data.loading || !data.user )
-    {
-        return { loadingBoards: true };
-    }
-
     const props =
     {
         loadingBoards : data.loading,
-        ownedBoards   : data.user.boards,
-        joinedBoards  : data.user.joinedBoards
+        ownedBoards   : get( data, 'user.boards' ),
+        joinedBoards  : get( data, 'user.joinedBoards' )
     };
 
     return props;
