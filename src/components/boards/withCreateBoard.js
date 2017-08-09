@@ -19,7 +19,8 @@ function mapProps( { mutate } )
             variables : { ...board, owner }
         };
 
-        return mutate( options );
+        return mutate( options )
+            .then( res => res.data.createBoard );
     }
 
     return { createBoard };

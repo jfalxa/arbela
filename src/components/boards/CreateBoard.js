@@ -11,8 +11,8 @@ class CreateBoard extends React.Component
         const { user, createBoard, history } = this.props;
 
         createBoard( board, user.id )
-            .then( res => console.log( 'Board created', res ) )
-            .then( () => history.goBack() )
+            .then( res => history.push( `/boards/${ res.id }` ) )
+            .then( () => console.log( 'Board created' ) )
             .catch( err => console.log( 'Failed creating board', err ) );
     }
 
