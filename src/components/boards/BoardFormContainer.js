@@ -13,14 +13,15 @@ class BoardFormContainer extends React.Component
         {
             title       : props.title || '',
             description : props.description || '',
-            hidden      : props.hidden || false
+            hidden      : props.hidden || false,
+            closed      : props.closed || false
         };
     }
 
 
-    componentWillReceiveProps( { title, description, hidden=false } )
+    componentWillReceiveProps( { title, description, hidden=false, closed=false } )
     {
-        this.setState( { title, description, hidden } );
+        this.setState( { title, description, hidden, closed } );
     }
 
 
@@ -42,7 +43,7 @@ class BoardFormContainer extends React.Component
 
     render()
     {
-        const { title, description, hidden } = this.state;
+        const { title, description, hidden, closed } = this.state;
 
         return (
 
@@ -50,6 +51,7 @@ class BoardFormContainer extends React.Component
                 title={ title }
                 description={ description }
                 hidden={ hidden }
+                closed={ closed }
                 onChange={ this.handleChange }
                 onSubmit={ this.handleSubmit } />
 

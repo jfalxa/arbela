@@ -1,7 +1,7 @@
 import React from 'react';
 
 
-function BoardForm( { title, url, description, hidden, onChange, onSubmit } )
+function BoardForm( { title, url, description, hidden, closed, onChange, onSubmit } )
 {
     return (
 
@@ -15,6 +15,9 @@ function BoardForm( { title, url, description, hidden, onChange, onSubmit } )
 
             <input id="board-hidden" name="hidden" type="checkbox" checked={ hidden } onChange={ onChange } />
             <label htmlFor="board-hidden">Private</label>
+
+            <input id="board-closed" name="closed" type="checkbox" checked={ closed } onChange={ onChange } />
+            <label htmlFor="board-closed">Closed</label>
 
             <button type="submit">Save</button>
 

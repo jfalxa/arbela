@@ -19,6 +19,7 @@ function BoardEditor( { board, loadingUser, loadingBoard, onSubmit, onDelete } )
                 title={ board.title }
                 description={ board.description }
                 hidden={ board.hidden }
+                closed={ board.closed }
                 onSubmit={ onSubmit } />
 
             <button onClick={ onDelete }>Delete</button>

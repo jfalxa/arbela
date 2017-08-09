@@ -1,14 +1,15 @@
 import { gql, graphql } from 'react-apollo';
 
 
-export const updateBoard = gql`mutation updateBoard( $id: ID!, $title: String!, $description: String!, $hidden: Boolean! )
+export const updateBoard = gql`mutation updateBoard( $id: ID!, $title: String!, $description: String!, $hidden: Boolean!, $closed: Boolean! )
 {
-    updateBoard( id: $id, title: $title, description: $description, hidden: $hidden )
+    updateBoard( id: $id, title: $title, description: $description, hidden: $hidden, closed: $closed )
     {
         id
         title
         description
         hidden
+        closed
     }
 }`;
 
