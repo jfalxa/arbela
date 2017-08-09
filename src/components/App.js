@@ -12,6 +12,7 @@ import ShowAllBoards        from './boards/ShowAllBoards';
 import ShowBoard            from './boards/ShowBoard';
 import EditBoard            from './boards/EditBoard';
 import PostBoardLink        from './boards/PostBoardLink';
+import ManageBoardMembers   from './boards/ManageBoardMembers';
 import LoginUser            from './auth/LoginUser';
 import RegisterUser         from './auth/RegisterUser';
 
@@ -38,6 +39,7 @@ function App()
                 <Route exact path="/boards/:id" component={ ShowBoard } />
                 <Route path="/boards/:id/edit" component={ EditBoard } />
                 <Route path="/boards/:id/new-link" component={ PostBoardLink } />
+                <Route path="/boards/:id/members" component={ ManageBoardMembers } />
 
                 <Route path="/login" component={ LoginUser } />
                 <Route path="/register" component={ RegisterUser } />

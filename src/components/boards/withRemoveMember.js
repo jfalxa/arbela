@@ -1,7 +1,7 @@
 import { gql, graphql } from 'react-apollo';
 
 
-export const leaveBoard = gql`mutation leaveBoard( $board: ID!, $user: ID! )
+export const removeMember = gql`mutation removeMember( $board: ID!, $user: ID! )
 {
     removeFromBoardMembers( joinedBoardsBoardId: $board, membersUserId: $user )
     {
@@ -20,7 +20,7 @@ export const leaveBoard = gql`mutation leaveBoard( $board: ID!, $user: ID! )
 
 function mapProps( { mutate } )
 {
-    const leaveBoard = ( board, user ) =>
+    const removeMember = ( board, user ) =>
     {
         const options =
         {
@@ -30,8 +30,8 @@ function mapProps( { mutate } )
         return mutate( options );
     }
 
-    return { leaveBoard };
+    return { removeMember };
 }
 
 
-export default graphql( leaveBoard, { props: mapProps } );
+export default graphql( removeMember, { props: mapProps } );

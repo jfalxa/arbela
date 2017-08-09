@@ -1,7 +1,7 @@
 import { gql, graphql } from 'react-apollo';
 
 
-export const joinBoard = gql`mutation joinBoard( $board: ID!, $user: ID! )
+export const addMember = gql`mutation addMember( $board: ID!, $user: ID! )
 {
     addToBoardMembers( joinedBoardsBoardId: $board, membersUserId: $user )
     {
@@ -20,7 +20,7 @@ export const joinBoard = gql`mutation joinBoard( $board: ID!, $user: ID! )
 
 function mapProps( { mutate } )
 {
-    const joinBoard = ( board, user ) =>
+    const addMember = ( board, user ) =>
     {
         const options =
         {
@@ -30,8 +30,8 @@ function mapProps( { mutate } )
         return mutate( options );
     }
 
-    return { joinBoard };
+    return { addMember };
 }
 
 
-export default graphql( joinBoard, { props: mapProps } );
+export default graphql( addMember, { props: mapProps } );

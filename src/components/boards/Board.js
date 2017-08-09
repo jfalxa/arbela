@@ -20,6 +20,7 @@ function BoardLinks( { loadingBoard, board, onVote, onJoinBoard, onLeaveBoard, o
 
             <p>{ description }</p>
 
+            <Link to={ `/boards/${ id }/members` }>Members</Link>
             <button onClick={ onJoinBoard }>Join board</button>
             <button onClick={ onLeaveBoard }>Leave board</button>
 
