@@ -8,7 +8,7 @@ export default withList( props => boardLink => (
 
     <LinkCard { ...boardLink.link }>
 
-        <button onClick={ () => props.onRemoveLink( boardLink.id ) }>
+        <button onClick={ () => props.onDeleteLink( boardLink.id ) }>
             Remove
         </button>
 

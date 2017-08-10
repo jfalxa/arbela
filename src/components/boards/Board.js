@@ -3,7 +3,7 @@ import { Link }      from 'react-router-dom';
 import BoardLinkList from './BoardLinkList';
 
 
-function BoardLinks( { loadingBoard, board, onVote, onJoinBoard, onLeaveBoard, onRemoveLink } )
+function BoardLinks( { loadingBoard, board, onVote, onJoinBoard, onLeaveBoard, onDeleteLink } )
 {
     if ( loadingBoard && !board )
     {
@@ -31,7 +31,7 @@ function BoardLinks( { loadingBoard, board, onVote, onJoinBoard, onLeaveBoard, o
             <BoardLinkList
                 items={ links }
                 onVote={ onVote }
-                onRemoveLink={ onRemoveLink } />
+                onDeleteLink={ onDeleteLink } />
 
         </section>
 
