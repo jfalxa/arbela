@@ -1,4 +1,5 @@
 import React         from 'react';
+import pick          from 'lodash/pick';
 import BoardForm     from './BoardForm';
 import getInputValue from '../../utils/getInputValue';
 
@@ -19,9 +20,10 @@ class BoardFormContainer extends React.Component
     }
 
 
-    componentWillReceiveProps( { title, description, hidden=false, closed=false } )
+    componentWillReceiveProps( nextProps )
     {
-        this.setState( { title, description, hidden, closed } );
+        const formProps = pick( nextProps, ['title', 'description', 'hidden', 'closed'] );
+        this.setState( formProps );
     }
 
 
