@@ -11,7 +11,13 @@ export const userLinks = gql`query userLinks( $name: String! )
 
         links(
             orderBy: createdAt_DESC,
-            filter: { hidden: false }
+            filter:
+            {
+                board:
+                {
+                    hidden: false
+                }
+            }
         )
         {
             id

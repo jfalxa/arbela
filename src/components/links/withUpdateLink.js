@@ -1,15 +1,14 @@
 import { gql, graphql } from 'react-apollo';
 
 
-export const updateLink = gql`mutation updateLink( $id: ID!, $title: String!, $url: String!, $description: String!, $hidden: Boolean! )
+export const updateLink = gql`mutation updateLink( $id: ID!, $title: String!, $url: String!, $description: String! )
 {
-    updateLink( id: $id, title: $title, url: $url, description: $description, hidden: $hidden )
+    updateLink( id: $id, title: $title, url: $url, description: $description )
     {
         id
         title
         url
         description
-        hidden
     }
 }`;
 

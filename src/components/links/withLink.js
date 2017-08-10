@@ -9,11 +9,16 @@ export const link = gql`query link( $id: ID! )
         title
         url
         description
-        hidden
 
         author
         {
             name
+        }
+
+        board
+        {
+            id
+            title
         }
     }
 }`;
