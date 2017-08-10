@@ -1,61 +1,50 @@
 # project: cj5wnhjzb7vg80183gyux1vf6
-# version: 98
+# version: 103
 
 type File implements Node {
-  contentType: String!
-  createdAt: DateTime!
   id: ID! @isUnique
+  createdAt: DateTime!
+  updatedAt: DateTime!
+  contentType: String!
   name: String!
   secret: String! @isUnique
   size: Int!
-  updatedAt: DateTime!
   url: String! @isUnique
 }
 
 type User implements Node {
+  id: ID! @isUnique
   createdAt: DateTime!
+  updatedAt: DateTime!
   name: String! @isUnique
   email: String @isUnique
-  id: ID! @isUnique
   password: String
-  updatedAt: DateTime!
   links: [Link!]! @relation(name: "UserLinks")
-  votes: [BoardLink!]! @relation(name: "LinkVoters")
   boards: [Board!]! @relation(name: "UserBoards")
   joinedBoards: [Board!]! @relation(name: "BoardMembers")
 }
 
 type Link implements Node {
-  createdAt: DateTime!
-  description: String
   id: ID! @isUnique
-  title: String!
+  createdAt: DateTime!
   updatedAt: DateTime!
+  title: String!
+  description: String
   url: String!
+  score: Int!
   author: User! @relation(name: "UserLinks")
-  hidden: Boolean
-  shares: [BoardLink!]! @relation(name: "LinkShares")
+  board: Board! @relation(name: "BoardLinks")
 }
 
 type Board implements Node {
+  id: ID! @isUnique
+  createdAt: DateTime!
+  updatedAt: DateTime!
   title: String!
   description: String
-  createdAt: DateTime!
-  id: ID! @isUnique
-  updatedAt: DateTime!
   hidden: Boolean!
   closed: Boolean!
-  links: [BoardLink!]! @relation(name: "BoardLinks")
   owner: User! @relation(name: "UserBoards")
   members: [User!]! @relation(name: "BoardMembers")
-}
-
-type BoardLink implements Node {
-  link: Link! @relation(name: "LinkShares")
-  score: Int!
-  voters: [User!]! @relation(name: "LinkVoters")
-  createdAt: DateTime!
-  id: ID! @isUnique
-  updatedAt: DateTime!
-  board: Board! @relation(name: "BoardLinks")
+  links: [Link!]! @relation(name: "BoardLinks")
 }
