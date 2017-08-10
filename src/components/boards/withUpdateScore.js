@@ -3,15 +3,15 @@ import { gql, graphql } from 'react-apollo';
 
 export const updateScore = gql`mutation updateScore( $link: ID!, $score: Int!, $voter: ID! )
 {
-    updateBoardLink( id: $link, score: $score )
+    updateLink( id: $link, score: $score )
     {
         id
         score
     }
 
-    addToLinkVoters( votesBoardLinkId: $link, votersUserId: $voter )
+    addToLinkVoters( votesLinkId: $link, votersUserId: $voter )
     {
-        votesBoardLink
+        votesLink
         {
             id
         }
