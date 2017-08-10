@@ -1,10 +1,11 @@
 import React             from 'react';
 import LinkFormContainer from './LinkFormContainer';
+import BoardChoiceGroup  from './BoardChoiceGroup';
 
 
-function LinkCreator( { loadingUser, onSubmit } )
+function LinkCreator( { checked, boards, loadingBoards, loadingUser, onCheck, onSubmit } )
 {
-    if ( loadingUser )
+    if ( loadingUser || loadingBoards )
     {
         return <p>Loading...</p>;
     }
@@ -17,6 +18,11 @@ function LinkCreator( { loadingUser, onSubmit } )
 
             <LinkFormContainer
                 onSubmit={ onSubmit } />
+
+            <BoardChoiceGroup
+                items={ boards }
+                checked={ checked }
+                onCheck={ onCheck } />
 
         </section>
 

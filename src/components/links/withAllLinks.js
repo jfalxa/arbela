@@ -5,17 +5,30 @@ export const allLinks = gql`query allLinks
 {
     allLinks(
         orderBy: createdAt_DESC,
-        filter: { hidden: false }
+        filter:
+        {
+            board:
+            {
+                hidden: false
+            }
+        }
     )
     {
         id
         title
         url
         description
+        score
 
         author
         {
             name
+        }
+
+        board
+        {
+            id
+            title
         }
     }
 }`;

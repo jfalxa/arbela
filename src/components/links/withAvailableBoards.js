@@ -2,44 +2,20 @@ import { gql, graphql } from 'react-apollo';
 import unionBy          from 'lodash/unionBy';
 
 
-export const availableBoards = gql`query availableBoards( $link: ID! )
+export const availableBoards = gql`query availableBoards
 {
     user
     {
         id
 
-        boards(
-            orderBy: createdAt_DESC,
-            filter:
-            {
-                links_none:
-                {
-                    link:
-                    {
-                        id: $link
-                    }
-                }
-            }
-        )
+        boards( orderBy: createdAt_DESC )
         {
             id
             title
             description
         }
 
-        joinedBoards(
-            orderBy: createdAt_DESC,
-            filter:
-            {
-                links_none:
-                {
-                    link:
-                    {
-                        id: $link
-                    }
-                }
-            }
-        )
+        joinedBoards( orderBy: createdAt_DESC )
         {
             id
             title
@@ -52,7 +28,7 @@ export const availableBoards = gql`query availableBoards( $link: ID! )
 
 function mapProps( { data } )
 {
-    if ( data.loading || !data.user )
+    if ( data.loading )
     {
         return { loadingBoards: true };
     }
@@ -67,9 +43,9 @@ function mapProps( { data } )
 }
 
 
-function mapOptions( { match } )
+function mapOptions()
 {
-    return { variables: { link: match.params.id }, fetchPolicy: 'cache-and-network' };
+    return { fetchPolicy: 'cache-and-network' };
 }
 
 

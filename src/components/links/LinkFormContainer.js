@@ -1,4 +1,5 @@
 import React         from 'react';
+import pick          from 'lodash/pick';
 import LinkForm      from './LinkForm';
 import getInputValue from '../../utils/getInputValue';
 
@@ -13,15 +14,15 @@ class LinkFormContainer extends React.Component
         {
             title       : props.title || '',
             url         : props.url || '',
-            description : props.description || '',
-            hidden      : props.hidden || false
+            description : props.description || ''
         };
     }
 
 
-    componentWillReceiveProps( { title, url, description, hidden=false } )
+    componentWillReceiveProps( nextProps )
     {
-        this.setState( { title, url, description, hidden } );
+        const formProps = pick( nextProps, ['title', 'url', 'description'] );
+        this.setState( formProps );
     }
 
 
@@ -43,7 +44,7 @@ class LinkFormContainer extends React.Component
 
     render()
     {
-        const { title, url, description, hidden } = this.state;
+        const { title, url, description } = this.state;
 
         return (
 
@@ -51,7 +52,6 @@ class LinkFormContainer extends React.Component
                 title={ title }
                 url={ url }
                 description={ description }
-                hidden={ hidden }
                 onChange={ this.handleChange }
                 onSubmit={ this.handleSubmit } />
 

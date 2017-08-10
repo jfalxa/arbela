@@ -1,7 +1,7 @@
 import React from 'react';
 
 
-function LinkForm( { title, url, description, hidden, onChange, onSubmit } )
+function LinkForm( { title, url, description, onChange, onSubmit } )
 {
     return (
 
@@ -15,9 +15,6 @@ function LinkForm( { title, url, description, hidden, onChange, onSubmit } )
 
             <label htmlFor="link-description">Description</label>
             <input id="link-description" name="description" value={ description } onChange={ onChange } />
-
-            <input id="link-hidden" name="hidden" type="checkbox" checked={ hidden } onChange={ onChange } />
-            <label htmlFor="link-hidden">Private</label>
 
             <button type="submit">Save</button>
 
