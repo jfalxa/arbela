@@ -19,6 +19,12 @@ export const sessionUserLinks = gql`query sessionUserLinks
             {
                 name
             }
+
+            board
+            {
+                id
+                title
+            }
         }
     }
 }`;

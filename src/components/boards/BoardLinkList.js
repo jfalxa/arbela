@@ -6,7 +6,7 @@ import withList      from '../generic/withList';
 
 export default withList( props => boardLink => (
 
-    <LinkCard { ...boardLink.link }>
+    <LinkCard { ...boardLink }>
 
         <button onClick={ () => props.onDeleteLink( boardLink.id ) }>
             Remove

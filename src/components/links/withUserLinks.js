@@ -29,6 +29,12 @@ export const userLinks = gql`query userLinks( $name: String! )
             {
                 name
             }
+
+            board
+            {
+                id
+                title
+            }
         }
     }
 }`;

@@ -1,17 +1,17 @@
-import React               from 'react';
-import BoardLinkCreator    from './BoardLinkCreator';
-import withUser            from '../auth/withUser';
-import withBoard           from './withBoard';
-import withCreateBoardLink from './withCreateBoardLink';
+import React            from 'react';
+import BoardLinkCreator from './BoardLinkCreator';
+import withUser         from '../auth/withUser';
+import withBoard        from './withBoard';
+import withCreateLink   from '../links/withCreateLink';
 
 
 class PostBoardLink extends React.Component
 {
     handleSubmit = ( link ) =>
     {
-        const { board, user, createBoardLink, history } = this.props;
+        const { board, user, createLink, history } = this.props;
 
-        createBoardLink( link, board.id, user.id )
+        createLink( link, user.id, board.id)
             .then( res => console.log( 'Link created', res ) )
             .then( history.goBack )
             .catch( err => console.log( 'Failed creating link', err ) );
@@ -35,4 +35,4 @@ class PostBoardLink extends React.Component
 }
 
 
-export default withUser( withBoard( withCreateBoardLink( PostBoardLink ) ) );
+export default withUser( withBoard( withCreateLink( PostBoardLink ) ) );
