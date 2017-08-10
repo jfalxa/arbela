@@ -14,7 +14,6 @@ export function LinkCard( { id, title, url, description, author, children } )
             <aside>
                 <Link to={ `/users/${ author.name }` }>{ author.name }</Link>
                 <Link to={ `/links/${ id }/edit` }>(edit)</Link>
-                <Link to={ `/links/${ id }/share` }>(share)</Link>
             </aside>
 
             <p>{ description }</p>
