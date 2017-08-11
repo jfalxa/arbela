@@ -1,0 +1,9 @@
+j'ai besoin de:
+- un truc pour share un lien sur d'autres boards
+- pouvoir balancer un lien sur plusieurs boards dès sa création
+- minimiser les interfaces différentes pour aboutir au même résultat :)
+
+DONC:
+- TOUS les forms qui permettent de créer un lien contiennent une liste de boards disponibles
+- éditer un lien permet juste de modifier title/url/description
+- partager un lien

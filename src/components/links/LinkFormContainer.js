@@ -10,19 +10,19 @@ class LinkFormContainer extends React.Component
     {
         super();
 
-        this.state =
-        {
-            title       : props.title || '',
-            url         : props.url || '',
-            description : props.description || ''
-        };
+        this.state = this.getLink( props );
+    }
+
+
+    getLink( props )
+    {
+        return pick( props.link, ['title', 'url', 'description'] );
     }
 
 
     componentWillReceiveProps( nextProps )
     {
-        const formProps = pick( nextProps, ['title', 'url', 'description'] );
-        this.setState( formProps );
+        this.setState( this.getLink( nextProps ) );
     }
 
 

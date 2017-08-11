@@ -9,8 +9,6 @@ function LinkEditor( { link, loadingLink, loadingUser, onSubmit, onDelete } )
         return <p>Loading...</p>;
     }
 
-    const { title, url, description, hidden } = link;
-
     return (
 
         <section>
@@ -18,10 +16,7 @@ function LinkEditor( { link, loadingLink, loadingUser, onSubmit, onDelete } )
             <h2>Edit link</h2>
 
             <LinkFormContainer
-                title={ title }
-                url={ url }
-                description={ description }
-                hidden={ hidden }
+                link={ link }
                 onSubmit={ onSubmit } />
 
             <button onClick={ onDelete }>Delete</button>
