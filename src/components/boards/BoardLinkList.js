@@ -4,17 +4,17 @@ import BoardLinkVote from './BoardLinkVote';
 import withList      from '../generic/withList';
 
 
-export default withList( props => boardLink => (
+export default withList( props => link => (
 
-    <LinkCard { ...boardLink }>
+    <LinkCard { ...link }>
 
-        <button onClick={ () => props.onDeleteLink( boardLink.id ) }>
+        <button onClick={ () => props.onDeleteLink( link.id ) }>
             Remove
         </button>
 
         <BoardLinkVote
-            score={ boardLink.score }
-            onVote={ vote => props.onVote( boardLink, vote ) } />
+            score={ link.score }
+            onVote={ vote => props.onVote( link, vote ) } />
 
     </LinkCard>
 
