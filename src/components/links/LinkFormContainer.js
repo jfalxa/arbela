@@ -1,11 +1,19 @@
 import React         from 'react';
-import pick          from 'lodash/pick';
+import defaults      from 'lodash/defaults';
 import LinkForm      from './LinkForm';
 import getInputValue from '../../utils/getInputValue';
 
 
 class LinkFormContainer extends React.Component
 {
+    state =
+    {
+        title       : '',
+        url         : '',
+        description : ''
+    }
+
+
     constructor( props )
     {
         super();
@@ -16,7 +24,7 @@ class LinkFormContainer extends React.Component
 
     getLink( props )
     {
-        return pick( props.link, ['title', 'url', 'description'] );
+        return defaults( props.link, this.state );
     }
 
 

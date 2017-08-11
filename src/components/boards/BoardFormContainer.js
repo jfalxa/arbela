@@ -1,11 +1,20 @@
 import React         from 'react';
-import pick          from 'lodash/pick';
+import defaults      from 'lodash/defaults';
 import BoardForm     from './BoardForm';
 import getInputValue from '../../utils/getInputValue';
 
 
 class BoardFormContainer extends React.Component
 {
+    state =
+    {
+        title       : '',
+        description : '',
+        hidden      : false,
+        closed      : false
+    }
+
+
     constructor( props )
     {
         super();
@@ -16,7 +25,7 @@ class BoardFormContainer extends React.Component
 
     getBoard( props )
     {
-        return pick( props.board, ['title', 'description', 'hidden', 'closed'] );
+        return defaults( props.board, this.state );
     }
 
 
