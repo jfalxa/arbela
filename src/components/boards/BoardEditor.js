@@ -16,10 +16,7 @@ function BoardEditor( { board, loadingUser, loadingBoard, onSubmit, onDelete } )
             <h2>Edit board</h2>
 
             <BoardFormContainer
-                title={ board.title }
-                description={ board.description }
-                hidden={ board.hidden }
-                closed={ board.closed }
+                board={ board }
                 onSubmit={ onSubmit } />
 
             <button onClick={ onDelete }>Delete</button>

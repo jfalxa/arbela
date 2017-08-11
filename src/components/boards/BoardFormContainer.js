@@ -10,20 +10,19 @@ class BoardFormContainer extends React.Component
     {
         super();
 
-        this.state =
-        {
-            title       : props.title || '',
-            description : props.description || '',
-            hidden      : props.hidden || false,
-            closed      : props.closed || false
-        };
+        this.state = this.getBoard( props );
+    }
+
+
+    getBoard( props )
+    {
+        return pick( props.board, ['title', 'description', 'hidden', 'closed'] );
     }
 
 
     componentWillReceiveProps( nextProps )
     {
-        const formProps = pick( nextProps, ['title', 'description', 'hidden', 'closed'] );
-        this.setState( formProps );
+        this.setState( this.getBoard( nextProps ) );
     }
 
 
