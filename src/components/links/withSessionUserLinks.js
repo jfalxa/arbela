@@ -17,6 +17,7 @@ export const sessionUserLinks = gql`query sessionUserLinks
 
             author
             {
+                id
                 name
             }
 
@@ -24,6 +25,7 @@ export const sessionUserLinks = gql`query sessionUserLinks
             {
                 id
                 title
+                slug
             }
         }
     }

@@ -12,6 +12,7 @@ export const link = gql`query link( $id: ID! )
 
         author
         {
+            id
             name
         }
 
@@ -19,6 +20,7 @@ export const link = gql`query link( $id: ID! )
         {
             id
             title
+            slug
         }
     }
 }`;

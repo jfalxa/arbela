@@ -10,6 +10,7 @@ export const allBoards = gql`query allBoards
     {
         id
         title
+        slug
         description
     }
 }`;

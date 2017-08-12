@@ -3,12 +3,13 @@ import get              from 'lodash/get';
 import pick             from 'lodash/pick';
 
 
-export const boardMembers = gql`query boardMembers( $id: ID! )
+export const boardMembers = gql`query boardMembers( $slug: String! )
 {
-    Board( id: $id )
+    Board( slug: $slug )
     {
         id
         title
+        slug
 
         owner
         {
@@ -42,7 +43,7 @@ function mapProps( { data } )
 
 function mapOptions( { match } )
 {
-    return { variables: { id: match.params.id }, fetchPolicy: 'cache-and-network' };
+    return { variables: { slug: match.params.slug }, fetchPolicy: 'cache-and-network' };
 }
 
 

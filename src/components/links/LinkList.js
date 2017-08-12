@@ -13,7 +13,7 @@ export function LinkCard( { id, title, url, description, author, board, children
 
             <aside>
                 <Link to={ `/users/${ author.name }` }>{ author.name }</Link>
-                <Link to={ `/boards/${ board.id }` }>{ board.title }</Link>
+                <Link to={ `/boards/${ board.slug }` }>{ board.title }</Link>
                 <Link to={ `/links/${ id }/edit` }>(edit)</Link>
                 <Link to={ `/links/${ id }/share` }>(share)</Link>
             </aside>

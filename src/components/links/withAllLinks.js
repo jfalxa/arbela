@@ -22,6 +22,7 @@ export const allLinks = gql`query allLinks
 
         author
         {
+            id
             name
         }
 
@@ -29,6 +30,7 @@ export const allLinks = gql`query allLinks
         {
             id
             title
+            slug
         }
     }
 }`;

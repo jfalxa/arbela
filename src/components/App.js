@@ -33,10 +33,10 @@ function App()
                 <Route exact path="/boards" component={ ShowAllBoards } />
                 <Route path="/users/:name" component={ ShowUserBoards } />
                 <Route path="/me" component={ ShowSessionUserBoards } />
-                <Route exact path="/boards/:id" component={ ShowBoard } />
-                <Route path="/boards/:id/edit" component={ EditBoard } />
-                <Route path="/boards/:id/new-link" component={ PostBoardLink } />
-                <Route path="/boards/:id/members" component={ ManageBoardMembers } />
+                <Route exact path="/boards/:slug" component={ ShowBoard } />
+                <Route path="/boards/:slug/edit" component={ EditBoard } />
+                <Route path="/boards/:slug/new-link" component={ PostBoardLink } />
+                <Route path="/boards/:slug/members" component={ ManageBoardMembers } />
 
                 <Route path="/new-link" component={ PostLink } />
                 <Route exact path="/" component={ ShowAllLinks } />

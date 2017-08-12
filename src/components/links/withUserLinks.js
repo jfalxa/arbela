@@ -27,6 +27,7 @@ export const userLinks = gql`query userLinks( $name: String! )
 
             author
             {
+                id
                 name
             }
 
@@ -34,6 +35,7 @@ export const userLinks = gql`query userLinks( $name: String! )
             {
                 id
                 title
+                slug
             }
         }
     }

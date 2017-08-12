@@ -1,12 +1,13 @@
 import { gql, graphql } from 'react-apollo';
 
 
-export const boardLinks = gql`query boardLinks( $id: ID! )
+export const boardLinks = gql`query boardLinks( $slug: String! )
 {
-    Board( id: $id )
+    Board( slug: $slug )
     {
         id
         title
+        slug
         description
 
         links( orderBy: score_DESC )
@@ -47,7 +48,7 @@ function mapProps( { data } )
 
 function mapOptions( { match } )
 {
-    return { variables: { id: match.params.id }, fetchPolicy: 'cache-and-network' };
+    return { variables: { slug: match.params.slug }, fetchPolicy: 'cache-and-network' };
 }
 
 

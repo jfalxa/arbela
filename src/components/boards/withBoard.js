@@ -1,12 +1,13 @@
 import { gql, graphql } from 'react-apollo';
 
 
-export const board = gql`query board( $id: ID! )
+export const board = gql`query board( $slug: String! )
 {
-    Board( id: $id )
+    Board( slug: $slug )
     {
         id
         title
+        slug
         description
         hidden
         closed
@@ -20,9 +21,9 @@ function mapProps( { data } )
 }
 
 
-function mapOptions( { id, match } )
+function mapOptions( { match } )
 {
-    return { variables: { id: id || match.params.id }, fetchPolicy: 'cache-and-network' };
+    return { variables: { slug: match.params.slug }, fetchPolicy: 'cache-and-network' };
 }
 
 
