@@ -10,9 +10,9 @@ class ShareLink extends React.Component
 {
     handleSubmit = ( link, boards ) =>
     {
-        const { user, createLink, history } = this.props;
+        const { user, link:sharedLink, createLink, history } = this.props;
 
-        const boardLinks = boards.map( boardID => createLink( link, user.id, boardID ) );
+        const boardLinks = boards.map( boardID => createLink( link, user.id, boardID, sharedLink.id ) );
 
         Promise.all( boardLinks )
             .then( res => console.log( 'Links created', res ) )

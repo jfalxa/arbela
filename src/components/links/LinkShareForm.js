@@ -14,7 +14,7 @@ function LinkShareForm( { link, boards, checked, onCheck, onSubmit } )
                 checked={ checked }
                 onCheck={ onCheck } />
 
-            <button type="submit">Post</button>
+            <button type="submit">Share</button>
 
         </LinkFormContainer>
 
