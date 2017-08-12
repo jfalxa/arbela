@@ -1,5 +1,6 @@
 import React                 from 'react';
 import { Route }             from 'react-router-dom';
+import Box                   from './generic/Box';
 import Navigation            from './Navigation';
 import CreateBoard           from './boards/CreateBoard';
 import ShowAllBoards         from './boards/ShowAllBoards';
@@ -16,6 +17,9 @@ import LoginUser             from './auth/LoginUser';
 import RegisterUser          from './auth/RegisterUser';
 
 
+const Main = Box.withComponent( 'main' );
+
+
 function App()
 {
     return (
@@ -24,7 +28,7 @@ function App()
 
             <Navigation />
 
-            <main>
+            <Main justifyCenter>
 
                 <Route exact path="/" component={ ShowSessionUserBoards } />
 
@@ -43,7 +47,7 @@ function App()
                 <Route path="/login" component={ LoginUser } />
                 <Route path="/register" component={ RegisterUser } />
 
-            </main>
+            </Main>
 
         </div>
 
