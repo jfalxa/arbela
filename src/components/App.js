@@ -1,12 +1,6 @@
 import React                 from 'react';
 import { Route }             from 'react-router-dom';
 import Navigation            from './Navigation';
-import PostLink              from './links/PostLink';
-import ShowAllLinks          from './links/ShowAllLinks';
-import ShowUserLinks         from './links/ShowUserLinks';
-import ShowSessionUserLinks  from './links/ShowSessionUserLinks';
-import EditLink              from './links/EditLink';
-import ShareLink             from './links/ShareLink';
 import CreateBoard           from './boards/CreateBoard';
 import ShowAllBoards         from './boards/ShowAllBoards';
 import ShowSessionUserBoards from './boards/ShowSessionUserBoards';
@@ -14,6 +8,9 @@ import ShowUserBoards        from './boards/ShowUserBoards';
 import ShowBoard             from './boards/ShowBoard';
 import EditBoard             from './boards/EditBoard';
 import PostBoardLink         from './boards/PostBoardLink';
+import PostLink              from './links/PostLink';
+import EditLink              from './links/EditLink';
+import ShareLink             from './links/ShareLink';
 import ManageBoardMembers    from './boards/ManageBoardMembers';
 import LoginUser             from './auth/LoginUser';
 import RegisterUser          from './auth/RegisterUser';
@@ -29,19 +26,17 @@ function App()
 
             <main>
 
+                <Route exact path="/" component={ ShowSessionUserBoards } />
+
                 <Route path="/new-board" component={ CreateBoard } />
                 <Route exact path="/boards" component={ ShowAllBoards } />
                 <Route path="/users/:name" component={ ShowUserBoards } />
-                <Route path="/me" component={ ShowSessionUserBoards } />
                 <Route exact path="/boards/:slug" component={ ShowBoard } />
                 <Route path="/boards/:slug/edit" component={ EditBoard } />
                 <Route path="/boards/:slug/new-link" component={ PostBoardLink } />
                 <Route path="/boards/:slug/members" component={ ManageBoardMembers } />
 
                 <Route path="/new-link" component={ PostLink } />
-                <Route exact path="/" component={ ShowAllLinks } />
-                <Route path="/users/:name" component={ ShowUserLinks } />
-                <Route path="/me" component={ ShowSessionUserLinks } />
                 <Route path="/links/:id/edit" component={ EditLink } />
                 <Route path="/links/:id/share" component={ ShareLink } />
 
