@@ -1,5 +1,5 @@
 # project: cj5wnhjzb7vg80183gyux1vf6
-# version: 103
+# version: 138
 
 type File implements Node {
   id: ID! @isUnique
@@ -22,6 +22,7 @@ type User implements Node {
   links: [Link!]! @relation(name: "UserLinks")
   boards: [Board!]! @relation(name: "UserBoards")
   joinedBoards: [Board!]! @relation(name: "BoardMembers")
+  votes: [Link!]! @relation(name: "LinkVoters")
 }
 
 type Link implements Node {
@@ -34,6 +35,9 @@ type Link implements Node {
   score: Int!
   author: User! @relation(name: "UserLinks")
   board: Board! @relation(name: "BoardLinks")
+  trail: Link @relation(name: "LinkTrail")
+  voters: [User!]! @relation(name: "LinkVoters")
+  shares: [Link!]! @relation(name: "LinkTrail")
 }
 
 type Board implements Node {
@@ -41,6 +45,7 @@ type Board implements Node {
   createdAt: DateTime!
   updatedAt: DateTime!
   title: String!
+  slug: String!
   description: String
   hidden: Boolean!
   closed: Boolean!
