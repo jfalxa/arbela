@@ -3,12 +3,16 @@ import Box from './Box';
 
 const props =
 {
-    column      : true,
-    alignCenter : true
+    column : true,
+    align  : 'center'
 };
 
 
-const Page = Box.withComponent( 'section' ).extend.attrs( props )``;
+const Page = Box.withComponent( 'section' ).extend.attrs( props )`
+
+    width: 500px;
+
+`;
 
 
 export default Page;

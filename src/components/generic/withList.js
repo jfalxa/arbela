@@ -3,13 +3,13 @@ import React from 'react';
 
 function withList( generator )
 {
-    return function List( props )
+    return function List( { className, ...props } )
     {
         const Item = generator( props );
 
         return (
 
-            <ul>
+            <ul className={ className }>
 
                 { props.items.map( item => (
 

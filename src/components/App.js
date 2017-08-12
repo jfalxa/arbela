@@ -28,7 +28,7 @@ function App()
 
             <Navigation />
 
-            <Main justifyCenter>
+            <Main justify="center">
 
                 <Route exact path="/" component={ ShowSessionUserBoards } />
 

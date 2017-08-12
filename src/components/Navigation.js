@@ -12,7 +12,7 @@ function Navigation( props )
     return (
 
         <nav>
-            <Ul row justifySpaceAround>
+            <Ul row justify="space-around">
                 <li><Link to="/">Home</Link></li>
                 <li><Link to="/boards">Boards</Link></li>
                 <li><Link to="/new-board">Create board</Link></li>

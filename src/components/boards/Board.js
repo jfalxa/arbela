@@ -1,6 +1,7 @@
 import React         from 'react';
-import Page          from '../generic/Page';
 import { Link }      from 'react-router-dom';
+import Page          from '../generic/Page';
+import Box           from '../generic/Box';
 import BoardLinkList from './BoardLinkList';
 
 
@@ -11,7 +12,7 @@ function BoardLinks( { loadingBoard, board, onVote, onJoinBoard, onLeaveBoard, o
         return <p>Loading...</p>;
     }
 
-    const { id, title, description, links } = board;
+    const { title, slug, description, links } = board;
 
     return (
 
@@ -19,15 +20,17 @@ function BoardLinks( { loadingBoard, board, onVote, onJoinBoard, onLeaveBoard, o
 
             <h2>{ title }</h2>
 
-            <Link to={ `/boards/${ id }/edit` }>(edit)</Link>
+            <Link to={ `/boards/${ slug }/edit` }>(edit)</Link>
 
             <p>{ description }</p>
 
-            <Link to={ `/boards/${ id }/members` }>Members</Link>
-            <button onClick={ onJoinBoard }>Join board</button>
-            <button onClick={ onLeaveBoard }>Leave board</button>
+            <Box row>
+                <Link to={ `/boards/${ slug }/members` }>Members</Link>
+                <button onClick={ onJoinBoard }>Join board</button>
+                <button onClick={ onLeaveBoard }>Leave board</button>
+            </Box>
 
-            <Link to={ `/boards/${ id }/new-link` }>Post link to { title }</Link>
+            <Link to={ `/boards/${ slug }/new-link` }>Post link to { title }</Link>
 
             <BoardLinkList
                 items={ links }

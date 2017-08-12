@@ -6,6 +6,7 @@ export const createBoard = gql`mutation createBoard( $title: String!, $slug: Str
     createBoard( title: $title, slug: $slug, description: $description, hidden: $hidden, closed: $closed, ownerId: $owner )
     {
         id
+        slug
     }
 }`;
 

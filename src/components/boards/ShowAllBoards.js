@@ -12,7 +12,7 @@ function FeedBoards( { loadingBoards, boards } )
 
             <h2>All boards</h2>
 
-            { boards && <BoardList items={ boards } /> }
+            { boards && <BoardList boards={ boards } /> }
             { loadingBoards && <p>Loading...</p> }
 
         </Page>

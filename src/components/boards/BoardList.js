@@ -1,20 +1,28 @@
-import React    from 'react';
-import { Link } from 'react-router-dom';
-import withList from '../generic/withList';
+import React     from 'react';
+import Box       from '../generic/Box';
+import BoardCard from './BoardCard';
 
 
-function BoardCard( { slug, title, description } )
+const Ul = Box.withComponent( 'ul' );
+
+
+function BoardList( { boards } )
 {
     return (
 
-        <li>
-            <h4><Link to={ `/boards/${ slug }` }>{ title }</Link></h4>
-            <Link to={ `/boards/${ slug }/edit` }>(edit)</Link>
-            <p>{ description }</p>
-        </li>
+        <Ul column align="stretch" alignSelf="stretch">
 
-    );
+            { boards.map( board => (
+
+                <BoardCard { ...board }
+                    key={ board.id }  />
+
+            ) ) }
+
+        </Ul>
+
+    )
 }
 
 
-export default withList( p => BoardCard );
+export default BoardList;

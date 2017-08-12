@@ -16,26 +16,6 @@ function flex( props )
 }
 
 
-function justifyContent( props )
-{
-    if ( props.justifyStart )        return 'flex-start';
-    if ( props.justifyEnd )          return 'flex-end';
-    if ( props.justifyCenter )       return 'center';
-    if ( props.justifySpaceBetween ) return 'space-between';
-    if ( props.justifySpaceAround )  return 'space-around';
-}
-
-
-function alignItems( props )
-{
-    if ( props.alignCenter )   return 'center';
-    if ( props.alignStart )    return 'flex-start';
-    if ( props.alignEnd )      return 'flex-end';
-    if ( props.alignStretch )  return 'stretch';
-    if ( props.alignBaseline ) return 'baseline';
-}
-
-
 // Flexbox container for quick layouting.
 // Configurable with props and extendable with custom styles.
 const Box = styled.div`
@@ -44,8 +24,9 @@ const Box = styled.div`
     box-sizing:         border-box;
     flex:               ${ flex };
     flex-direction:     ${ p => p.column ? 'column' : 'row' };
-    justify-content:    ${ justifyContent };
-    align-items:        ${ alignItems };
+    justify-content:    ${ p => p.justify || 'initial' };
+    align-items:        ${ p => p.align || 'initial' };
+    align-self:         ${ p => p.alignSelf || 'initial' };
 
 `;
 
