@@ -1,5 +1,6 @@
 import React         from 'react';
 import defaults      from 'lodash/defaults';
+import kebabCase     from 'lodash/kebabCase';
 import BoardForm     from './BoardForm';
 import getInputValue from '../../utils/getInputValue';
 
@@ -9,6 +10,7 @@ class BoardFormContainer extends React.Component
     state =
     {
         title       : '',
+        slug        : '',
         description : '',
         hidden      : false,
         closed      : false
@@ -40,7 +42,15 @@ class BoardFormContainer extends React.Component
         const field = e.target.name;
         const value = getInputValue( e.target );
 
-        this.setState( { [field]: value } );
+        // fill the slug automatically based on the title
+        if ( field === 'title' && !this.props.board )
+        {
+            this.setState( { title: value, slug: kebabCase( value ) } );
+        }
+        else
+        {
+            this.setState( { [field]: value } );
+        }
     }
 
 
@@ -53,12 +63,13 @@ class BoardFormContainer extends React.Component
 
     render()
     {
-        const { title, description, hidden, closed } = this.state;
+        const { title, slug, description, hidden, closed } = this.state;
 
         return (
 
             <BoardForm
                 title={ title }
+                slug={ slug }
                 description={ description }
                 hidden={ hidden }
                 closed={ closed }

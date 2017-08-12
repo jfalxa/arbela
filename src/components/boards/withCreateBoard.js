@@ -1,9 +1,9 @@
 import { gql, graphql } from 'react-apollo';
 
 
-export const createBoard = gql`mutation createBoard( $title: String!, $description: String!, $hidden: Boolean!, $closed: Boolean!, $owner: ID! )
+export const createBoard = gql`mutation createBoard( $title: String!, $slug: String!, $description: String!, $hidden: Boolean!, $closed: Boolean!, $owner: ID! )
 {
-    createBoard( title: $title, description: $description, hidden: $hidden, closed: $closed, ownerId: $owner )
+    createBoard( title: $title, slug: $slug, description: $description, hidden: $hidden, closed: $closed, ownerId: $owner )
     {
         id
     }

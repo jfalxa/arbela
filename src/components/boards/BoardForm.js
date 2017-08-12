@@ -1,7 +1,7 @@
 import React from 'react';
 
 
-function BoardForm( { title, url, description, hidden, closed, onChange, onSubmit } )
+function BoardForm( { title, slug, description, hidden, closed, onChange, onSubmit } )
 {
     return (
 
@@ -9,6 +9,9 @@ function BoardForm( { title, url, description, hidden, closed, onChange, onSubmi
 
             <label htmlFor="board-title">Title</label>
             <input id="board-title" name="title" value={ title } onChange={ onChange } />
+
+            <label htmlFor="board-slug">Slug</label>
+            <input id="board-slug" name="slug" value={ slug } onChange={ onChange } />
 
             <label htmlFor="board-description">Description</label>
             <input id="board-description" name="description" value={ description } onChange={ onChange } />
