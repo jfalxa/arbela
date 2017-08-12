@@ -61,7 +61,8 @@ class LinkFormContainer extends React.Component
                 url={ url }
                 description={ description }
                 onChange={ this.handleChange }
-                onSubmit={ this.handleSubmit } />
+                onSubmit={ this.handleSubmit }
+                children={ this.props.children } />
 
         );
     }

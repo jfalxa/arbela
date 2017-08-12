@@ -7,29 +7,11 @@ import withAvailableBoards from './withAvailableBoards';
 
 class PostLink extends React.Component
 {
-    state =
+    handleSubmit = ( link, boards ) =>
     {
-        checked : []
-    }
-
-
-    handleCheck = ( checked ) =>
-    {
-        this.setState( { checked } );
-    }
-
-
-    handleSubmit = ( link ) =>
-    {
-        if ( this.state.checked.length === 0 )
-        {
-            return console.log( "Can't create link, no board selected" );
-        }
-
-        const { checked }                   = this.state;
         const { user, createLink, history } = this.props;
 
-        const boardLinks = checked.map( boardID => createLink( link, user.id, boardID ) );
+        const boardLinks = boards.map( boardID => createLink( link, user.id, boardID ) );
 
         Promise.all( boardLinks )
             .then( res => console.log( 'Links created', res ) )
@@ -46,10 +28,8 @@ class PostLink extends React.Component
 
             <LinkCreator
                 boards={ boards }
-                checked={ this.state.checked }
                 loadingUser={ loadingUser }
                 loadingBoards={ loadingBoards }
-                onCheck={ this.handleCheck }
                 onSubmit={ this.handleSubmit } />
 
         );

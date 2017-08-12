@@ -1,7 +1,7 @@
 import React from 'react';
 
 
-function LinkForm( { title, url, description, onChange, onSubmit } )
+function LinkForm( { title, url, description, onChange, onSubmit, children } )
 {
     return (
 
@@ -16,7 +16,7 @@ function LinkForm( { title, url, description, onChange, onSubmit } )
             <label htmlFor="link-description">Description</label>
             <input id="link-description" name="description" value={ description } onChange={ onChange } />
 
-            <button type="submit">Save</button>
+            { children || <button type="submit">Save</button> }
 
         </form>
 

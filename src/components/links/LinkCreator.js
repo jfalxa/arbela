@@ -1,9 +1,8 @@
-import React             from 'react';
-import LinkFormContainer from './LinkFormContainer';
-import BoardChoiceGroup  from './BoardChoiceGroup';
+import React               from 'react';
+import LinkSharerContainer from './LinkSharerContainer';
 
 
-function LinkCreator( { checked, boards, loadingBoards, loadingUser, onCheck, onSubmit } )
+function LinkCreator( { boards, loadingBoards, loadingUser, onCheck, onSubmit } )
 {
     if ( loadingUser || loadingBoards )
     {
@@ -16,13 +15,9 @@ function LinkCreator( { checked, boards, loadingBoards, loadingUser, onCheck, on
 
             <h2>Post new link</h2>
 
-            <LinkFormContainer
+            <LinkSharerContainer
+                boards={ boards }
                 onSubmit={ onSubmit } />
-
-            <BoardChoiceGroup
-                items={ boards }
-                checked={ checked }
-                onCheck={ onCheck } />
 
         </section>
 
