@@ -5,7 +5,6 @@ import withAddMember    from './withAddMember';
 import withRemoveMember from './withRemoveMember';
 import withBoardLinks   from './withBoardLinks';
 import withUpdateScore  from './withUpdateScore';
-import withDeleteLink   from '../links/withDeleteLink';
 
 
 class ShowBoard extends React.Component
@@ -30,17 +29,6 @@ class ShowBoard extends React.Component
     }
 
 
-    handleDeleteLink = ( linkID ) =>
-    {
-        const { deleteLink, refetchBoardLinks } = this.props;
-
-        deleteLink( linkID )
-            .then( res => console.log( 'Link removed from board', res ) )
-            .then( refetchBoardLinks )
-            .catch( err => console.log( 'Failed removing link from board', err ) );
-    }
-
-
     handleVote = ( boardLink, vote ) =>
     {
         const { updateScore, user } = this.props;
@@ -62,12 +50,11 @@ class ShowBoard extends React.Component
                 loadingBoard={ loadingBoard }
                 onVote={ this.handleVote }
                 onJoinBoard={ this.handleJoinBoard }
-                onLeaveBoard={ this.handleLeaveBoard }
-                onDeleteLink={ this.handleDeleteLink } />
+                onLeaveBoard={ this.handleLeaveBoard } />
 
         );
     }
 }
 
 
-export default withUser( withBoardLinks( withAddMember( withRemoveMember( withUpdateScore( withDeleteLink( ShowBoard ) ) ) ) ) )
+export default withUser( withBoardLinks( withAddMember( withRemoveMember( withUpdateScore( ShowBoard ) ) ) ) )

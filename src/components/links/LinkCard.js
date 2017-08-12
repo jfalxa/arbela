@@ -7,7 +7,7 @@ import LinkVote from './LinkVote';
 const Li = Box.withComponent( 'li' );
 
 
-function LinkCard( { id, title, url, description, score, author, board, onVote, onDeleteLink } )
+function LinkCard( { id, title, url, description, score, author, board, onVote } )
 {
     return (
 
@@ -33,7 +33,6 @@ function LinkCard( { id, title, url, description, score, author, board, onVote, 
             <Box column justify="center" align="center">
                 <Link to={ `/links/${ id }/edit` }>(edit)</Link>
                 <Link to={ `/links/${ id }/share` }>(share)</Link>
-                <Link to="#" onClick={ onDeleteLink }>(remove)</Link>
             </Box>
 
         </Li>

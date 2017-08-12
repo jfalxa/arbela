@@ -9,6 +9,8 @@ function LinkShareForm( { link, boards, checked, onCheck, onSubmit } )
 
         <LinkFormContainer link={ link } onSubmit={ onSubmit }>
 
+            <h3>Boards</h3>
+
             <BoardChoiceGroup
                 items={ boards }
                 checked={ checked }

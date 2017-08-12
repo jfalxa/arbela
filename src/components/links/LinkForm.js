@@ -8,13 +8,13 @@ function LinkForm( { title, url, description, onChange, onSubmit, children } )
         <form onSubmit={ onSubmit }>
 
             <label htmlFor="link-title">Title</label>
-            <input id="link-title" name="title" value={ title } onChange={ onChange } />
+            <input id="link-title" name="title" autoFocus value={ title } onChange={ onChange } />
 
             <label htmlFor="link-url">URL</label>
             <input id="link-url" name="url" value={ url } onChange={ onChange } />
 
             <label htmlFor="link-description">Description</label>
-            <input id="link-description" name="description" value={ description } onChange={ onChange } />
+            <textarea id="link-description" name="description" rows="5" value={ description } onChange={ onChange } />
 
             { children || <button type="submit">Save</button> }
 

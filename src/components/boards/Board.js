@@ -5,7 +5,7 @@ import Box      from '../generic/Box';
 import LinkList from '../links/LinkList';
 
 
-function BoardLinks( { loadingBoard, board, onVote, onJoinBoard, onLeaveBoard, onDeleteLink } )
+function BoardLinks( { loadingBoard, board, onVote, onJoinBoard, onLeaveBoard } )
 {
     if ( loadingBoard && !board )
     {
@@ -35,8 +35,7 @@ function BoardLinks( { loadingBoard, board, onVote, onJoinBoard, onLeaveBoard, o
 
             <LinkList
                 links={ links }
-                onVote={ onVote }
-                onDeleteLink={ onDeleteLink } />
+                onVote={ onVote } />
 
         </Page>
 
