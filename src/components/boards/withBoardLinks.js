@@ -20,6 +20,7 @@ export const boardLinks = gql`query boardLinks( $slug: String! )
 
             author
             {
+                id
                 name
             }
 
@@ -27,6 +28,7 @@ export const boardLinks = gql`query boardLinks( $slug: String! )
             {
                 id
                 title
+                slug
             }
         }
     }

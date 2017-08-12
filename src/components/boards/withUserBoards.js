@@ -17,6 +17,7 @@ export const userBoards = gql`query userBoards( $name: String! )
         {
             id
             title
+            slug
             description
         }
 
@@ -27,6 +28,7 @@ export const userBoards = gql`query userBoards( $name: String! )
         {
             id
             title
+            slug
             description
         }
     }

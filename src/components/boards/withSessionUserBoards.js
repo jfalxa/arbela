@@ -12,6 +12,7 @@ export const userBoards = gql`query
         {
             id
             title
+            slug
             description
         }
 
@@ -19,6 +20,7 @@ export const userBoards = gql`query
         {
             id
             title
+            slug
             description
         }
     }
