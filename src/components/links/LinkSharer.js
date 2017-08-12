@@ -1,22 +1,26 @@
-import React             from 'react';
-import LinkFormContainer from './LinkFormContainer';
-import BoardChoiceGroup  from './BoardChoiceGroup';
+import React                  from 'react';
+import LinkShareFormContainer from './LinkShareFormContainer';
 
 
-function LinkSharer( { link, boards, checked, onCheck, onSubmit } )
+function LinkSharer( { link, boards, loadingBoards, loadingUser, onCheck, onSubmit } )
 {
+    if ( loadingUser || loadingBoards )
+    {
+        return <p>Loading...</p>;
+    }
+
     return (
 
-        <LinkFormContainer link={ link } onSubmit={ onSubmit }>
+        <section>
 
-            <BoardChoiceGroup
-                items={ boards }
-                checked={ checked }
-                onCheck={ onCheck } />
+            <h2>Share link</h2>
 
-            <button type="submit">Post</button>
+            <LinkShareFormContainer
+                link={ link }
+                boards={ boards }
+                onSubmit={ onSubmit } />
 
-        </LinkFormContainer>
+        </section>
 
     );
 }

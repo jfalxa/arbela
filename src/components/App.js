@@ -6,6 +6,7 @@ import ShowAllLinks          from './links/ShowAllLinks';
 import ShowUserLinks         from './links/ShowUserLinks';
 import ShowSessionUserLinks  from './links/ShowSessionUserLinks';
 import EditLink              from './links/EditLink';
+import ShareLink             from './links/ShareLink';
 import CreateBoard           from './boards/CreateBoard';
 import ShowAllBoards         from './boards/ShowAllBoards';
 import ShowSessionUserBoards from './boards/ShowSessionUserBoards';
@@ -42,6 +43,7 @@ function App()
                 <Route path="/users/:name" component={ ShowUserLinks } />
                 <Route path="/me" component={ ShowSessionUserLinks } />
                 <Route path="/links/:id/edit" component={ EditLink } />
+                <Route path="/links/:id/share" component={ ShareLink } />
 
                 <Route path="/login" component={ LoginUser } />
                 <Route path="/register" component={ RegisterUser } />

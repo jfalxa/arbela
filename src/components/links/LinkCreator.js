@@ -1,5 +1,5 @@
-import React               from 'react';
-import LinkSharerContainer from './LinkSharerContainer';
+import React                  from 'react';
+import LinkShareFormContainer from './LinkShareFormContainer';
 
 
 function LinkCreator( { boards, loadingBoards, loadingUser, onCheck, onSubmit } )
@@ -15,7 +15,7 @@ function LinkCreator( { boards, loadingBoards, loadingUser, onCheck, onSubmit } 
 
             <h2>Post new link</h2>
 
-            <LinkSharerContainer
+            <LinkShareFormContainer
                 boards={ boards }
                 onSubmit={ onSubmit } />
 

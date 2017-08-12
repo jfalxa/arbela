@@ -1,8 +1,8 @@
-import React      from 'react';
-import LinkSharer from './LinkSharer';
+import React         from 'react';
+import LinkShareForm from './LinkShareForm';
 
 
-class LinkSharerContainer extends React.Component
+class LinkShareFormContainer extends React.Component
 {
     state =
     {
@@ -36,7 +36,7 @@ class LinkSharerContainer extends React.Component
 
         return (
 
-            <LinkSharer
+            <LinkShareForm
                 link={ link }
                 boards={ boards }
                 checked={ this.state.checked }
@@ -48,5 +48,5 @@ class LinkSharerContainer extends React.Component
 }
 
 
-export default LinkSharerContainer;
+export default LinkShareFormContainer;
 

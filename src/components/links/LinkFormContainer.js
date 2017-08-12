@@ -30,7 +30,10 @@ class LinkFormContainer extends React.Component
 
     componentWillReceiveProps( nextProps )
     {
-        this.setState( this.getLink( nextProps ) );
+        if ( nextProps.link !== this.props.link )
+        {
+            this.setState( this.getLink( nextProps ) );
+        }
     }
 
 
