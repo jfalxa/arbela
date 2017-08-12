@@ -1,4 +1,5 @@
 import React         from 'react';
+import Page          from '../generic/Page';
 import { Link }      from 'react-router-dom';
 import BoardLinkList from './BoardLinkList';
 
@@ -14,7 +15,7 @@ function BoardLinks( { loadingBoard, board, onVote, onJoinBoard, onLeaveBoard, o
 
     return (
 
-        <section>
+        <Page>
 
             <h2>{ title }</h2>
 
@@ -33,7 +34,7 @@ function BoardLinks( { loadingBoard, board, onVote, onJoinBoard, onLeaveBoard, o
                 onVote={ onVote }
                 onDeleteLink={ onDeleteLink } />
 
-        </section>
+        </Page>
 
     );
 }

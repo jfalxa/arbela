@@ -1,5 +1,6 @@
 import React               from 'react';
 import { Link }            from 'react-router-dom';
+import Page                from '../generic/Page';
 import MemberFormContainer from './MemberFormContainer';
 import MemberList          from './MemberList';
 
@@ -13,7 +14,7 @@ function BoardMembers( { board, owner, members, searchedUser, loadingMembers, on
 
     return (
 
-        <section>
+        <Page>
 
             <h2>{ board.title } members</h2>
 
@@ -31,7 +32,7 @@ function BoardMembers( { board, owner, members, searchedUser, loadingMembers, on
                 items={ members }
                 onRemoveMember={ onRemoveMember } />
 
-        </section>
+        </Page>
 
     );
 }

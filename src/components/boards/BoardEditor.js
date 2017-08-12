@@ -1,4 +1,5 @@
 import React              from 'react';
+import Page               from '../generic/Page';
 import BoardFormContainer from './BoardFormContainer';
 
 
@@ -11,7 +12,7 @@ function BoardEditor( { board, loadingUser, loadingBoard, onSubmit, onDelete } )
 
     return (
 
-        <section>
+        <Page>
 
             <h2>Edit board</h2>
 
@@ -21,7 +22,7 @@ function BoardEditor( { board, loadingUser, loadingBoard, onSubmit, onDelete } )
 
             <button onClick={ onDelete }>Delete</button>
 
-        </section>
+        </Page>
 
     );
 }

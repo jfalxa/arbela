@@ -1,12 +1,13 @@
 import React    from 'react';
 import { Link } from 'react-router-dom';
+import Page     from '../generic/Page';
 
 
 function LoginForm( { email, password, onChange, onSubmit } )
 {
     return (
 
-        <section>
+        <Page>
 
             <h2>Login</h2>
 
@@ -24,7 +25,7 @@ function LoginForm( { email, password, onChange, onSubmit } )
 
             <Link to="/register">Register</Link>
 
-        </section>
+        </Page>
 
     );
 }

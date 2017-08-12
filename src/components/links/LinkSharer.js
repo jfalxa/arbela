@@ -1,4 +1,5 @@
 import React                  from 'react';
+import Page                   from '../generic/Page';
 import LinkShareFormContainer from './LinkShareFormContainer';
 
 
@@ -11,7 +12,7 @@ function LinkSharer( { link, boards, loadingBoards, loadingUser, onCheck, onSubm
 
     return (
 
-        <section>
+        <Page>
 
             <h2>Share link</h2>
 
@@ -20,7 +21,7 @@ function LinkSharer( { link, boards, loadingBoards, loadingUser, onCheck, onSubm
                 boards={ boards }
                 onSubmit={ onSubmit } />
 
-        </section>
+        </Page>
 
     );
 }

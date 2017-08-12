@@ -1,4 +1,5 @@
 import React                 from 'react';
+import Page                  from '../generic/Page';
 import BoardList             from './BoardList';
 import withSessionUserBoards from './withSessionUserBoards';
 
@@ -7,7 +8,7 @@ function ShowSessionUserBoards( { ownedBoards, joinedBoards, loadingBoards } )
 {
     return (
 
-        <section>
+        <Page>
 
             <h2>My boards</h2>
 
@@ -19,7 +20,7 @@ function ShowSessionUserBoards( { ownedBoards, joinedBoards, loadingBoards } )
             <h3>Joined</h3>
             { joinedBoards && <BoardList items={ joinedBoards } /> }
 
-        </section>
+        </Page>
 
     );
 }

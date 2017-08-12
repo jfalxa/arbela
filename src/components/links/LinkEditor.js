@@ -1,4 +1,5 @@
 import React             from 'react';
+import Page              from '../generic/Page';
 import LinkFormContainer from './LinkFormContainer';
 
 
@@ -11,7 +12,7 @@ function LinkEditor( { link, loadingLink, loadingUser, onSubmit, onDelete } )
 
     return (
 
-        <section>
+        <Page>
 
             <h2>Edit link</h2>
 
@@ -21,7 +22,7 @@ function LinkEditor( { link, loadingLink, loadingUser, onSubmit, onDelete } )
 
             <button onClick={ onDelete }>Delete</button>
 
-        </section>
+        </Page>
 
     );
 }
