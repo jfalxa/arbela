@@ -11,8 +11,7 @@ function BoardSearch( { search, onSearch } )
 
             <h2>Boards</h2>
 
-            <label htmlFor="board-search">Search</label>
-            <input id="board-search" name="board-search" value={ search } onChange={ onSearch } />
+            <input name="board-search" placeholder="Search..." value={ search } onChange={ onSearch } />
 
             <SearchBoards search={ search } />
 

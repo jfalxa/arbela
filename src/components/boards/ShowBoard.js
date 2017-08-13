@@ -9,6 +9,12 @@ import withUpdateScore  from './withUpdateScore';
 
 class ShowBoard extends React.Component
 {
+    state =
+    {
+        search : ''
+    }
+
+
     handleJoinBoard = () =>
     {
         const { user, board, addMember } = this.props;
@@ -26,6 +32,12 @@ class ShowBoard extends React.Component
         removeMember( board.id, user.id )
             .then( res => console.log( 'Leaved board', res ) )
             .catch( err => console.log( 'Failed leaving board', err ) );
+    }
+
+
+    handleSearch = ( e ) =>
+    {
+        this.setState( { search: e.target.value } );
     }
 
 
@@ -47,8 +59,10 @@ class ShowBoard extends React.Component
 
             <Board
                 board={ board }
+                search={ this.state.search }
                 loadingBoard={ loadingBoard }
                 onVote={ this.handleVote }
+                onSearch={ this.handleSearch }
                 onJoinBoard={ this.handleJoinBoard }
                 onLeaveBoard={ this.handleLeaveBoard } />
 
