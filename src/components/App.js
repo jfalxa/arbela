@@ -30,10 +30,10 @@ function App()
 
             <Main justify="center">
 
-                <Route exact path="/" component={ ShowSessionUserBoards } />
+                <Route exact path="/" component={ ShowAllBoards } />
 
                 <Route path="/new-board" component={ CreateBoard } />
-                <Route exact path="/boards" component={ ShowAllBoards } />
+                <Route path="/me" component={ ShowSessionUserBoards } />
                 <Route path="/users/:name" component={ ShowUserBoards } />
                 <Route exact path="/boards/:slug" component={ ShowBoard } />
                 <Route path="/boards/:slug/edit" component={ EditBoard } />
