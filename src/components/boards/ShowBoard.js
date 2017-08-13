@@ -1,6 +1,7 @@
 import React            from 'react';
 import Board            from './Board';
 import withUser         from '../auth/withUser';
+import withSearch       from '../generic/withSearch';
 import withAddMember    from './withAddMember';
 import withRemoveMember from './withRemoveMember';
 import withBoardLinks   from './withBoardLinks';
@@ -9,12 +10,6 @@ import withUpdateScore  from './withUpdateScore';
 
 class ShowBoard extends React.Component
 {
-    state =
-    {
-        search : ''
-    }
-
-
     handleJoinBoard = () =>
     {
         const { user, board, addMember } = this.props;
@@ -35,12 +30,6 @@ class ShowBoard extends React.Component
     }
 
 
-    handleSearch = ( e ) =>
-    {
-        this.setState( { search: e.target.value } );
-    }
-
-
     handleVote = ( link, vote ) =>
     {
         const { updateScore, user } = this.props;
@@ -53,16 +42,16 @@ class ShowBoard extends React.Component
 
     render()
     {
-        const { board, loadingBoard } = this.props;
+        const { search, board, loadingBoard, onSearch } = this.props;
 
         return (
 
             <Board
                 board={ board }
-                search={ this.state.search }
+                search={ search }
                 loadingBoard={ loadingBoard }
                 onVote={ this.handleVote }
-                onSearch={ this.handleSearch }
+                onSearch={ onSearch }
                 onJoinBoard={ this.handleJoinBoard }
                 onLeaveBoard={ this.handleLeaveBoard } />
 
@@ -71,4 +60,4 @@ class ShowBoard extends React.Component
 }
 
 
-export default withUser( withBoardLinks( withAddMember( withRemoveMember( withUpdateScore( ShowBoard ) ) ) ) )
+export default withSearch( withUser( withBoardLinks( withAddMember( withRemoveMember( withUpdateScore( ShowBoard ) ) ) ) ) );

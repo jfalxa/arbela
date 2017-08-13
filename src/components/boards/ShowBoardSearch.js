@@ -1,9 +1,10 @@
 import React        from 'react';
 import Page         from '../generic/Page';
 import SearchBoards from './SearchBoards';
+import withSearch   from '../generic/withSearch';
 
 
-function BoardSearch( { search, onSearch } )
+function ShowBoardSearch( { search, onSearch } )
 {
     return (
 
@@ -21,4 +22,4 @@ function BoardSearch( { search, onSearch } )
 }
 
 
-export default BoardSearch;
+export default withSearch( ShowBoardSearch );
