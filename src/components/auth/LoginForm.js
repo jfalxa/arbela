@@ -7,9 +7,7 @@ function LoginForm( { email, password, onChange, onSubmit } )
 {
     return (
 
-        <Page>
-
-            <h2>Login</h2>
+        <Page title="Login">
 
             <form onSubmit={ onSubmit }>
 

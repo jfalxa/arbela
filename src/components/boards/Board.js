@@ -1,6 +1,7 @@
 import React           from 'react';
 import { Link }        from 'react-router-dom';
 import Page            from '../generic/Page';
+import PageInfo        from '../generic/PageInfo';
 import Box             from '../generic/Box';
 import SearchLinks     from '../links/SearchLinks';
 import BoardMemberMenu from './BoardMemberMenu';
@@ -17,11 +18,9 @@ function Board( { search, board, loadingBoard, onVote, onSearch, onJoinBoard, on
 
     return (
 
-        <Page>
+        <Page title={ title }>
 
-            <h2>{ title }</h2>
-
-            <p>{ description }</p>
+            <PageInfo>{ description }</PageInfo>
 
             <BoardMemberMenu
                 board={ slug }

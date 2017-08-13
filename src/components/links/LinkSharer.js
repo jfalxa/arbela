@@ -12,9 +12,7 @@ function LinkSharer( { link, boards, loadingBoards, loadingUser, onCheck, onSubm
 
     return (
 
-        <Page>
-
-            <h2>Share link</h2>
+        <Page title="Share link">
 
             <LinkShareFormContainer
                 link={ link }

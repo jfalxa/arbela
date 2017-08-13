@@ -8,9 +8,7 @@ function ShowBoardSearch( { search, onSearch } )
 {
     return (
 
-        <Page>
-
-            <h2>Boards</h2>
+        <Page title="Boards">
 
             <input name="board-search" placeholder="Search..." value={ search } onChange={ onSearch } />
 

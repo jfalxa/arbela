@@ -12,9 +12,7 @@ function BoardEditor( { board, loadingUser, loadingBoard, onSubmit, onDelete } )
 
     return (
 
-        <Page>
-
-            <h2>Edit board</h2>
+        <Page title="Edit board">
 
             <BoardFormContainer
                 board={ board }

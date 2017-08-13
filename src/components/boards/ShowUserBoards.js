@@ -6,19 +6,20 @@ import withUserBoards from './withUserBoards';
 
 function ShowUserBoards( { user, ownedBoards, joinedBoards, loadingBoards } )
 {
+    if ( loadingBoards )
+    {
+        return <p>Loading...</p>;
+    }
+
     return (
 
-        <Page>
-
-            <h2>{ user.name }'s boards</h2>
-
-            { loadingBoards && <p>Loading...</p> }
+        <Page title={ `${ user.name }'s boards` }>
 
             <h3>Owned</h3>
-            { ownedBoards && <BoardList boards={ ownedBoards } /> }
+            <BoardList boards={ ownedBoards } />
 
             <h3>Joined</h3>
-            { joinedBoards && <BoardList boards={ joinedBoards } /> }
+            <BoardList boards={ joinedBoards } />
 
         </Page>
 

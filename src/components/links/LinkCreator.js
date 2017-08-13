@@ -12,9 +12,7 @@ function LinkCreator( { boards, loadingBoards, loadingUser, onCheck, onSubmit } 
 
     return (
 
-        <Page>
-
-            <h2>Post new link</h2>
+        <Page title="Post new link">
 
             <LinkShareFormContainer
                 boards={ boards }

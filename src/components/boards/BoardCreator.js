@@ -12,9 +12,7 @@ function BoardCreator( { loadingUser, onSubmit } )
 
     return (
 
-        <Page>
-
-            <h2>Create new board</h2>
+        <Page title="Create new board">
 
             <BoardFormContainer
                 onSubmit={ onSubmit } />

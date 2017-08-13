@@ -12,9 +12,7 @@ function BoardLinkCreator( { board, loadingBoard, loadingUser, onSubmit } )
 
     return (
 
-        <Page>
-
-            <h2>Post new link to { board.title }</h2>
+        <Page title={ `Post new link to ${ board.title }` }>
 
             <LinkFormContainer
                 onSubmit={ onSubmit } />

@@ -1,17 +1,30 @@
-import Box from './Box';
+import React      from 'react';
+import Box        from './Box';
+import PageHeader from './PageHeader';
 
 
-const props =
+const Section = Box.withComponent( 'section' ).extend`
+
+    margin-top: 50px;
+
+`
+
+
+function Page( { title, children } )
 {
-    column : true,
-    align  : 'center'
-};
+    return (
 
+        <Section column align="center">
 
-const Page = Box.withComponent( 'section' ).extend.attrs( props )`
+            <PageHeader>{ title }</PageHeader>
 
+            { children }
 
-`;
+        </Section>
+
+    );
+}
+
 
 
 export default Page;

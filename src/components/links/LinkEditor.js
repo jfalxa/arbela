@@ -12,9 +12,7 @@ function LinkEditor( { link, loadingLink, loadingUser, onSubmit, onDelete } )
 
     return (
 
-        <Page>
-
-            <h2>Edit link</h2>
+        <Page title="Edit link">
 
             <LinkFormContainer
                 link={ link }

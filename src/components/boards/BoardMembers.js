@@ -14,9 +14,7 @@ function BoardMembers( { board, owner, members, searchedUser, loadingMembers, on
 
     return (
 
-        <Page>
-
-            <h2>{ board.title } members</h2>
+        <Page title={ `${ board.title } members` }>
 
             <h3>Owner</h3>
             <p><Link to={ `/users/${ owner.name }` }>{ owner.name }</Link></p>

@@ -7,9 +7,7 @@ function RegisterForm( { name, email, password, onChange, onSubmit } )
 {
     return (
 
-        <Page>
-
-            <h2>Register</h2>
+        <Page title="Register">
 
             <form onSubmit={ onSubmit }>
 

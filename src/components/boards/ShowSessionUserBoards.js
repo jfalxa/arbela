@@ -8,9 +8,7 @@ function ShowSessionUserBoards( { ownedBoards, joinedBoards, loadingBoards } )
 {
     return (
 
-        <Page>
-
-            <h2>My boards</h2>
+        <Page title="My boards">
 
             { loadingBoards && <p>Loading...</p> }
 

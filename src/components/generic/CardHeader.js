@@ -6,9 +6,10 @@ import Box      from './Box';
 
 const Header = Box.withComponent( 'header' );
 
-const H1 = styled.h1`
+const H4 = styled.h4`
 
     margin: 0;
+    font-size: 1.1em;
 
 `;
 
@@ -18,7 +19,7 @@ function CardHeader( { title, url, target, children } )
     return (
 
         <Header row justify="space-between" align="center">
-            <H1><Link to={ url } target={ target }>{ title }</Link></H1>
+            <H4><Link to={ url } target={ target }>{ title }</Link></H4>
             { children }
         </Header>
 
