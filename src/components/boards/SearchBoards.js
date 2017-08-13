@@ -1,6 +1,8 @@
-import React            from 'react';
-import BoardList        from './BoardList';
-import withSearchBoards from './withSearchBoards';
+import React             from 'react';
+import pick              from 'lodash/pick';
+import BoardList         from './BoardList';
+import withSearchBoards  from './withSearchBoards';
+import withDebounceProps from '../generic/withDebounceProps';
 
 
 function SearchBoards( { boards, loadingBoards } )
@@ -11,4 +13,7 @@ function SearchBoards( { boards, loadingBoards } )
 }
 
 
-export default withSearchBoards( SearchBoards );
+// debounce the passing of the search prop so that we don't spam the server with queries
+const pickProps = props => pick( props, 'search' );
+
+export default withDebounceProps( pickProps )( withSearchBoards( SearchBoards ) );

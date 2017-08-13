@@ -29,5 +29,4 @@ class ShowAllBoards extends React.Component
 }
 
 
-
 export default ShowAllBoards;
