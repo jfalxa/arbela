@@ -1,19 +1,16 @@
-import React from 'react';
-import Box   from '../generic/Box';
-
-
-const Aside = Box.withComponent( 'aside' );
+import React     from 'react';
+import CardAside from '../generic/CardAside';
 
 
 function BoardLinkVote( { score, onVote } )
 {
     return (
 
-        <Aside column justify="center" align="center">
+        <CardAside>
             <button onClick={ e => onVote( 1 ) }>+</button>
             <span>{ score || 0 }</span>
             <button onClick={ e => onVote( -1 ) }>-</button>
-        </Aside>
+        </CardAside>
 
     );
 }

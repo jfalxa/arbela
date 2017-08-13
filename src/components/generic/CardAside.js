@@ -1,10 +1,18 @@
 import Box from '../generic/Box';
 
 
-const CardAside = Box.withComponent( 'aside' ).extend.attrs( { align: 'center' } )`
+const props =
+{
+    column  : true,
+    justify : 'center',
+    align   : 'center'
+};
 
-    margin-left: 10px;
-    font-size: 0.8em;
+
+const CardAside = Box.withComponent( 'aside' ).extend.attrs( props )`
+
+    width: 100px;
+    height: 100px;
 
 `;
 

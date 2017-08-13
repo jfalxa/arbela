@@ -4,6 +4,7 @@ import Box        from '../generic/Box';
 import Card       from '../generic/Card';
 import CardHeader from '../generic/CardHeader';
 import CardBody   from '../generic/CardBody';
+import CardAside  from '../generic/CardAside';
 import LinkVote   from './LinkVote';
 import LinkTrail  from './LinkTrail';
 
@@ -17,7 +18,7 @@ function LinkCard( { id, title, url, description, score, author, board, trail, o
 {
     return (
 
-        <Li>
+        <Li align="center">
 
             <LinkVote
                 score={ score }
@@ -35,9 +36,9 @@ function LinkCard( { id, title, url, description, score, author, board, trail, o
 
             </Card>
 
-            <Box column justify="center" align="center">
+            <CardAside>
                 <Link to={ `/links/${ id }/share` }>(share)</Link>
-            </Box>
+            </CardAside>
 
         </Li>
 

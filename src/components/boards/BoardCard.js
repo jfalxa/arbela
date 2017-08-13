@@ -3,7 +3,7 @@ import { Link }   from 'react-router-dom';
 import Box        from '../generic/Box';
 import Card       from '../generic/Card';
 import CardHeader from '../generic/CardHeader';
-import CardAside  from '../generic/CardAside';
+import CardLinks  from '../generic/CardLinks';
 import CardBody   from '../generic/CardBody';
 
 
@@ -22,9 +22,9 @@ function BoardCard( { slug, title, description, owner } )
                     <Link to={ `/boards/${ slug }/edit` }>(edit)</Link>
                 </CardHeader>
 
-                <CardAside>
+                <CardLinks>
                     <Link to={ `/users/${ owner.name }` }>@{ owner.name }</Link>
-                </CardAside>
+                </CardLinks>
 
                 <CardBody>{ description || '...' }</CardBody>
 
