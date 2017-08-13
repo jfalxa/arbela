@@ -9,19 +9,13 @@ export const linkData = gql`
         title
         url
         description
+        score
         createdAt
 
         author
         {
             id
             name
-        }
-
-        board
-        {
-            id
-            title
-            slug
         }
 
         trail

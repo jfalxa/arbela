@@ -1,27 +1,23 @@
 import React    from 'react';
-import Box      from '../generic/Box';
+import CardList from '../generic/CardList';
 import LinkCard from './LinkCard';
 
 
-const Ul = Box.withComponent( 'ul' );
-
-
-function LinkList( { links, onVote, onDeleteLink } )
+function LinkList( { links, onVote } )
 {
     return (
 
-        <Ul column align="stretch" alignSelf="stretch">
+        <CardList>
 
             { links.map( link => (
 
                 <LinkCard { ...link }
                     key={ link.id }
-                    onVote={ vote => onVote( link, vote ) }
-                    onDeleteLink={ () => onDeleteLink( link.id ) } />
+                    onVote={ vote => onVote( link, vote ) } />
 
             ) ) }
 
-        </Ul>
+        </CardList>
 
     )
 }

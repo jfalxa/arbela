@@ -1,16 +1,13 @@
 import React     from 'react';
-import Box       from '../generic/Box';
+import CardList  from '../generic/CardList';
 import BoardCard from './BoardCard';
-
-
-const Ul = Box.withComponent( 'ul' );
 
 
 function BoardList( { boards } )
 {
     return (
 
-        <Ul column align="stretch" alignSelf="stretch">
+        <CardList>
 
             { boards.map( board => (
 
@@ -19,9 +16,9 @@ function BoardList( { boards } )
 
             ) ) }
 
-        </Ul>
+        </CardList>
 
-    )
+    );
 }
 
 

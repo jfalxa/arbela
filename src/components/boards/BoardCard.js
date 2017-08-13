@@ -1,6 +1,9 @@
-import React    from 'react';
-import { Link } from 'react-router-dom';
-import Box      from '../generic/Box';
+import React      from 'react';
+import { Link }   from 'react-router-dom';
+import Box        from '../generic/Box';
+import Card       from '../generic/Card';
+import CardHeader from '../generic/CardHeader';
+import CardBody   from '../generic/CardBody';
 
 
 const Li = Box.withComponent( 'li' );
@@ -12,12 +15,15 @@ function BoardCard( { slug, title, description } )
 
         <Li column>
 
-            <Box justify="space-between" align="center">
-                <h4><Link to={ `/boards/${ slug }` }>{ title }</Link></h4>
-                <Link to={ `/boards/${ slug }/edit` }>(edit)</Link>
-            </Box>
+            <Card>
 
-            <p>{ description }</p>
+                <CardHeader title={ title } url={ `/boards/${ slug }` }>
+                    <Link to={ `/boards/${ slug }/edit` }>(edit)</Link>
+                </CardHeader>
+
+                <CardBody>{ description || '...' }</CardBody>
+
+            </Card>
 
         </Li>
 

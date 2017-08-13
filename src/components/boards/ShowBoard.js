@@ -29,11 +29,11 @@ class ShowBoard extends React.Component
     }
 
 
-    handleVote = ( boardLink, vote ) =>
+    handleVote = ( link, vote ) =>
     {
         const { updateScore, user } = this.props;
 
-        updateScore( boardLink.id, boardLink.score + vote, user.id )
+        updateScore( link.id, link.score + vote, user.id )
             .then( res => console.log( 'Vote was registered', res ) )
             .catch( err => console.log( 'Failed voting', err ) );
     }

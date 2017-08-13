@@ -15,10 +15,10 @@ function ShowUserBoards( { user, ownedBoards, joinedBoards, loadingBoards } )
             { loadingBoards && <p>Loading...</p> }
 
             <h3>Owned</h3>
-            { ownedBoards && <BoardList items={ ownedBoards } /> }
+            { ownedBoards && <BoardList boards={ ownedBoards } /> }
 
             <h3>Joined</h3>
-            { joinedBoards && <BoardList items={ joinedBoards } /> }
+            { joinedBoards && <BoardList boards={ joinedBoards } /> }
 
         </Page>
 

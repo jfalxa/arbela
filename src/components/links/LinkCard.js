@@ -1,13 +1,19 @@
-import React    from 'react';
-import { Link } from 'react-router-dom';
-import Box      from '../generic/Box';
-import LinkVote from './LinkVote';
+import React      from 'react';
+import { Link }   from 'react-router-dom';
+import Box        from '../generic/Box';
+import Card       from '../generic/Card';
+import CardHeader from '../generic/CardHeader';
+import CardBody   from '../generic/CardBody';
+import LinkVote   from './LinkVote';
+import LinkTrail  from './LinkTrail';
 
 
 const Li = Box.withComponent( 'li' );
 
 
-function LinkCard( { id, title, url, description, score, author, board, onVote } )
+
+
+function LinkCard( { id, title, url, description, score, author, board, trail, onVote } )
 {
     return (
 
@@ -17,21 +23,19 @@ function LinkCard( { id, title, url, description, score, author, board, onVote }
                 score={ score }
                 onVote={ onVote } />
 
-            <Box flex column>
+            <Card>
 
-                <h4><Link to={ url } target="blank">{ title }</Link></h4>
+                <CardHeader title={ title } url={ url }>
+                    <Link to={ `/links/${ id }/edit` }>(edit)</Link>
+                </CardHeader>
 
-                <Box>
-                    <p>by <Link to={ `/users/${ author.name }` }>{ author.name }</Link></p>
-                    <p>on <Link to={ `/boards/${ board.slug }` }>{ board.title }</Link></p>
-                </Box>
+                <LinkTrail author={ author } trail={ trail } />
 
-                <p>{ description }</p>
+                <CardBody>{ description }</CardBody>
 
-            </Box>
+            </Card>
 
             <Box column justify="center" align="center">
-                <Link to={ `/links/${ id }/edit` }>(edit)</Link>
                 <Link to={ `/links/${ id }/share` }>(share)</Link>
             </Box>
 

@@ -10,7 +10,6 @@ const props =
 
 const Page = Box.withComponent( 'section' ).extend.attrs( props )`
 
-    width: 500px;
 
 `;
 
