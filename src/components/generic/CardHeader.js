@@ -13,12 +13,12 @@ const H1 = styled.h1`
 `;
 
 
-function CardHeader( { title, url, children } )
+function CardHeader( { title, url, target, children } )
 {
     return (
 
         <Header row justify="space-between" align="center">
-            <H1><Link to={ url }>{ title }</Link></H1>
+            <H1><Link to={ url } target={ target }>{ title }</Link></H1>
             { children }
         </Header>
 

@@ -26,7 +26,7 @@ function LinkCard( { id, title, url, description, score, author, board, trail, o
 
             <Card>
 
-                <CardHeader title={ title } url={ url }>
+                <CardHeader title={ title } url={ url } target="blank">
                     <Link to={ `/links/${ id }/edit` }>(edit)</Link>
                 </CardHeader>
 

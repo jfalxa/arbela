@@ -18,10 +18,7 @@ function BoardLinks( { loadingBoard, board, onVote, onJoinBoard, onLeaveBoard } 
 
         <Page>
 
-            <Box justify="space-between" align="center">
-                <h2>{ title }</h2>
-                <Link to={ `/boards/${ slug }/edit` }>(edit)</Link>
-            </Box>
+            <h2>{ title }</h2>
 
             <Box row>
                 <button onClick={ onJoinBoard }>Join board</button>
