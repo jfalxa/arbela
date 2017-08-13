@@ -1,24 +1,33 @@
-import React         from 'react';
-import Page          from '../generic/Page';
-import BoardList     from './BoardList';
-import withAllBoards from './withAllBoards';
+import React       from 'react';
+import BoardSearch from './BoardSearch';
 
 
-function FeedBoards( { loadingBoards, boards } )
+class ShowAllBoards extends React.Component
 {
-    return (
+    state =
+    {
+        search : ''
+    }
 
-        <Page>
 
-            <h2>All boards</h2>
+    handleSearch = ( e ) =>
+    {
+        this.setState( { search: e.target.value } )
+    }
 
-            { boards && <BoardList boards={ boards } /> }
-            { loadingBoards && <p>Loading...</p> }
 
-        </Page>
+    render()
+    {
+        return (
 
-    );
+            <BoardSearch
+                search={ this.state.search }
+                onSearch={ this.handleSearch } />
+
+        );
+    }
 }
 
 
-export default withAllBoards( FeedBoards );
+
+export default ShowAllBoards;
