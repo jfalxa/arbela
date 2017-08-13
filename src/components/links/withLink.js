@@ -1,14 +1,15 @@
 import { gql, graphql } from 'react-apollo';
 
 
-export const link = gql`query link( $id: ID! )
-{
-    Link( id: $id )
+export const linkData = gql`
+
+    fragment LinkData on Link
     {
         id
         title
         url
         description
+        createdAt
 
         author
         {
@@ -22,8 +23,36 @@ export const link = gql`query link( $id: ID! )
             title
             slug
         }
+
+        trail
+        {
+            id
+
+            board
+            {
+                id
+                title
+                slug
+            }
+        }
     }
-}`;
+
+`;
+
+
+export const link = gql`
+
+    query link( $id: ID! )
+    {
+        Link( id: $id )
+        {
+            ...LinkData
+        }
+    }
+
+    ${ linkData }
+
+`;
 
 
 function mapProps( { data } )

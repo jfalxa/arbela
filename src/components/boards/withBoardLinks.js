@@ -1,38 +1,28 @@
 import { gql, graphql } from 'react-apollo';
+import { linkData  }    from '../links/withLink';
 
 
-export const boardLinks = gql`query boardLinks( $slug: String! )
-{
-    Board( slug: $slug )
+export const boardLinks = gql`
+
+    query boardLinks( $slug: String! )
     {
-        id
-        title
-        slug
-        description
-
-        links( orderBy: score_DESC )
+        Board( slug: $slug )
         {
             id
             title
-            url
+            slug
             description
-            score
 
-            author
+            links( orderBy: score_DESC )
             {
-                id
-                name
-            }
-
-            board
-            {
-                id
-                title
-                slug
+                ...LinkData
             }
         }
     }
-}`;
+
+    ${ linkData }
+
+`;
 
 
 function mapProps( { data } )
