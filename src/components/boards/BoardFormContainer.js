@@ -1,8 +1,9 @@
-import React         from 'react';
-import defaults      from 'lodash/defaults';
-import kebabCase     from 'lodash/kebabCase';
-import BoardForm     from './BoardForm';
-import getInputValue from '../../utils/getInputValue';
+import React           from 'react';
+import defaults        from 'lodash/defaults';
+import kebabCase       from 'lodash/kebabCase';
+import BoardForm       from './BoardForm';
+import getInputValue   from '../../utils/getInputValue';
+import withQueryParams from '../generic/withQueryParams';
 
 
 class BoardFormContainer extends React.Component
@@ -27,7 +28,7 @@ class BoardFormContainer extends React.Component
 
     getBoard( props )
     {
-        return defaults( props.board, this.state );
+        return defaults( props.board, props.queryParams, this.state );
     }
 
 
@@ -81,4 +82,4 @@ class BoardFormContainer extends React.Component
 }
 
 
-export default BoardFormContainer;
+export default withQueryParams( BoardFormContainer );

@@ -1,7 +1,8 @@
-import React         from 'react';
-import defaults      from 'lodash/defaults';
-import LinkForm      from './LinkForm';
-import getInputValue from '../../utils/getInputValue';
+import React           from 'react';
+import defaults        from 'lodash/defaults';
+import LinkForm        from './LinkForm';
+import getInputValue   from '../../utils/getInputValue';
+import withQueryParams from '../generic/withQueryParams';
 
 
 class LinkFormContainer extends React.Component
@@ -24,7 +25,7 @@ class LinkFormContainer extends React.Component
 
     getLink( props )
     {
-        return defaults( props.link, this.state );
+        return defaults( props.link, props.queryParams, this.state );
     }
 
 
@@ -72,4 +73,4 @@ class LinkFormContainer extends React.Component
 }
 
 
-export default LinkFormContainer;
+export default withQueryParams( LinkFormContainer );
