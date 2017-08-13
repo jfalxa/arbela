@@ -1,39 +1,39 @@
 import { gql, graphql } from 'react-apollo';
 import get              from 'lodash/get';
 import pick             from 'lodash/pick';
+import { boardData }    from './withBoard';
 
 
-export const userBoards = gql`query userBoards( $name: String! )
-{
-    User( name: $name )
+export const userBoards = gql`
+
+    query userBoards( $name: String! )
     {
-        id
-        name
-
-        boards(
-            orderBy: createdAt_DESC,
-            filter: { hidden: false }
-        )
+        User( name: $name )
         {
             id
-            title
-            slug
-            description
-        }
+            name
 
-        joinedBoards(
-            orderBy: createdAt_DESC,
-            filter: { hidden: false }
-        )
-        {
-            id
-            title
-            slug
-            description
+            boards(
+                orderBy: createdAt_DESC,
+                filter: { hidden: false }
+            )
+            {
+                ...BoardData
+            }
+
+            joinedBoards(
+                orderBy: createdAt_DESC,
+                filter: { hidden: false }
+            )
+            {
+                ...BoardData
+            }
         }
     }
-}`;
 
+    ${ boardData }
+
+`;
 
 
 function mapProps( { data } )

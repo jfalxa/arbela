@@ -1,18 +1,39 @@
 import { gql, graphql } from 'react-apollo';
 
 
-export const board = gql`query board( $slug: String! )
-{
-    Board( slug: $slug )
-    {
+export const boardData = gql`
+
+     fragment BoardData on Board
+     {
         id
         title
         slug
         description
         hidden
         closed
+
+        owner
+        {
+            id
+            name
+        }
     }
-}`;
+
+`;
+
+export const board = gql`
+
+    query board( $slug: String! )
+    {
+        Board( slug: $slug )
+        {
+            ...BoardData
+        }
+    }
+
+    ${ boardData }
+
+`;
 
 
 function mapProps( { data } )

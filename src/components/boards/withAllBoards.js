@@ -1,19 +1,23 @@
 import { gql, graphql } from 'react-apollo';
+import { boardData }    from './withBoard';
 
 
-export const allBoards = gql`query allBoards
-{
-    allBoards(
-        orderBy: createdAt_DESC,
-        filter: { hidden: false }
-    )
+export const allBoards = gql`
+
+    query allBoards
     {
-        id
-        title
-        slug
-        description
+        allBoards(
+            orderBy: createdAt_DESC,
+            filter: { hidden: false }
+        )
+        {
+            ...BoardData
+        }
     }
-}`;
+
+    ${ boardData }
+
+`;
 
 
 function mapProps( { data } )
