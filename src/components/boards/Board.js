@@ -7,6 +7,9 @@ import SearchLinks     from '../links/SearchLinks';
 import BoardMemberMenu from './BoardMemberMenu';
 
 
+const Aside = Box.withComponent( 'aside' ).extend`width: 570px`;
+
+
 function Board( { search, board, loadingBoard, onVote, onSearch, onJoinBoard, onLeaveBoard } )
 {
     if ( loadingBoard && !board )
@@ -27,10 +30,10 @@ function Board( { search, board, loadingBoard, onVote, onSearch, onJoinBoard, on
                 onJoinBoard={ onJoinBoard }
                 onLeaveBoard={ onLeaveBoard } />
 
-            <Box alignSelf="stretch" justify="space-around">
+            <Aside justify="space-between">
                 <input placeholder="Search..." value={ search } onChange={ onSearch } />
                 <Link to={ `/boards/${ slug }/new-link` }>Post link to { title }</Link>
-            </Box>
+            </Aside>
 
             <SearchLinks
                 search={ search }
