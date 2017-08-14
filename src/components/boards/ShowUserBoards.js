@@ -1,16 +1,13 @@
 import React          from 'react';
+import { compose }    from 'react-apollo';
 import Page           from '../generic/Page';
 import BoardList      from './BoardList';
+import withLoader     from '../generic/withLoader';
 import withUserBoards from './withUserBoards';
 
 
-function ShowUserBoards( { user, ownedBoards, joinedBoards, loadingBoards } )
+function ShowUserBoards( { user, ownedBoards, joinedBoards } )
 {
-    if ( loadingBoards )
-    {
-        return <p>Loading...</p>;
-    }
-
     return (
 
         <Page title={ `${ user.name }'s boards` }>
@@ -27,4 +24,10 @@ function ShowUserBoards( { user, ownedBoards, joinedBoards, loadingBoards } )
 }
 
 
-export default withUserBoards( ShowUserBoards );
+const connect = compose(
+    withUserBoards,
+    withLoader( p => p.loadingBoards )
+);
+
+
+export default connect( ShowUserBoards );
