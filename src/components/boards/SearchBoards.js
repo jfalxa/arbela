@@ -1,24 +1,16 @@
-import React             from 'react';
 import pick              from 'lodash/pick';
-import Loader            from '../generic/Loader';
+import { compose }       from 'react-apollo';
 import BoardList         from './BoardList';
+import withLoader        from '../generic/withLoader';
 import withSearchBoards  from './withSearchBoards';
 import withDebounceProps from '../generic/withDebounceProps';
 
 
-function SearchBoards( { boards, loadingBoards } )
-{
-    return (
-
-        <Loader loading={ loadingBoards }>
-            <BoardList boards={ boards } />
-        </Loader>
-
-    );
-}
+const withSearch = compose(
+    withDebounceProps( props => pick( props, 'search' ) ),
+    withSearchBoards,
+    withLoader( props => props.loadingBoards )
+);
 
 
-// debounce the passing of the search prop so that we don't spam the server with queries
-const pickProps = props => pick( props, 'search' );
-
-export default withDebounceProps( pickProps )( withSearchBoards( SearchBoards ) );
+export default withSearch( BoardList );
