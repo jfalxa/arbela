@@ -4,6 +4,7 @@ import { Redirect }     from 'react-router-dom';
 import BoardMembers     from './BoardMembers';
 import withUser         from '../auth/withUser';
 import withLoader       from '../generic/withLoader';
+import withBoard        from './withBoard';
 import withAddMember    from './withAddMember';
 import withRemoveMember from './withRemoveMember';
 import withBoardMembers from './withBoardMembers';
@@ -47,7 +48,7 @@ class ShowBoard extends React.Component
 
     render()
     {
-        if ( !this.props.user )
+        if ( !this.props.user || !this.props.board )
         {
             return <Redirect to="/" />;
         }
@@ -72,6 +73,7 @@ class ShowBoard extends React.Component
 
 const connect = compose(
     withUser,
+    withBoard,
     withBoardMembers,
     withAddMember,
     withRemoveMember,

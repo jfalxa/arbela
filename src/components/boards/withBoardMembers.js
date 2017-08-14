@@ -1,6 +1,5 @@
 import { gql, graphql } from 'react-apollo';
 import get              from 'lodash/get';
-import pick             from 'lodash/pick';
 
 
 export const boardMembers = gql`query boardMembers( $slug: String! )
@@ -8,8 +7,6 @@ export const boardMembers = gql`query boardMembers( $slug: String! )
     Board( slug: $slug )
     {
         id
-        title
-        slug
 
         owner
         {
@@ -30,7 +27,6 @@ function mapProps( { data } )
 {
     const props =
     {
-        board               : pick( data.Board, ['id', 'title'] ),
         owner               : get( data, 'Board.owner' ),
         members             : get( data, 'Board.members' ),
         loadingMembers      : data.loading,
