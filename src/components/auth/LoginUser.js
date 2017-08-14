@@ -1,4 +1,7 @@
 import React          from 'react';
+import { compose }    from 'react-apollo';
+import { Redirect }   from 'react-router-dom';
+import withLoader     from '../generic/withLoader';
 import LoginForm      from './LoginForm';
 import withUser       from './withUser';
 import withSigninUser from './withSigninUser';
@@ -36,6 +39,11 @@ class Login extends React.Component
 
     render()
     {
+        if ( this.props.user )
+        {
+            return <Redirect to="/" />;
+        }
+
         const { email, password } = this.state;
 
         return (
@@ -51,4 +59,11 @@ class Login extends React.Component
 }
 
 
-export default withUser( withSigninUser( Login ) );
+const connect = compose(
+    withUser,
+    withSigninUser,
+    withLoader( p => p.loadingUser )
+);
+
+
+export default connect( Login );
