@@ -1,5 +1,6 @@
 import React            from 'react';
 import { compose }      from 'react-apollo';
+import { Redirect }     from 'react-router-dom';
 import BoardMembers     from './BoardMembers';
 import withUser         from '../auth/withUser';
 import withLoader       from '../generic/withLoader';
@@ -46,6 +47,11 @@ class ShowBoard extends React.Component
 
     render()
     {
+        if ( !this.props.user )
+        {
+            return <Redirect to="/" />;
+        }
+
         const { board, owner, members } = this.props;
 
         return (
