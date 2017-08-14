@@ -3,13 +3,8 @@ import Page                   from '../generic/Page';
 import LinkShareFormContainer from './LinkShareFormContainer';
 
 
-function LinkCreator( { boards, loadingBoards, loadingUser, onCheck, onSubmit } )
+function LinkCreator( { boards, onCheck, onSubmit } )
 {
-    if ( loadingUser || loadingBoards )
-    {
-        return <p>Loading...</p>;
-    }
-
     return (
 
         <Page title="Post new link">
