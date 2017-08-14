@@ -1,4 +1,5 @@
 import React               from 'react';
+import { Redirect }        from 'react-router-dom';
 import LinkCreator         from './LinkCreator';
 import withUser            from '../auth/withUser';
 import withCreateLink      from './withCreateLink';
@@ -22,6 +23,11 @@ class PostLink extends React.Component
 
     render()
     {
+        if ( !this.props.user )
+        {
+            return <Redirect to="/" />;
+        }
+
         const { boards, loadingUser, loadingBoards } = this.props;
 
         return (
