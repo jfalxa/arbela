@@ -1,6 +1,8 @@
 import React            from 'react';
+import { compose }      from 'react-apollo';
 import BoardMembers     from './BoardMembers';
 import withUser         from '../auth/withUser';
+import withLoader       from '../generic/withLoader';
 import withAddMember    from './withAddMember';
 import withRemoveMember from './withRemoveMember';
 import withBoardMembers from './withBoardMembers';
@@ -44,7 +46,7 @@ class ShowBoard extends React.Component
 
     render()
     {
-        const { board, owner, members, loadingMembers } = this.props;
+        const { board, owner, members } = this.props;
 
         return (
 
@@ -53,7 +55,6 @@ class ShowBoard extends React.Component
                 owner={ owner }
                 members={ members }
                 searchedUser={ this.state.searchedUser }
-                loadingMembers={ loadingMembers }
                 onSearchUser={ this.handleSearchUser }
                 onAddMember={ this.handleAddMember }
                 onRemoveMember={ this.handleRemoveMember } />
@@ -63,4 +64,12 @@ class ShowBoard extends React.Component
 }
 
 
-export default withUser( withBoardMembers( withAddMember( withRemoveMember( ShowBoard ) ) ) );
+const connect = compose(
+    withUser,
+    withBoardMembers,
+    withAddMember,
+    withRemoveMember,
+    withLoader( p => p.loadingMembers )
+);
+
+export default connect( ShowBoard );

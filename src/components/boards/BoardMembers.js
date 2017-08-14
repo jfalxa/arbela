@@ -5,13 +5,8 @@ import MemberFormContainer from './MemberFormContainer';
 import MemberList          from './MemberList';
 
 
-function BoardMembers( { board, owner, members, searchedUser, loadingMembers, onSearchUser, onAddMember, onRemoveMember } )
+function BoardMembers( { board, owner, members, searchedUser, onSearchUser, onAddMember, onRemoveMember } )
 {
-    if ( loadingMembers )
-    {
-        return <p>Loading...</p>;
-    }
-
     return (
 
         <Page title={ `${ board.title } members` }>
