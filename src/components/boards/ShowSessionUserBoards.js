@@ -1,11 +1,18 @@
 import React                 from 'react';
+import { Redirect }          from 'react-router-dom';
 import Page                  from '../generic/Page';
 import BoardList             from './BoardList';
+import withUser              from '../auth/withUser';
 import withSessionUserBoards from './withSessionUserBoards';
 
 
-function ShowSessionUserBoards( { ownedBoards, joinedBoards, loadingBoards } )
+function ShowSessionUserBoards( { user, ownedBoards, joinedBoards, loadingBoards } )
 {
+    if ( !user )
+    {
+        return <Redirect to="/" />;
+    }
+
     return (
 
         <Page title="My boards">
@@ -24,4 +31,4 @@ function ShowSessionUserBoards( { ownedBoards, joinedBoards, loadingBoards } )
 }
 
 
-export default withSessionUserBoards( ShowSessionUserBoards );
+export default withUser( withSessionUserBoards( ShowSessionUserBoards ) );
