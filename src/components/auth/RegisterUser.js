@@ -1,5 +1,8 @@
 import React          from 'react';
+import { compose }    from 'react-apollo';
+import { Redirect }   from 'react-router-dom';
 import RegisterForm   from './RegisterForm';
+import withLoader     from '../generic/withLoader';
 import withUser       from './withUser';
 import withCreateUser from './withCreateUser';
 import withSigninUser from './withSigninUser';
@@ -40,6 +43,11 @@ class Register extends React.Component
 
     render()
     {
+        if ( this.props.user )
+        {
+            return <Redirect to="/" />;
+        }
+
         const { name, email, password } = this.state;
 
         return (
@@ -56,4 +64,12 @@ class Register extends React.Component
 }
 
 
-export default withUser( withCreateUser( withSigninUser( Register ) ) );
+const connect = compose(
+    withUser,
+    withCreateUser,
+    withSigninUser,
+    withLoader( p => p.loadingUser )
+);
+
+
+export default connect( Register );
