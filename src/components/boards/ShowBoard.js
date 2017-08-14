@@ -1,6 +1,8 @@
 import React            from 'react';
+import { compose }      from 'react-apollo';
 import Board            from './Board';
 import withUser         from '../auth/withUser';
+import withLoader       from '../generic/withLoader';
 import withSearch       from '../generic/withSearch';
 import withAddMember    from './withAddMember';
 import withRemoveMember from './withRemoveMember';
@@ -42,14 +44,13 @@ class ShowBoard extends React.Component
 
     render()
     {
-        const { search, board, loadingBoard, onSearch } = this.props;
+        const { search, board, onSearch } = this.props;
 
         return (
 
             <Board
                 board={ board }
                 search={ search }
-                loadingBoard={ loadingBoard }
                 onVote={ this.handleVote }
                 onSearch={ onSearch }
                 onJoinBoard={ this.handleJoinBoard }
@@ -60,4 +61,14 @@ class ShowBoard extends React.Component
 }
 
 
-export default withSearch( withUser( withBoardLinks( withAddMember( withRemoveMember( withUpdateScore( ShowBoard ) ) ) ) ) );
+const connect = compose(
+    withSearch,
+    withUser,
+    withBoardLinks,
+    withAddMember,
+    withRemoveMember,
+    withUpdateScore,
+    withLoader( p => p.loadingBoard )
+);
+
+export default connect( ShowBoard );

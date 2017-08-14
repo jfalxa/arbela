@@ -10,13 +10,8 @@ import BoardMemberMenu from './BoardMemberMenu';
 const Aside = Box.withComponent( 'aside' ).extend`width: 570px`;
 
 
-function Board( { search, board, loadingBoard, onVote, onSearch, onJoinBoard, onLeaveBoard } )
+function Board( { search, board, onVote, onSearch, onJoinBoard, onLeaveBoard } )
 {
-    if ( loadingBoard && !board )
-    {
-        return <p>Loading...</p>;
-    }
-
     const { title, slug, description } = board;
 
     return (
