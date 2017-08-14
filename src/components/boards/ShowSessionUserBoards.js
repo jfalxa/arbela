@@ -6,8 +6,13 @@ import withUser              from '../auth/withUser';
 import withSessionUserBoards from './withSessionUserBoards';
 
 
-function ShowSessionUserBoards( { user, ownedBoards, joinedBoards, loadingBoards } )
+function ShowSessionUserBoards( { user, ownedBoards, joinedBoards, loadingUser, loadingBoards } )
 {
+    if ( loadingUser || loadingBoards )
+    {
+        return <p>Loading...</p>;
+    }
+
     if ( !user )
     {
         return <Redirect to="/" />;
@@ -17,13 +22,11 @@ function ShowSessionUserBoards( { user, ownedBoards, joinedBoards, loadingBoards
 
         <Page title="My boards">
 
-            { loadingBoards && <p>Loading...</p> }
-
             <h3>Owned</h3>
-            { ownedBoards && <BoardList boards={ ownedBoards } /> }
+            <BoardList boards={ ownedBoards } />
 
             <h3>Joined</h3>
-            { joinedBoards && <BoardList boards={ joinedBoards } /> }
+            <BoardList boards={ joinedBoards } />
 
         </Page>
 
