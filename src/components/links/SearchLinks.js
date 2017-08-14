@@ -1,6 +1,5 @@
-import React             from 'react';
-import { compose }       from 'react-apollo';
 import pick              from 'lodash/pick';
+import { compose }       from 'react-apollo';
 import LinkList          from './LinkList';
 import withLoader        from '../generic/withLoader';
 import withSearchLinks   from './withSearchLinks';
