@@ -26,7 +26,6 @@ export const availableBoards = gql`query availableBoards
 }`;
 
 
-
 function mapProps( { data } )
 {
     if ( data.loading )

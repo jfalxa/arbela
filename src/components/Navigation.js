@@ -1,22 +1,50 @@
-import React    from 'react';
-import { Link } from 'react-router-dom';
-import Box      from './generic/Box';
-import UserNav  from './auth/UserNav';
+import React      from 'react';
+import { Link }   from 'react-router-dom';
+import Box        from './generic/Box';
+import LogoutUser from './auth/LogoutUser';
+import withUser   from './auth/withUser';
 
 
 const Ul = Box.withComponent( 'ul' );
 
 
-function Navigation( props )
+function LoggedInLinks( { user } )
+{
+    return (
+
+        <li>
+            <Link to="/me">{ user.name }</Link>
+            <LogoutUser />
+        </li>
+
+    );
+}
+
+
+function LoggedOutLinks()
+{
+    return (
+
+        <li>
+            <Link to="/login">Login</Link>
+            /
+            <Link to="/register">Register</Link>
+        </li>
+
+    );
+}
+
+
+function Navigation( { user, loadingUser } )
 {
     return (
 
         <nav>
             <Ul row justify="space-around">
                 <li><Link to="/">Home</Link></li>
-                <li><Link to="/new-board">Create board</Link></li>
-                <li><Link to="/new-link">Post link</Link></li>
-                <li><UserNav /></li>
+                { user && <li><Link to="/new-board">Create board</Link></li> }
+                { user && <li><Link to="/new-link">Post link</Link></li> }
+                { user ? <LoggedInLinks user={ user } /> : <LoggedOutLinks /> }
             </Ul>
         </nav>
 
@@ -24,4 +52,4 @@ function Navigation( props )
 }
 
 
-export default Navigation;
+export default withUser( Navigation );
