@@ -1,5 +1,6 @@
 import React            from 'react';
 import { compose }      from 'react-apollo';
+import { Redirect }     from 'react-router-dom';
 import BoardLinkCreator from './BoardLinkCreator';
 import withUser         from '../auth/withUser';
 import withLoader       from '../generic/withLoader';
@@ -22,12 +23,15 @@ class PostBoardLink extends React.Component
 
     render()
     {
-        const { board } = this.props;
+        if ( !this.props.user )
+        {
+            return <Redirect to="/" />;
+        }
 
         return (
 
             <BoardLinkCreator
-                board={ board }
+                board={ this.props.board }
                 onSubmit={ this.handleSubmit } />
 
         );
