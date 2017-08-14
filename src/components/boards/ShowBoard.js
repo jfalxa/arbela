@@ -5,6 +5,7 @@ import Board            from './Board';
 import withUser         from '../auth/withUser';
 import withLoader       from '../generic/withLoader';
 import withSearch       from '../generic/withSearch';
+import withBoard        from './withBoard';
 import withAddMember    from './withAddMember';
 import withRemoveMember from './withRemoveMember';
 import withUpdateScore  from './withUpdateScore';
@@ -67,12 +68,13 @@ class ShowBoard extends React.Component
 
 
 const connect = compose(
-    withSearch,
     withUser,
+    withBoard,
+    withSearch,
     withAddMember,
     withRemoveMember,
     withUpdateScore,
-    withLoader( p => p.loadingBoard )
+    withLoader( p => p.loadingUser || p.loadingBoard )
 );
 
 export default connect( ShowBoard );
