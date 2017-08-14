@@ -1,6 +1,9 @@
 import React          from 'react';
+import { compose }    from 'react-apollo';
+import { Redirect }   from 'react-router-dom';
 import LinkEditor     from './LinkEditor';
 import withUser       from '../auth/withUser';
+import withLoader     from '../generic/withLoader';
 import withLink       from './withLink';
 import withUpdateLink from './withUpdateLink';
 import withDeleteLink from './withDeleteLink';
@@ -32,14 +35,15 @@ class EditLink extends React.Component
 
     render()
     {
-        const { link, loadingLink, loadingUser } = this.props;
+        if ( !this.props.user )
+        {
+            return <Redirect to="/" />;
+        }
 
         return (
 
             <LinkEditor
-                link={ link }
-                loadingLink={ loadingLink }
-                loadingUser={ loadingUser }
+                link={ this.props.link }
                 onSubmit={ this.handleSubmit }
                 onDelete={ this.handleDelete } />
 
@@ -48,4 +52,12 @@ class EditLink extends React.Component
 }
 
 
-export default withUser( withLink( withUpdateLink( withDeleteLink( EditLink ) ) ) );
+const connect = compose(
+    withUser,
+    withLink,
+    withUpdateLink,
+    withDeleteLink,
+    withLoader( p => p.loadingUser || p.loadingLink )
+);
+
+export default connect( EditLink );

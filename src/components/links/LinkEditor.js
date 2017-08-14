@@ -3,13 +3,8 @@ import Page              from '../generic/Page';
 import LinkFormContainer from './LinkFormContainer';
 
 
-function LinkEditor( { link, loadingLink, loadingUser, onSubmit, onDelete } )
+function LinkEditor( { link, onSubmit, onDelete } )
 {
-    if ( loadingUser || ( loadingLink && !link ) )
-    {
-        return <p>Loading...</p>;
-    }
-
     return (
 
         <Page title="Edit link">
