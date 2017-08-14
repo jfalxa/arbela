@@ -1,8 +1,10 @@
 import React           from 'react';
+import { compose }     from 'react-apollo';
 import { Redirect }    from 'react-router-dom';
 import BoardCreator    from './BoardCreator';
 import withUser        from '../auth/withUser';
 import withCreateBoard from './withCreateBoard';
+import withLoader      from '../generic/withLoader';
 
 
 class CreateBoard extends React.Component
@@ -28,11 +30,16 @@ class CreateBoard extends React.Component
         return (
 
             <BoardCreator
-                loadingUser={ this.props.loadingUser }
                 onSubmit={ this.handleSubmit } />
         );
     }
 }
 
 
-export default withUser( withCreateBoard( CreateBoard ) );
+const connect = compose(
+    withUser,
+    withCreateBoard,
+    withLoader( props => props.loadingUser )
+);
+
+export default connect( CreateBoard );

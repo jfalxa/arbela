@@ -6,11 +6,11 @@ import withSearchBoards  from './withSearchBoards';
 import withDebounceProps from '../generic/withDebounceProps';
 
 
-const withSearch = compose(
+const connect = compose(
     withDebounceProps( props => pick( props, 'search' ) ),
     withSearchBoards,
     withLoader( props => props.loadingBoards )
 );
 
 
-export default withSearch( BoardList );
+export default connect( BoardList );
