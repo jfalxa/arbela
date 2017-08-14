@@ -1,6 +1,9 @@
 import React           from 'react';
+import { compose }     from 'react-apollo';
+import { Redirect }    from 'react-router-dom';
 import BoardEditor     from './BoardEditor';
 import withUser        from '../auth/withUser';
+import withLoader      from '../generic/withLoader';
 import withBoard       from './withBoard';
 import withUpdateBoard from './withUpdateBoard';
 import withDeleteBoard from './withDeleteBoard';
@@ -32,14 +35,15 @@ class EditBoard extends React.Component
 
     render()
     {
-        const { board, loadingBoard, loadingUser } = this.props;
+        if ( !this.props.user )
+        {
+            return <Redirect to="/" />;
+        }
 
         return (
 
             <BoardEditor
-                board={ board }
-                loadingBoard={ loadingBoard }
-                loadingUser={ loadingUser }
+                board={ this.props.board }
                 onSubmit={ this.handleSubmit }
                 onDelete={ this.handleDelete } />
 
@@ -48,4 +52,12 @@ class EditBoard extends React.Component
 }
 
 
-export default withUser( withBoard( withUpdateBoard( withDeleteBoard( EditBoard ) ) ) );
+const connect = compose(
+    withUser,
+    withBoard,
+    withUpdateBoard,
+    withDeleteBoard,
+    withLoader( p => p.loadingUser || p.loadingBoard )
+);
+
+export default connect( EditBoard );

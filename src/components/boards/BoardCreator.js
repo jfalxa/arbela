@@ -3,13 +3,8 @@ import Page               from '../generic/Page';
 import BoardFormContainer from './BoardFormContainer';
 
 
-function BoardCreator( { loadingUser, onSubmit } )
+function BoardCreator( { onSubmit } )
 {
-    if ( loadingUser )
-    {
-        return <p>Loading...</p>;
-    }
-
     return (
 
         <Page title="Create new board">

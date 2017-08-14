@@ -3,13 +3,8 @@ import Page               from '../generic/Page';
 import BoardFormContainer from './BoardFormContainer';
 
 
-function BoardEditor( { board, loadingUser, loadingBoard, onSubmit, onDelete } )
+function BoardEditor( { board, onSubmit, onDelete } )
 {
-    if ( loadingUser || ( loadingBoard && !board ) )
-    {
-        return <p>Loading...</p>;
-    }
-
     return (
 
         <Page title="Edit board">
