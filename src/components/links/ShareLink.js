@@ -1,4 +1,5 @@
 import React               from 'react';
+import { Redirect }        from 'react-router-dom';
 import LinkSharer          from './LinkSharer';
 import withUser            from '../auth/withUser';
 import withLink            from './withLink';
@@ -23,6 +24,11 @@ class ShareLink extends React.Component
 
     render()
     {
+        if ( !this.props.user )
+        {
+            return <Redirect to="/" />;
+        }
+
         const { link, boards, loadingUser, loadingLink, loadingBoards } = this.props;
 
         return (
