@@ -35,7 +35,7 @@ class EditBoard extends React.Component
 
     render()
     {
-        if ( !this.props.user )
+        if ( !this.props.user || !this.props.board )
         {
             return <Redirect to="/" />;
         }
