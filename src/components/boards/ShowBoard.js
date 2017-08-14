@@ -1,12 +1,12 @@
 import React            from 'react';
 import { compose }      from 'react-apollo';
+import { Redirect }     from 'react-router-dom';
 import Board            from './Board';
 import withUser         from '../auth/withUser';
 import withLoader       from '../generic/withLoader';
 import withSearch       from '../generic/withSearch';
 import withAddMember    from './withAddMember';
 import withRemoveMember from './withRemoveMember';
-import withBoardLinks   from './withBoardLinks';
 import withUpdateScore  from './withUpdateScore';
 
 
@@ -44,6 +44,11 @@ class ShowBoard extends React.Component
 
     render()
     {
+        if ( !this.props.board )
+        {
+            return <Redirect to="/" />;
+        }
+
         const { search, board, onSearch } = this.props;
 
         return (
@@ -64,7 +69,6 @@ class ShowBoard extends React.Component
 const connect = compose(
     withSearch,
     withUser,
-    withBoardLinks,
     withAddMember,
     withRemoveMember,
     withUpdateScore,
