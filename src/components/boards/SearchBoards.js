@@ -1,5 +1,6 @@
 import React             from 'react';
 import pick              from 'lodash/pick';
+import Loader            from '../generic/Loader';
 import BoardList         from './BoardList';
 import withSearchBoards  from './withSearchBoards';
 import withDebounceProps from '../generic/withDebounceProps';
@@ -7,9 +8,13 @@ import withDebounceProps from '../generic/withDebounceProps';
 
 function SearchBoards( { boards, loadingBoards } )
 {
-    return loadingBoards
-        ? <p>Loading...</p>
-        : <BoardList boards={ boards } />;
+    return (
+
+        <Loader loading={ loadingBoards }>
+            <BoardList boards={ boards } />
+        </Loader>
+
+    );
 }
 
 
