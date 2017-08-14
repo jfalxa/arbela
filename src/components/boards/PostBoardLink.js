@@ -1,6 +1,8 @@
 import React            from 'react';
+import { compose }      from 'react-apollo';
 import BoardLinkCreator from './BoardLinkCreator';
 import withUser         from '../auth/withUser';
+import withLoader       from '../generic/withLoader';
 import withBoard        from './withBoard';
 import withCreateLink   from '../links/withCreateLink';
 
@@ -20,14 +22,12 @@ class PostBoardLink extends React.Component
 
     render()
     {
-        const { board, loadingBoard, loadingUser } = this.props;
+        const { board } = this.props;
 
         return (
 
             <BoardLinkCreator
                 board={ board }
-                loadingBoard={ loadingBoard }
-                loadingUser={ loadingUser }
                 onSubmit={ this.handleSubmit } />
 
         );
@@ -35,4 +35,12 @@ class PostBoardLink extends React.Component
 }
 
 
-export default withUser( withBoard( withCreateLink( PostBoardLink ) ) );
+const connect = compose(
+    withUser,
+    withBoard,
+    withCreateLink,
+    withLoader( p => p.loadingUser || p.loadingBoard )
+);
+
+
+export default connect( PostBoardLink );

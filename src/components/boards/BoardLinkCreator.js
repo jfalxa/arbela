@@ -3,13 +3,8 @@ import Page              from '../generic/Page';
 import LinkFormContainer from '../links/LinkFormContainer';
 
 
-function BoardLinkCreator( { board, loadingBoard, loadingUser, onSubmit } )
+function BoardLinkCreator( { board, onSubmit } )
 {
-    if ( loadingBoard || loadingUser )
-    {
-        return <p>Loading...</p>;
-    }
-
     return (
 
         <Page title={ `Post new link to ${ board.title }` }>
