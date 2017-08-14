@@ -1,19 +1,17 @@
 import React             from 'react';
+import { compose }       from 'react-apollo';
 import pick              from 'lodash/pick';
 import LinkList          from './LinkList';
+import withLoader        from '../generic/withLoader';
 import withSearchLinks   from './withSearchLinks';
 import withDebounceProps from '../generic/withDebounceProps';
 
 
-function SearchLinks( { links, loadingLinks } )
-{
-    return loadingLinks
-        ? <p>Loading...</p>
-        : <LinkList links={ links } />;
-}
+const connect = compose(
+    withDebounceProps( p => pick( p, 'search' ) ),
+    withSearchLinks,
+    withLoader( p => p.loadingLinks )
+);
 
 
-// debounce the passing of the search prop so that we don't spam the server with queries
-const pickProps = props => pick( props, 'search' );
-
-export default withDebounceProps( pickProps )( withSearchLinks( SearchLinks ) );
+export default connect( LinkList );
