@@ -1,4 +1,5 @@
 import React           from 'react';
+import { Redirect }    from 'react-router-dom';
 import BoardCreator    from './BoardCreator';
 import withUser        from '../auth/withUser';
 import withCreateBoard from './withCreateBoard';
@@ -19,6 +20,11 @@ class CreateBoard extends React.Component
 
     render()
     {
+        if ( !this.props.user )
+        {
+            return <Redirect to="/" />;
+        }
+
         return (
 
             <BoardCreator
