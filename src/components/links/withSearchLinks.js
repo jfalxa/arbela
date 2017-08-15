@@ -1,11 +1,12 @@
-import { gql, graphql } from 'react-apollo';
-import get              from 'lodash/get';
-import { linkData }     from './withLink';
+import { gql, graphql }  from 'react-apollo';
+import { filterSearch }  from '../../utils/linkFilter';
+import { mapLinkAccess } from '../../utils/linkAccess';
+import { linkData }      from './withLink';
 
 
 export const searchLinks = gql`
 
-    query searchLinks( $board: ID!, $criteria: LinkFilter! )
+    query searchLinks( $board: ID!, $filter: LinkFilter! )
     {
         Board( id: $board )
         {
@@ -13,7 +14,7 @@ export const searchLinks = gql`
 
             links(
                 orderBy: score_DESC,
-                filter: $criteria
+                filter: $filter
             )
             {
                 ...LinkData
@@ -26,21 +27,20 @@ export const searchLinks = gql`
 `;
 
 
-function buildCriteria( search )
-{
-    const tokens = search ? search.split( ' ' ) : [];
-
-    const titleCriteria       = tokens.map( token => ( { title_contains: token } ) );
-    const urlCriteria         = tokens.map( token => ( { url_contains: token } ) );
-    const descriptionCriteria = tokens.map( token => ( { description_contains: token } ) );
-
-    return [...titleCriteria, ...urlCriteria, ...descriptionCriteria];
-}
-
-
 function mapProps( { data, ownProps } )
 {
-    return { loadingLinks: data.loading, links: get( data, 'Board.links' ) };
+    if ( data.loading )
+    {
+        return { loadingLinks: true };
+    }
+
+    const props =
+    {
+        links        : mapLinkAccess( data.Board.links, ownProps.user ),
+        loadingLinks : false
+    };
+
+    return props;
 }
 
 
@@ -52,8 +52,8 @@ function mapOptions( { board, search } )
 
         variables :
         {
-            board    : board.id,
-            criteria : { OR: buildCriteria( search ) }
+            board  : board.id,
+            filter : filterSearch( search )
         }
     };
 
