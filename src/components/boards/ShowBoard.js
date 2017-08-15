@@ -15,20 +15,22 @@ class ShowBoard extends React.Component
 {
     handleJoinBoard = () =>
     {
-        const { user, board, addMember } = this.props;
+        const { user, board, addMember, refetchBoard } = this.props;
 
         addMember( board.id, user.id )
             .then( res => console.log( 'Joined board', res ) )
+            .then( refetchBoard )
             .catch( err => console.log( 'Failed joining board', err ) );
     }
 
 
     handleLeaveBoard = () =>
     {
-        const { user, board, removeMember } = this.props;
+        const { user, board, removeMember, refetchBoard } = this.props;
 
         removeMember( board.id, user.id )
             .then( res => console.log( 'Leaved board', res ) )
+            .then( refetchBoard )
             .catch( err => console.log( 'Failed leaving board', err ) );
     }
 
@@ -50,12 +52,13 @@ class ShowBoard extends React.Component
             return <Redirect to="/" />;
         }
 
-        const { search, board, onSearch } = this.props;
+        const { search, board, access, onSearch } = this.props;
 
         return (
 
             <Board
                 board={ board }
+                access={ access }
                 search={ search }
                 onVote={ this.handleVote }
                 onSearch={ onSearch }

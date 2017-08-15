@@ -15,14 +15,32 @@ const Aside = Box.withComponent( 'aside' ).extend`
 `;
 
 
-function BoardMemberMenu( { board, onJoinBoard, onLeaveBoard } )
+function hasAccess( access )
+{
+    return ( access.isOwner || access.isMember );
+}
+
+
+function canJoin( access, board )
+{
+    return ( access.isAuth && !hasAccess( access ) );
+}
+
+
+function canLeave( access )
+{
+    return ( access.isAuth && access.isMember );
+}
+
+
+function BoardMemberMenu( { board, access, onJoinBoard, onLeaveBoard } )
 {
     return (
 
         <Aside>
-            <Link to={ `/boards/${ board }/members` }>Members</Link>
-            <button onClick={ onJoinBoard }>Join board</button>
-            <button onClick={ onLeaveBoard }>Leave board</button>
+            { hasAccess( access ) && <Link to={ `/boards/${ board.slug }/members` }>Members</Link> }
+            { !board.closed && canJoin( access, board ) && <button onClick={ onJoinBoard }>Join board</button> }
+            { canLeave( access ) && <button onClick={ onLeaveBoard }>Leave board</button> }
         </Aside>
 
     );

@@ -10,7 +10,7 @@ import BoardMemberMenu from './BoardMemberMenu';
 const Aside = Box.withComponent( 'aside' ).extend`width: 570px`;
 
 
-function Board( { search, board, onVote, onSearch, onJoinBoard, onLeaveBoard } )
+function Board( { search, board, access, onVote, onSearch, onJoinBoard, onLeaveBoard } )
 {
     const { title, slug, description } = board;
 
@@ -21,7 +21,8 @@ function Board( { search, board, onVote, onSearch, onJoinBoard, onLeaveBoard } )
             <PageInfo>{ description }</PageInfo>
 
             <BoardMemberMenu
-                board={ slug }
+                board={ board }
+                access={ access }
                 onJoinBoard={ onJoinBoard }
                 onLeaveBoard={ onLeaveBoard } />
 
