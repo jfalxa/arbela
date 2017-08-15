@@ -48,7 +48,7 @@ class ShowBoard extends React.Component
 
     render()
     {
-        if ( !this.props.board )
+        if ( !hasAccess( this.props.access ) )
         {
             return <Redirect to="/" />;
         }
