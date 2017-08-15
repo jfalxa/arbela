@@ -34,7 +34,7 @@ export const searchLinks = gql`
 
 function mapProps( { data, ownProps } )
 {
-    if ( data.loading )
+    if ( data.loading && !data.Board )
     {
         return { loadingLinks: true };
     }
@@ -42,6 +42,7 @@ function mapProps( { data, ownProps } )
     const props =
     {
         links        : mapLinkAccess( data.Board.links, ownProps.user ),
+        refetchLinks : data.refetch,
         loadingLinks : false
     };
 
