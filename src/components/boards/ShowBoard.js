@@ -1,7 +1,6 @@
 import React            from 'react';
 import { compose }      from 'react-apollo';
 import { Redirect }     from 'react-router-dom';
-import { hasAccess }    from '../../utils/boardAccess';
 import Board            from './Board';
 import withUser         from '../auth/withUser';
 import withLoader       from '../generic/withLoader';
@@ -48,7 +47,7 @@ class ShowBoard extends React.Component
 
     render()
     {
-        if ( !hasAccess( this.props.access ) )
+        if ( !this.props.board )
         {
             return <Redirect to="/" />;
         }
