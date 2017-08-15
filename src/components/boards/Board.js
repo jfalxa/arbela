@@ -1,5 +1,6 @@
 import React           from 'react';
 import { Link }        from 'react-router-dom';
+import { hasAccess }   from '../../utils/boardAccess';
 import Page            from '../generic/Page';
 import PageInfo        from '../generic/PageInfo';
 import Box             from '../generic/Box';
@@ -29,7 +30,7 @@ function Board( { search, board, access, onVote, onSearch, onJoinBoard, onLeaveB
 
             <Aside justify="space-between">
                 <input placeholder="Search..." value={ search } onChange={ onSearch } />
-                <Link to={ `/boards/${ slug }/new-link` }>Post link to { title }</Link>
+                { hasAccess( access ) && <Link to={ `/boards/${ slug }/new-link` }>Post link to { title }</Link> }
             </Aside>
 
             <SearchLinks

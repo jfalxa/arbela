@@ -64,7 +64,7 @@ function mapProps( { data, ownProps } )
 
     const props =
     {
-        access : getLinkAccess( link, ownProps.user ),
+        access : getLinkAccess( data.Link, ownProps.user ),
         link   : data.Link
     };
 

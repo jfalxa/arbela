@@ -20,3 +20,13 @@ export function mapLinkAccess( links, user )
     ) );
 }
 
+
+export function canVote( access, closed )
+{
+    if ( closed )
+    {
+        return access.isMember && !access.hasVoted;
+    }
+
+    return access.isAuth && !access.hasVoted;
+}

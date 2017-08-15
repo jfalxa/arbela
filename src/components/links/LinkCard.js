@@ -1,12 +1,13 @@
-import React      from 'react';
-import { Link }   from 'react-router-dom';
-import Box        from '../generic/Box';
-import Card       from '../generic/Card';
-import CardHeader from '../generic/CardHeader';
-import CardBody   from '../generic/CardBody';
-import CardAside  from '../generic/CardAside';
-import LinkVote   from './LinkVote';
-import LinkTrail  from './LinkTrail';
+import React       from 'react';
+import { Link }    from 'react-router-dom';
+import { canVote } from '../../utils/linkAccess';
+import Box         from '../generic/Box';
+import Card        from '../generic/Card';
+import CardHeader  from '../generic/CardHeader';
+import CardBody    from '../generic/CardBody';
+import CardAside   from '../generic/CardAside';
+import LinkVote    from './LinkVote';
+import LinkTrail   from './LinkTrail';
 
 
 const Li = Box.withComponent( 'li' );
@@ -20,7 +21,7 @@ function LinkCard( { access, id, title, url, description, score, author, board, 
 
             <LinkVote
                 score={ score }
-                locked={ !access.isAuth || access.hasVoted }
+                locked={ !canVote( access ) }
                 onVote={ onVote } />
 
             <Card>
