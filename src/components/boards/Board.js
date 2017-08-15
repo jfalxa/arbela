@@ -35,6 +35,7 @@ function Board( { search, board, access, onVote, onSearch, onJoinBoard, onLeaveB
             <SearchLinks
                 search={ search }
                 board={ board }
+                access={ access }
                 onVote={ onVote } />
 
         </Page>

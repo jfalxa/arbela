@@ -3,7 +3,7 @@ import CardList from '../generic/CardList';
 import LinkCard from './LinkCard';
 
 
-function LinkList( { links, onVote } )
+function LinkList( { links, access, onVote } )
 {
     return (
 
@@ -13,6 +13,7 @@ function LinkList( { links, onVote } )
 
                 <LinkCard { ...link }
                     key={ link.id }
+                    access={ { ...access, ...link.access } }
                     onVote={ vote => onVote( link, vote ) } />
 
             ) ) }

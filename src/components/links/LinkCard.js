@@ -20,7 +20,7 @@ function LinkCard( { access, id, title, url, description, score, author, board, 
 
             <LinkVote
                 score={ score }
-                locked={ access.hasVoted }
+                locked={ !access.isAuth || access.hasVoted }
                 onVote={ onVote } />
 
             <Card>
@@ -36,7 +36,7 @@ function LinkCard( { access, id, title, url, description, score, author, board, 
             </Card>
 
             <CardAside>
-                <Link to={ `/links/${ id }/share` }>(share)</Link>
+                { access.isAuth && <Link to={ `/links/${ id }/share` }>(share)</Link> }
             </CardAside>
 
         </Li>
