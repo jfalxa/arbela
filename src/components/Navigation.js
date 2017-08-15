@@ -5,7 +5,11 @@ import LogoutUser from './auth/LogoutUser';
 import withUser   from './auth/withUser';
 
 
-const Ul = Box.withComponent( 'ul' );
+const Ul = Box.withComponent( 'ul' ).extend`
+
+    padding: 0 50px;
+
+`;
 
 
 function LoggedInLinks( { user } )
@@ -40,7 +44,7 @@ function Navigation( { user, loadingUser } )
     return (
 
         <nav>
-            <Ul row justify="space-around">
+            <Ul row justify="space-between">
                 <li><Link to="/">Home</Link></li>
                 { user && <li><Link to="/new-board">Create board</Link></li> }
                 { user && <li><Link to="/new-link">Post link</Link></li> }
