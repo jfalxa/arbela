@@ -1,4 +1,5 @@
-import { gql, graphql } from 'react-apollo';
+import { gql, graphql }  from 'react-apollo';
+import { getLinkAccess } from '../../utils/linkAccess';
 
 
 export const linkData = gql`
@@ -36,11 +37,16 @@ export const linkData = gql`
 
 export const link = gql`
 
-    query link( $id: ID! )
+    query link( $id: ID!, $user: ID )
     {
         Link( id: $id )
         {
             ...LinkData
+
+            _votersMeta( filter: { id: $user } )
+            {
+                count
+            }
         }
     }
 
@@ -49,15 +55,37 @@ export const link = gql`
 `;
 
 
-function mapProps( { data } )
+function mapProps( { data, ownProps } )
 {
-    return { loadingLink: data.loading, link: data.Link };
+    if ( data.loadingLink )
+    {
+        return { loadingLink: true };
+    }
+
+    const props =
+    {
+        access : getLinkAccess( link, ownProps.user ),
+        link   : data.Link
+    };
+
+    return props;
 }
 
 
-function mapOptions( { id, match } )
+function mapOptions( { id, user, match } )
 {
-    return { variables: { id: id || match.params.id }, fetchPolicy: 'cache-and-network' };
+    const options =
+    {
+        variables :
+        {
+            id   : id || match.params.id,
+            user : user && user.id
+        },
+
+        fetchPolicy : 'cache-and-network'
+    };
+
+    return options;
 }
 
 

@@ -5,6 +5,7 @@ export function getLinkAccess( link, user )
 
     const access =
     {
+        hasVoted : hasLink && ( link._votersMeta.count === 1 ),
         isAuthor : hasLink && hasUser && ( link.author.id === user.id )
     };
 

@@ -6,7 +6,7 @@ import { linkData }      from './withLink';
 
 export const searchLinks = gql`
 
-    query searchLinks( $board: ID!, $filter: LinkFilter! )
+    query searchLinks( $board: ID!, $filter: LinkFilter!, $user: ID )
     {
         Board( id: $board )
         {
@@ -18,6 +18,11 @@ export const searchLinks = gql`
             )
             {
                 ...LinkData
+
+                _votersMeta( filter: { id: $user } )
+                {
+                    count
+                }
             }
         }
     }
@@ -44,7 +49,7 @@ function mapProps( { data, ownProps } )
 }
 
 
-function mapOptions( { board, search } )
+function mapOptions( { board, user, search } )
 {
     const options =
     {
@@ -53,6 +58,7 @@ function mapOptions( { board, search } )
         variables :
         {
             board  : board.id,
+            user   : user && user.id,
             filter : filterSearch( search )
         }
     };
