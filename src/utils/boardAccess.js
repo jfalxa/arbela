@@ -4,10 +4,18 @@ export function getBoardAccess( board, user )
     {
         isAuth   : Boolean( user ),
         isMember : board._membersMeta.count === 1,
-        isOwner  : user && ( board.owner.id === user.id )
+        isOwner  : Boolean( user ) && ( board.owner.id === user.id )
     };
 
     return access;
+}
+
+
+export function mapBoardAccess( boards, user )
+{
+    return boards.map( board => (
+        { ...board, access: getBoardAccess( board, user ) }
+    ) );
 }
 
 

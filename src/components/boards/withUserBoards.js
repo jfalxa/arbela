@@ -1,12 +1,12 @@
-import { gql, graphql } from 'react-apollo';
-import get              from 'lodash/get';
-import pick             from 'lodash/pick';
-import { boardData }    from './withBoard';
+import { gql, graphql }   from 'react-apollo';
+import pick               from 'lodash/pick';
+import { mapBoardAccess } from '../../utils/boardAccess';
+import { boardData }      from './withBoard';
 
 
 export const userBoards = gql`
 
-    query userBoards( $name: String! )
+    query userBoards( $name: String!, $user: ID )
     {
         User( name: $name )
         {
@@ -19,6 +19,11 @@ export const userBoards = gql`
             )
             {
                 ...BoardData
+
+                _membersMeta( filter: { id: $user } )
+                {
+                    count
+                }
             }
 
             joinedBoards(
@@ -26,7 +31,13 @@ export const userBoards = gql`
                 filter: { hidden: false }
             )
             {
+
                 ...BoardData
+
+                _membersMeta( filter: { id: $user } )
+                {
+                    count
+                }
             }
         }
     }
@@ -36,23 +47,42 @@ export const userBoards = gql`
 `;
 
 
-function mapProps( { data } )
+function mapProps( { data, ownProps } )
 {
+    if ( data.loading )
+    {
+        return { loadingBoards: true };
+    }
+
+    const { User } = data;
+    const { user } = ownProps;
+
     const props =
     {
-        loadingBoards : data.loading,
-        user          : pick( data.User, ['id', 'name'] ),
-        ownedBoards   : get( data, 'User.boards' ),
-        joinedBoards  : get( data, 'User.joinedBoards' )
+        loadingBoards : false,
+        user          : pick( User, ['id', 'name'] ),
+        ownedBoards   : mapBoardAccess( User.boards, user ),
+        joinedBoards  : mapBoardAccess( User.joinedBoards, user ),
     };
 
     return props;
 }
 
 
-function mapOptions( { match } )
+function mapOptions( { match, user } )
 {
-    return { variables: { name: match.params.name }, fetchPolicy: 'cache-and-network' };
+    const options =
+    {
+        variables:
+        {
+            name : match.params.name,
+            user : user && user.id
+        },
+
+        fetchPolicy: 'cache-and-network'
+    };
+
+    return options;
 }
 
 

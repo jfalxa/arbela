@@ -2,6 +2,7 @@ import React          from 'react';
 import { compose }    from 'react-apollo';
 import Page           from '../generic/Page';
 import BoardList      from './BoardList';
+import withUser       from '../auth/withUser';
 import withLoader     from '../generic/withLoader';
 import withUserBoards from './withUserBoards';
 
@@ -25,6 +26,7 @@ function ShowUserBoards( { user, ownedBoards, joinedBoards } )
 
 
 const connect = compose(
+    withUser,
     withUserBoards,
     withLoader( p => p.loadingBoards )
 );

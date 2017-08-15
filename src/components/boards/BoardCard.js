@@ -13,8 +13,6 @@ const Li = Box.withComponent( 'li' );
 
 function BoardCard( { access, slug, title, description, closed, hidden, owner } )
 {
-    const board = { slug, hidden, closed };
-
     return (
 
         <Li column>
@@ -22,7 +20,11 @@ function BoardCard( { access, slug, title, description, closed, hidden, owner } 
             <Card>
 
                 <CardHeader title={ title } url={ `/boards/${ slug }` }>
-                    <BoardAccessBadge board={ board } access={ access } />
+
+                    <BoardAccessBadge
+                        board={ { slug, hidden, closed } }
+                        access={ access } />
+
                 </CardHeader>
 
                 <CardLinks>
