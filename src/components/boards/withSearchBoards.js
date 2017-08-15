@@ -1,10 +1,11 @@
-import { gql, graphql } from 'react-apollo';
-import { boardData }    from './withBoard';
+import { gql, graphql }   from 'react-apollo';
+import { getBoardAccess } from '../../utils/boardAccess';
+import { boardData }      from './withBoard';
 
 
 export const searchBoards = gql`
 
-    query allBoards( $filter: BoardFilter! )
+    query allBoards( $filter: BoardFilter!, $user: ID )
     {
         allBoards(
             orderBy: createdAt_DESC,
@@ -12,6 +13,11 @@ export const searchBoards = gql`
         )
         {
             ...BoardData
+
+            _membersMeta( filter: { id: $user } )
+            {
+                count
+            }
         }
     }
 
@@ -33,7 +39,16 @@ function buildFilter( search )
 
 function mapProps( { data, ownProps } )
 {
-    return { loadingBoards: data.loading, boards: data.allBoards };
+    if ( data.loading )
+    {
+        return { loadingBoards: true };
+    }
+
+    const boards = data.allBoards.map( board => (
+        { ...board, access: getBoardAccess( board, ownProps.user ) }
+    ) );
+
+    return { boards, loadingBoards: false };
 }
 
 
@@ -64,7 +79,7 @@ function mapOptions( { user, search } )
 
     const options =
     {
-        variables   : { filter },
+        variables   : { filter, user: user && user.id },
         fetchPolicy : 'cache-and-network'
     };
 

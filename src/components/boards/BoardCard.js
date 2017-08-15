@@ -1,17 +1,20 @@
-import React      from 'react';
-import { Link }   from 'react-router-dom';
-import Box        from '../generic/Box';
-import Card       from '../generic/Card';
-import CardHeader from '../generic/CardHeader';
-import CardLinks  from '../generic/CardLinks';
-import CardBody   from '../generic/CardBody';
+import React            from 'react';
+import { Link }         from 'react-router-dom';
+import Box              from '../generic/Box';
+import Card             from '../generic/Card';
+import CardHeader       from '../generic/CardHeader';
+import CardLinks        from '../generic/CardLinks';
+import CardBody         from '../generic/CardBody';
+import BoardAccessBadge from './BoardAccessBadge';
 
 
 const Li = Box.withComponent( 'li' );
 
 
-function BoardCard( { slug, title, description, owner } )
+function BoardCard( { access, slug, title, description, closed, hidden, owner } )
 {
+    const board = { slug, hidden, closed };
+
     return (
 
         <Li column>
@@ -19,7 +22,7 @@ function BoardCard( { slug, title, description, owner } )
             <Card>
 
                 <CardHeader title={ title } url={ `/boards/${ slug }` }>
-                    <Link to={ `/boards/${ slug }/edit` }>(edit)</Link>
+                    <BoardAccessBadge board={ board } access={ access } />
                 </CardHeader>
 
                 <CardLinks>

@@ -1,4 +1,5 @@
-import { gql, graphql } from 'react-apollo';
+import { gql, graphql }   from 'react-apollo';
+import { getBoardAccess } from '../../utils/boardAccess';
 
 
 export const boardData = gql`
@@ -51,13 +52,7 @@ function mapProps( { data, ownProps } )
     const board        = data.Board;
     const { user }     = ownProps;
     const refetchBoard = data.refetch;
-
-    const access =
-    {
-        isAuth   : Boolean( user ),
-        isMember : board._membersMeta.count === 1,
-        isOwner  : user && ( board.owner.id === user.id )
-    };
+    const access       = getBoardAccess( board, user );
 
     return { board, access, refetchBoard, loadingBoard: false };
 }
