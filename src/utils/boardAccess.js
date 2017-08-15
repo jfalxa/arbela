@@ -1,10 +1,13 @@
 export function getBoardAccess( board, user )
 {
+    const hasUser  = Boolean( user );
+    const hasBoard = Boolean( board );
+
     const access =
     {
-        isAuth   : Boolean( user ),
-        isMember : board._membersMeta.count === 1,
-        isOwner  : Boolean( user ) && ( board.owner.id === user.id )
+        isAuth   : hasUser,
+        isMember : hasBoard && board._membersMeta.count === 1,
+        isOwner  : hasBoard && hasUser && ( board.owner.id === user.id )
     };
 
     return access;
