@@ -2,14 +2,14 @@ import React     from 'react';
 import CardAside from '../generic/CardAside';
 
 
-function BoardLinkVote( { score, onVote } )
+function BoardLinkVote( { score, locked, onVote } )
 {
     return (
 
         <CardAside>
-            <button onClick={ e => onVote( 1 ) }>+</button>
+            { !locked && <button onClick={ e => onVote( 1 ) }>+</button> }
             <span>{ score || 0 }</span>
-            <button onClick={ e => onVote( -1 ) }>-</button>
+            { !locked && <button onClick={ e => onVote( -1 ) }>-</button> }
         </CardAside>
 
     );

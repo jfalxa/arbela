@@ -20,6 +20,7 @@ function LinkCard( { access, id, title, url, description, score, author, board, 
 
             <LinkVote
                 score={ score }
+                locked={ access.hasVoted }
                 onVote={ onVote } />
 
             <Card>
