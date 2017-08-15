@@ -16,7 +16,7 @@ const Aside = Box.withComponent( 'aside' ).extend`
 `;
 
 
-function BoardMemberMenu( { slug, closed, access, onJoinBoard, onLeaveBoard } )
+function BoardMemberMenu( { slug, closed, owner, access, onJoinBoard, onLeaveBoard } )
 {
     return (
 
@@ -24,6 +24,7 @@ function BoardMemberMenu( { slug, closed, access, onJoinBoard, onLeaveBoard } )
             { hasAccess( access ) && <Link to={ `/boards/${ slug }/members` }>Members</Link> }
             { !closed && canJoin( access ) && <button onClick={ onJoinBoard }>Join board</button> }
             { canLeave( access ) && <button onClick={ onLeaveBoard }>Leave board</button> }
+            by <Link to={ `/users/${ owner.name }` }>@{ owner.name }</Link>
         </Aside>
 
     );
