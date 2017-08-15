@@ -19,7 +19,10 @@ function Board( { search, board, access, onVote, onSearch, onJoinBoard, onLeaveB
 
         <Page title={ title }>
 
-            <PageInfo>{ description }</PageInfo>
+            <PageInfo>
+                { description }
+                { access.isOwner && <Link to={ `/boards/${ slug }/edit` }>(edit)</Link> }
+            </PageInfo>
 
             <BoardMemberMenu
                 slug={ slug }
