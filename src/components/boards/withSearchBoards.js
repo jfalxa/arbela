@@ -4,11 +4,11 @@ import { boardData }    from './withBoard';
 
 export const searchBoards = gql`
 
-    query allBoards( $criteria: BoardFilter! )
+    query allBoards( $filter: BoardFilter! )
     {
         allBoards(
             orderBy: createdAt_DESC,
-            filter: $criteria
+            filter: $filter
         )
         {
             ...BoardData
@@ -20,14 +20,14 @@ export const searchBoards = gql`
 `;
 
 
-function buildCriteria( search )
+function buildFilter( search )
 {
     const tokens = search.split( ' ' );
 
-    const titleCriteria       = tokens.map( token => ( { title_contains: token } ) );
-    const descriptionCriteria = tokens.map( token => ( { description_contains: token } ) );
+    const titleFilter       = tokens.map( token => ( { title_contains: token } ) );
+    const descriptionFilter = tokens.map( token => ( { description_contains: token } ) );
 
-    return [...titleCriteria, ...descriptionCriteria];
+    return { OR: [...titleFilter, ...descriptionFilter] };
 }
 
 
@@ -37,17 +37,34 @@ function mapProps( { data, ownProps } )
 }
 
 
-function mapOptions( { search } )
+function mapOptions( { user, search } )
 {
-    const criteria =
+    // as long as the user is not authenticated, only show public boards
+    // when logged in also show hidden boards that the user is member/owner of
+    const userFilter = ( !user )
+        ? { hidden: false }
+        : {
+            OR:
+            [
+                { hidden: false },
+                { owner: { id: user.id } },
+                { members_some: { id: user.id } }
+            ]
+        };
+
+    const filter =
     {
-        hidden : false,
-        OR     : buildCriteria( search )
-    };
+        AND:
+        [
+            userFilter,
+            buildFilter( search )
+        ]
+    }
+
 
     const options =
     {
-        variables   : { criteria },
+        variables   : { filter },
         fetchPolicy : 'cache-and-network'
     };
 

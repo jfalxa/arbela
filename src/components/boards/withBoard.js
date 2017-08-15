@@ -23,11 +23,16 @@ export const boardData = gql`
 
 export const board = gql`
 
-    query board( $slug: String! )
+    query board( $slug: String!, $user: ID )
     {
         Board( slug: $slug )
         {
             ...BoardData
+
+            _membersMeta( filter: { id: $user } )
+            {
+                count
+            }
         }
     }
 
@@ -42,9 +47,20 @@ function mapProps( { data } )
 }
 
 
-function mapOptions( { match } )
+function mapOptions( { user, match } )
 {
-    return { variables: { slug: match.params.slug }, fetchPolicy: 'cache-and-network' };
+    const options =
+    {
+        variables :
+        {
+            user : user && user.id,
+            slug : match.params.slug
+        },
+
+        fetchPolicy : 'cache-and-network'
+    };
+
+    return options;
 }
 
 
