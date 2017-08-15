@@ -1,6 +1,7 @@
 import React            from 'react';
 import { compose }      from 'react-apollo';
 import { Redirect }     from 'react-router-dom';
+import { hasAccess }    from '../../utils/boardAccess';
 import Board            from './Board';
 import withUser         from '../auth/withUser';
 import withLoader       from '../generic/withLoader';

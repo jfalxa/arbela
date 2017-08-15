@@ -28,7 +28,7 @@ export function hasAccess( access )
 }
 
 
-export function canJoin( access, board )
+export function canJoin( access )
 {
     return ( access.isAuth && !hasAccess( access ) );
 }
