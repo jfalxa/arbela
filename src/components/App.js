@@ -4,7 +4,6 @@ import Box                   from './generic/Box';
 import Navigation            from './Navigation';
 import CreateBoard           from './boards/CreateBoard';
 import ShowBoardSearch       from './boards/ShowBoardSearch';
-import ShowSessionUserBoards from './boards/ShowSessionUserBoards';
 import ShowUserBoards        from './boards/ShowUserBoards';
 import ShowBoard             from './boards/ShowBoard';
 import EditBoard             from './boards/EditBoard';
@@ -33,7 +32,6 @@ function App()
                 <Route exact path="/" component={ ShowBoardSearch } />
 
                 <Route path="/new-board" component={ CreateBoard } />
-                <Route path="/me" component={ ShowSessionUserBoards } />
                 <Route path="/users/:name" component={ ShowUserBoards } />
                 <Route exact path="/boards/:slug" component={ ShowBoard } />
                 <Route path="/boards/:slug/edit" component={ EditBoard } />

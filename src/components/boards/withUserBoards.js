@@ -1,12 +1,13 @@
 import { gql, graphql }   from 'react-apollo';
 import pick               from 'lodash/pick';
 import { mapBoardAccess } from '../../utils/boardAccess';
+import { filterUser }     from '../../utils/boardFilter';
 import { boardData }      from './withBoard';
 
 
 export const userBoards = gql`
 
-    query userBoards( $name: String!, $user: ID )
+    query userBoards( $name: String!, $user: ID, $filter: BoardFilter! )
     {
         User( name: $name )
         {
@@ -15,7 +16,7 @@ export const userBoards = gql`
 
             boards(
                 orderBy: createdAt_DESC,
-                filter: { hidden: false }
+                filter: $filter
             )
             {
                 ...BoardData
@@ -28,7 +29,7 @@ export const userBoards = gql`
 
             joinedBoards(
                 orderBy: createdAt_DESC,
-                filter: { hidden: false }
+                filter: $filter
             )
             {
 
@@ -75,8 +76,9 @@ function mapOptions( { match, user } )
     {
         variables:
         {
-            name : match.params.name,
-            user : user && user.id
+            name   : match.params.name,
+            user   : user && user.id,
+            filter : filterUser( user )
         },
 
         fetchPolicy: 'cache-and-network'
