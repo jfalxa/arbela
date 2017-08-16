@@ -11,7 +11,7 @@ function LinkTrail( { author, trail } )
         <CardLinks>
             <Link to={ `/users/${ author.name }` }>@{ author.name }</Link>
             { trail && <Separator /> }
-            { trail && <Link to={ `/boards/${ trail.board.slug }#${ trail.id }` }>/{ trail.board.title }</Link> }
+            { trail && <Link to={ `/boards/${ trail.board.slug }` }>/{ trail.board.title }</Link> }
         </CardLinks>
 
     );
