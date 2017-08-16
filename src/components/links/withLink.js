@@ -25,7 +25,6 @@ export const linkData = gql`
 
             board
             {
-                id
                 title
                 slug
             }
