@@ -50,23 +50,26 @@ export const userBoards = gql`
 
 function mapProps( { data, ownProps } )
 {
-    if ( data.loading )
+    if ( data.loading && !data.User )
     {
-        return { loadingBoards: true };
+        return { userBoards: { loading: true } };
     }
 
-    const { User } = data;
+    const User     = data.User;
     const { user } = ownProps;
 
-    const props =
+    const owner        = pick( User, ['id', 'name'] );
+    const ownedBoards  = mapBoardAccess( User.boards, user );
+    const joinedBoards = mapBoardAccess( User.joinedBoards, user );
+
+    const userBoards =
     {
-        loadingBoards : false,
-        user          : pick( User, ['id', 'name'] ),
-        ownedBoards   : mapBoardAccess( User.boards, user ),
-        joinedBoards  : mapBoardAccess( User.joinedBoards, user ),
+        loading : data.loading,
+        error   : data.error,
+        data    : { owner, joinedBoards, ownedBoards }
     };
 
-    return props;
+    return { userBoards };
 }
 
 

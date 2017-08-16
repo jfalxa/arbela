@@ -1,25 +1,21 @@
 import React          from 'react';
 import { compose }    from 'react-apollo';
-import Page           from '../generic/Page';
-import BoardList      from './BoardList';
+import UserBoards     from './UserBoards';
 import withUser       from '../auth/withUser';
 import withLoader     from '../generic/withLoader';
 import withUserBoards from './withUserBoards';
 
 
-function ShowUserBoards( { user, ownedBoards, joinedBoards } )
+function ShowUserBoards( { userBoards } )
 {
+    const { owner, joinedBoards, ownedBoards } = userBoards.data;
+
     return (
 
-        <Page title={ `${ user.name }'s boards` }>
-
-            <h3>Owned</h3>
-            <BoardList boards={ ownedBoards } />
-
-            <h3>Joined</h3>
-            <BoardList boards={ joinedBoards } />
-
-        </Page>
+        <UserBoards
+            owner={ owner }
+            joinedBoards={ joinedBoards }
+            ownedBoards={ ownedBoards } />
 
     );
 }
@@ -28,7 +24,7 @@ function ShowUserBoards( { user, ownedBoards, joinedBoards } )
 const connect = compose(
     withUser,
     withUserBoards,
-    withLoader( p => p.loadingBoards )
+    withLoader( p => p.loadingUser || p.userBoards.loading )
 );
 
 
