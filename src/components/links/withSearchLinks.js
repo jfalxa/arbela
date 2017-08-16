@@ -37,17 +37,17 @@ function mapProps( { data, ownProps } )
 {
     if ( data.loading && !data.Board )
     {
-        return { loadingLinks: true };
+        return { links: { loading: true } };
     }
 
-    const props =
+    const links =
     {
-        links        : mapLinkAccess( data.Board.links, ownProps.user.data ),
-        refetchLinks : data.refetch,
-        loadingLinks : false
+        data    : mapLinkAccess( data.Board.links, ownProps.user.data ),
+        loading : false,
+        refetch : data.refetch
     };
 
-    return props;
+    return { links };
 }
 
 

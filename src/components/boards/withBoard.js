@@ -1,4 +1,5 @@
 import { gql, graphql }   from 'react-apollo';
+import get                from 'lodash/get';
 import { getBoardAccess } from '../../utils/boardAccess';
 
 
@@ -61,13 +62,14 @@ function mapProps( { data, ownProps } )
 }
 
 
+// hard dependency on withUser hoc
 function mapOptions( { user, match } )
 {
     const options =
     {
         variables :
         {
-            user : user && user.id,
+            user : get( user, 'data.id' ),
             slug : match.params.slug
         },
 
