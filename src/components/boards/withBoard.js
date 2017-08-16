@@ -44,21 +44,20 @@ export const board = gql`
 
 function mapProps( { data, ownProps } )
 {
-    if ( data.loading )
+    if ( data.loading && !data.Board )
     {
-        return { loadingBoard: true };
-    }
-    else if ( data.error )
-    {
-        return { loadingBoard: false, boardError: data.error };
+        return { board: { loading: true } };
     }
 
-    const board        = data.Board;
-    const { user }     = ownProps;
-    const refetchBoard = data.refetch;
-    const access       = getBoardAccess( board, user );
+    const board =
+    {
+        data    : data.Board,
+        access  : getBoardAccess( data.Board, ownProps.user ),
+        refetch : data.refetch,
+        loading : data.loading
+    };
 
-    return { board, access, refetchBoard, loadingBoard: false };
+    return { board };
 }
 
 

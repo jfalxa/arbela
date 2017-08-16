@@ -15,22 +15,22 @@ class ShowBoard extends React.Component
 {
     handleJoinBoard = () =>
     {
-        const { user, board, addMember, refetchBoard } = this.props;
+        const { user, board, addMember } = this.props;
 
-        addMember( board.id, user.id )
+        addMember( board.data.id, user.id )
             .then( res => console.log( 'Joined board', res ) )
-            .then( refetchBoard )
+            .then( board.refetch )
             .catch( err => console.log( 'Failed joining board', err ) );
     }
 
 
     handleLeaveBoard = () =>
     {
-        const { user, board, removeMember, refetchBoard } = this.props;
+        const { user, board, removeMember } = this.props;
 
-        removeMember( board.id, user.id )
+        removeMember( board.data.id, user.id )
             .then( res => console.log( 'Leaved board', res ) )
-            .then( refetchBoard )
+            .then( board.refetch )
             .catch( err => console.log( 'Failed leaving board', err ) );
     }
 
@@ -48,18 +48,18 @@ class ShowBoard extends React.Component
 
     render()
     {
-        if ( !this.props.board )
+        if ( !this.props.board.data )
         {
             return <Redirect to="/" />;
         }
 
-        const { search, board, access, onSearch } = this.props;
+        const { search, board, onSearch } = this.props;
 
         return (
 
             <Board
-                board={ board }
-                access={ access }
+                board={ board.data }
+                access={ board.access }
                 search={ search }
                 onVote={ this.handleVote }
                 onSearch={ onSearch }
@@ -78,7 +78,7 @@ const connect = compose(
     withAddMember,
     withRemoveMember,
     withUpdateScore,
-    withLoader( p => p.loadingUser || p.loadingBoard )
+    withLoader( p => p.loadingUser || p.board.loading )
 );
 
 export default connect( ShowBoard );

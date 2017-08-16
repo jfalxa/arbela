@@ -28,7 +28,7 @@ class ShowBoard extends React.Component
     {
         const { board, addMember, refetchBoardMembers } = this.props;
 
-        addMember( board.id, userID )
+        addMember( board.data.id, userID )
             .then( res => console.log( 'Added user to board', res ) )
             .then( refetchBoardMembers )
             .catch( err => console.log( 'Failed adding user to board', err ) );
@@ -39,7 +39,7 @@ class ShowBoard extends React.Component
     {
         const { board, removeMember, refetchBoardMembers } = this.props;
 
-        removeMember( board.id, userID )
+        removeMember( board.data.id, userID )
             .then( res => console.log( 'Removed user from board', res ) )
             .then( refetchBoardMembers )
             .catch( err => console.log( 'Failed removing user from board', err ) );
@@ -48,18 +48,17 @@ class ShowBoard extends React.Component
 
     render()
     {
-        if ( !this.props.user || !this.props.board )
+        const { user, board, members } = this.props;
+
+        if ( !user || !board.data )
         {
             return <Redirect to="/" />;
         }
 
-        const { board, owner, members } = this.props;
-
         return (
 
             <BoardMembers
-                board={ board }
-                owner={ owner }
+                board={ board.data }
                 members={ members }
                 searchedUser={ this.state.searchedUser }
                 onSearchUser={ this.handleSearchUser }
@@ -77,7 +76,7 @@ const connect = compose(
     withBoardMembers,
     withAddMember,
     withRemoveMember,
-    withLoader( p => p.loadingUser || p.loadingBoard || p.loadingMembers )
+    withLoader( p => p.loadingUser || p.loadingMembers || p.board.loading )
 );
 
 export default connect( ShowBoard );

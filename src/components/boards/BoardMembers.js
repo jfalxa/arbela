@@ -5,14 +5,14 @@ import MemberFormContainer from './MemberFormContainer';
 import MemberList          from './MemberList';
 
 
-function BoardMembers( { board, owner, members, searchedUser, onSearchUser, onAddMember, onRemoveMember } )
+function BoardMembers( { board, members, searchedUser, onSearchUser, onAddMember, onRemoveMember } )
 {
     return (
 
         <Page title={ `${ board.title } members` }>
 
             <h3>Owner</h3>
-            <p><Link to={ `/users/${ owner.name }` }>{ owner.name }</Link></p>
+            <p><Link to={ `/users/${ board.owner.name }` }>{ board.owner.name }</Link></p>
 
             <h3>Members</h3>
 

@@ -15,7 +15,7 @@ class EditBoard extends React.Component
     {
         const { board, updateBoard, history } = this.props;
 
-        updateBoard( { id: board.id, ...boardUpdate } )
+        updateBoard( { id: board.data.id, ...boardUpdate } )
             .then( res => console.log( 'Board updated', res ) )
             .then( () => history.goBack() )
             .catch( err => console.log( 'Failed updating board', err ) );
@@ -26,7 +26,7 @@ class EditBoard extends React.Component
     {
         const { board, deleteBoard, history } = this.props;
 
-        deleteBoard( board.id )
+        deleteBoard( board.data.id )
             .then( res => console.log( 'Board deleted', res ) )
             .then( () => history.goBack() )
             .catch( err => console.log( 'Failed deleting board', err ) );
@@ -35,7 +35,9 @@ class EditBoard extends React.Component
 
     render()
     {
-        if ( !this.props.user || !this.props.board )
+        const { board, user } = this.props;
+
+        if ( !user || !board.data )
         {
             return <Redirect to="/" />;
         }
@@ -43,7 +45,7 @@ class EditBoard extends React.Component
         return (
 
             <BoardEditor
-                board={ this.props.board }
+                board={ board.data }
                 onSubmit={ this.handleSubmit }
                 onDelete={ this.handleDelete } />
 
