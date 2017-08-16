@@ -48,6 +48,10 @@ function mapProps( { data, ownProps } )
     {
         return { loadingBoard: true };
     }
+    else if ( data.error )
+    {
+        return { loadingBoard: false, boardError: data.error };
+    }
 
     const board        = data.Board;
     const { user }     = ownProps;

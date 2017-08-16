@@ -25,6 +25,7 @@ export const linkData = gql`
             {
                 title
                 slug
+                hidden
             }
         }
     }
