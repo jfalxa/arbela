@@ -32,7 +32,7 @@ function LinkCard( { access, id, title, url, description, score, author, board, 
 
                 <LinkTrail author={ author } trail={ trail } />
 
-                <CardBody>{ description }</CardBody>
+                <CardBody>{ description || '...' }</CardBody>
 
             </Card>
 
