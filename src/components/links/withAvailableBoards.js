@@ -28,21 +28,21 @@ export const availableBoards = gql`query availableBoards
 
 function mapProps( { data } )
 {
-    if ( data.loading )
+    if ( data.loading && !data.user )
     {
-        return { loadingBoards: true };
+        return { availableBoards: { loading: true } };
     }
 
     const joinedBoards = get( data, 'user.boards' );
     const ownedBoards  = get( data, 'user.joinedBoards' );
 
-    const props =
+    const availableBoards =
     {
-        loadingBoards : data.loading,
-        boards        : unionBy( ownedBoards, joinedBoards, 'id' )
+        data    : unionBy( ownedBoards, joinedBoards, 'id' ),
+        loading : data.loading
     };
 
-    return props;
+    return { availableBoards };
 }
 
 

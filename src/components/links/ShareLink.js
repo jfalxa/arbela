@@ -26,18 +26,19 @@ class ShareLink extends React.Component
 
     render()
     {
-        if ( !this.props.user )
+        const { user, link, availableBoards } = this.props;
+
+        if ( !user )
         {
             return <Redirect to="/" />;
         }
 
-        const { link, boards } = this.props;
 
         return (
 
             <LinkSharer
                 link={ link }
-                boards={ boards }
+                boards={ availableBoards.data }
                 onSubmit={ this.handleSubmit } />
 
         );
@@ -50,7 +51,7 @@ const connect = compose(
     withLink,
     withAvailableBoards,
     withCreateLink,
-    withLoader( p => p.loadingUser || p.loadingLink || p.loadingBoards )
+    withLoader( p => p.loadingUser || p.loadingLink || p.availableBoards.loading )
 );
 
 

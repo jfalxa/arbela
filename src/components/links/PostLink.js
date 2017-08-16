@@ -25,7 +25,9 @@ class PostLink extends React.Component
 
     render()
     {
-        if ( !this.props.user )
+        const { user, availableBoards } = this.props;
+
+        if ( !user )
         {
             return <Redirect to="/" />;
         }
@@ -33,7 +35,7 @@ class PostLink extends React.Component
         return (
 
             <LinkCreator
-                boards={ this.props.boards }
+                boards={ availableBoards.data }
                 onSubmit={ this.handleSubmit } />
 
         );
@@ -45,7 +47,7 @@ const connect = compose(
     withUser,
     withAvailableBoards,
     withCreateLink,
-    withLoader( p => p.loadingUser || p.loadingBoards )
+    withLoader( p => p.loadingUser || p.availableBoards.loading )
 );
 
 
