@@ -15,7 +15,7 @@ class ShareLink extends React.Component
     {
         const { user, link:sharedLink, createLink, history } = this.props;
 
-        const boardLinks = boards.map( boardID => createLink( link, user.id, boardID, sharedLink.id ) );
+        const boardLinks = boards.map( boardID => createLink( link, user.id, boardID, sharedLink.data.id ) );
 
         Promise.all( boardLinks )
             .then( res => console.log( 'Links created', res ) )
@@ -37,7 +37,7 @@ class ShareLink extends React.Component
         return (
 
             <LinkSharer
-                link={ link }
+                link={ link.data }
                 boards={ availableBoards.data }
                 onSubmit={ this.handleSubmit } />
 
@@ -51,7 +51,7 @@ const connect = compose(
     withLink,
     withAvailableBoards,
     withCreateLink,
-    withLoader( p => p.loadingUser || p.loadingLink || p.availableBoards.loading )
+    withLoader( p => p.loadingUser || p.link.loading || p.availableBoards.loading )
 );
 
 

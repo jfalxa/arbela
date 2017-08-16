@@ -55,18 +55,19 @@ export const link = gql`
 
 function mapProps( { data, ownProps } )
 {
-    if ( data.loadingLink )
+    if ( data.loading && !data.link )
     {
-        return { loadingLink: true };
+        return { link: { loading: true } };
     }
 
-    const props =
+    const link =
     {
-        access : getLinkAccess( data.Link, ownProps.user ),
-        link   : data.Link
+        data    : data.Link,
+        access  : getLinkAccess( data.Link, ownProps.user ),
+        loading : data.loading
     };
 
-    return props;
+    return { link };
 }
 
 

@@ -15,7 +15,7 @@ class EditLink extends React.Component
     {
         const { link, updateLink, history } = this.props;
 
-        updateLink( { id: link.id, ...linkUpdate } )
+        updateLink( { id: link.data.id, ...linkUpdate } )
             .then( res => console.log( 'Link updated', res ) )
             .then( () => history.goBack() )
             .catch( err => console.log( 'Failed updating link', err ) );
@@ -26,7 +26,7 @@ class EditLink extends React.Component
     {
         const { link, deleteLink, history } = this.props;
 
-        deleteLink( link.id )
+        deleteLink( link.data.id )
             .then( res => console.log( 'Link deleted', res ) )
             .then( () => history.goBack() )
             .catch( err => console.log( 'Failed deleting link', err ) );
@@ -35,7 +35,9 @@ class EditLink extends React.Component
 
     render()
     {
-        if ( !this.props.user )
+        const { user, link } = this.props;
+
+        if ( !user )
         {
             return <Redirect to="/" />;
         }
@@ -43,7 +45,7 @@ class EditLink extends React.Component
         return (
 
             <LinkEditor
-                link={ this.props.link }
+                link={ link.data }
                 onSubmit={ this.handleSubmit }
                 onDelete={ this.handleDelete } />
 
@@ -57,7 +59,7 @@ const connect = compose(
     withLink,
     withUpdateLink,
     withDeleteLink,
-    withLoader( p => p.loadingUser || p.loadingLink )
+    withLoader( p => p.loadingUser || p.link.loading )
 );
 
 export default connect( EditLink );
