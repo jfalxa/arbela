@@ -8,6 +8,7 @@ import ShowUserBoards        from './boards/ShowUserBoards';
 import ShowBoard             from './boards/ShowBoard';
 import EditBoard             from './boards/EditBoard';
 import PostBoardLink         from './boards/PostBoardLink';
+import FeedLinks             from './links/FeedLinks';
 import PostLink              from './links/PostLink';
 import EditLink              from './links/EditLink';
 import ShareLink             from './links/ShareLink';
@@ -29,8 +30,9 @@ function App()
 
             <Main justify="center">
 
-                <Route exact path="/" component={ ShowBoardSearch } />
+                <Route exact path="/" component={ FeedLinks } />
 
+                <Route exact path="/boards" component={ ShowBoardSearch } />
                 <Route path="/new-board" component={ CreateBoard } />
                 <Route path="/users/:name" component={ ShowUserBoards } />
                 <Route exact path="/boards/:slug" component={ ShowBoard } />

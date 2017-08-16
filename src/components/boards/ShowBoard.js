@@ -8,7 +8,7 @@ import withSearch       from '../generic/withSearch';
 import withBoard        from './withBoard';
 import withAddMember    from './withAddMember';
 import withRemoveMember from './withRemoveMember';
-import withUpdateScore  from './withUpdateScore';
+import withUpdateScore  from '../links/withUpdateScore';
 
 
 class ShowBoard extends React.Component
@@ -32,17 +32,6 @@ class ShowBoard extends React.Component
             .then( res => console.log( 'Leaved board', res ) )
             .then( board.refetch )
             .catch( err => console.log( 'Failed leaving board', err ) );
-    }
-
-
-    handleVote = ( link, vote, onSuccess ) =>
-    {
-        const { updateScore, user } = this.props;
-
-        updateScore( link.id, link.score + vote, user.data.id )
-            .then( res => console.log( 'Vote was registered', res ) )
-            .then( onSuccess )
-            .catch( err => console.log( 'Failed voting', err ) );
     }
 
 
