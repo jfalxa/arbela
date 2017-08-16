@@ -4,7 +4,7 @@ import CardLinks from '../generic/CardLinks';
 import Separator from '../generic/Separator';
 
 
-function LinkTrail( { author, trail } )
+function LinkTrail( { author, board, trail } )
 {
     // only show trails that lead to public boards
     const hasTrail = trail ? !trail.board.hidden : false;
@@ -13,7 +13,9 @@ function LinkTrail( { author, trail } )
 
         <CardLinks>
             <Link to={ `/users/${ author.name }` }>@{ author.name }</Link>
-            { hasTrail && <Separator /> }
+            <Separator />
+            <Link to={ `/boards/${ board.slug }` }>/{ board.title }</Link>
+            { hasTrail && <Separator children="&" /> }
             { hasTrail && <Link to={ `/boards/${ trail.board.slug }` }>/{ trail.board.title }</Link> }
         </CardLinks>
 

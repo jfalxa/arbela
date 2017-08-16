@@ -10,7 +10,7 @@ export const feedLinks = gql`
     query feedLinks( $filter: LinkFilter!, $user: ID )
     {
         allLinks(
-            orderBy: updatedAt_DESC,
+            orderBy: createdAt_DESC,
             filter: $filter
         )
         {

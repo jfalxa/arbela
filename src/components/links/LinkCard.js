@@ -30,7 +30,7 @@ function LinkCard( { access, id, title, url, description, score, author, board, 
                     { access.isAuthor && <Link to={ `/links/${ id }/edit` }>(edit)</Link> }
                 </CardHeader>
 
-                <LinkTrail author={ author } trail={ trail } />
+                <LinkTrail author={ author } board={ board } trail={ trail } />
 
                 <CardBody>{ description || '...' }</CardBody>
 

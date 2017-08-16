@@ -19,6 +19,12 @@ export const linkData = gql`
             name
         }
 
+        board
+        {
+            slug
+            title
+        }
+
         trail
         {
             board
