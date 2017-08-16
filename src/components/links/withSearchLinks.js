@@ -1,4 +1,5 @@
 import { gql, graphql }  from 'react-apollo';
+import get               from 'lodash/get';
 import { filterSearch }  from '../../utils/linkFilter';
 import { mapLinkAccess } from '../../utils/linkAccess';
 import { linkData }      from './withLink';
@@ -41,7 +42,7 @@ function mapProps( { data, ownProps } )
 
     const props =
     {
-        links        : mapLinkAccess( data.Board.links, ownProps.user ),
+        links        : mapLinkAccess( data.Board.links, ownProps.user.data ),
         refetchLinks : data.refetch,
         loadingLinks : false
     };
@@ -59,7 +60,7 @@ function mapOptions( { board, user, search } )
         variables :
         {
             board  : board.id,
-            user   : user && user.id,
+            user   : get( user, 'data.id' ),
             filter : filterSearch( search )
         }
     };

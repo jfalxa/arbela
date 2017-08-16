@@ -11,7 +11,7 @@ const connect = compose(
     withUser,
     withDebounceProps( p => pick( p, 'search' ) ),
     withSearchLinks,
-    withLoader( p => p.loadingLinks )
+    withLoader( p => p.user.loading || p.loadingLinks )
 );
 
 

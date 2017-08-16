@@ -15,7 +15,7 @@ class ShareLink extends React.Component
     {
         const { user, link:sharedLink, createLink, history } = this.props;
 
-        const boardLinks = boards.map( boardID => createLink( link, user.id, boardID, sharedLink.data.id ) );
+        const boardLinks = boards.map( boardID => createLink( link, user.data.id, boardID, sharedLink.data.id ) );
 
         Promise.all( boardLinks )
             .then( res => console.log( 'Links created', res ) )
@@ -28,7 +28,7 @@ class ShareLink extends React.Component
     {
         const { user, link, availableBoards } = this.props;
 
-        if ( !user )
+        if ( !user.data )
         {
             return <Redirect to="/" />;
         }
@@ -51,7 +51,7 @@ const connect = compose(
     withLink,
     withAvailableBoards,
     withCreateLink,
-    withLoader( p => p.loadingUser || p.link.loading || p.availableBoards.loading )
+    withLoader( p => p.user.loading || p.link.loading || p.availableBoards.loading )
 );
 
 

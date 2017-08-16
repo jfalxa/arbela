@@ -28,14 +28,14 @@ class Register extends React.Component
     {
         e.preventDefault();
 
-        const { createUser, signinUser, refetchUser, history } = this.props;
-        const { name, email, password }                        = this.state;
+        const { user, createUser, signinUser, history } = this.props;
+        const { name, email, password }                 = this.state;
 
         createUser( { name, email, password } )
             .then( res => console.log( 'User created', res ) )
             .then( () => signinUser( { email, password } ) )
             .then( () => console.log( 'User logged in' ) )
-            .then( refetchUser )
+            .then( user.refetch )
             .then( history.goBack )
             .catch( err => console.log( 'Failed creating user', err ) );
     }
@@ -43,7 +43,7 @@ class Register extends React.Component
 
     render()
     {
-        if ( this.props.user )
+        if ( this.props.user.data )
         {
             return <Redirect to="/" />;
         }
@@ -68,7 +68,7 @@ const connect = compose(
     withUser,
     withCreateUser,
     withSigninUser,
-    withLoader( p => p.loadingUser )
+    withLoader( p => p.user.loading )
 );
 
 

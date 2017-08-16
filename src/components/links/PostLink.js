@@ -14,7 +14,7 @@ class PostLink extends React.Component
     {
         const { user, createLink, history } = this.props;
 
-        const boardLinks = boards.map( boardID => createLink( link, user.id, boardID ) );
+        const boardLinks = boards.map( boardID => createLink( link, user.data.id, boardID ) );
 
         Promise.all( boardLinks )
             .then( res => console.log( 'Links created', res ) )
@@ -47,7 +47,7 @@ const connect = compose(
     withUser,
     withAvailableBoards,
     withCreateLink,
-    withLoader( p => p.loadingUser || p.availableBoards.loading )
+    withLoader( p => p.user.loading || p.availableBoards.loading )
 );
 
 

@@ -26,12 +26,12 @@ class Login extends React.Component
     {
         e.preventDefault();
 
-        const { signinUser, refetchUser, history } = this.props;
-        const { email, password }                  = this.state;
+        const { user, signinUser, history } = this.props;
+        const { email, password }           = this.state;
 
         signinUser( { email, password } )
             .then( () => console.log( 'User signed in' ) )
-            .then( refetchUser )
+            .then( user.refetch )
             .then( history.goBack )
             .catch( err => console.log( 'Failed signing in user', err ) );
     }
@@ -39,7 +39,7 @@ class Login extends React.Component
 
     render()
     {
-        if ( this.props.user )
+        if ( this.props.user.data )
         {
             return <Redirect to="/" />;
         }
@@ -62,7 +62,7 @@ class Login extends React.Component
 const connect = compose(
     withUser,
     withSigninUser,
-    withLoader( p => p.loadingUser )
+    withLoader( p => p.user.loading )
 );
 
 

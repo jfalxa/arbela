@@ -37,7 +37,7 @@ class EditLink extends React.Component
     {
         const { user, link } = this.props;
 
-        if ( !user )
+        if ( !user.data )
         {
             return <Redirect to="/" />;
         }
@@ -59,7 +59,7 @@ const connect = compose(
     withLink,
     withUpdateLink,
     withDeleteLink,
-    withLoader( p => p.loadingUser || p.link.loading )
+    withLoader( p => p.user.loading || p.link.loading )
 );
 
 export default connect( EditLink );
