@@ -36,7 +36,7 @@ class Register extends React.Component
             .then( () => signinUser( { email, password } ) )
             .then( () => console.log( 'User logged in' ) )
             .then( refetchUser )
-            .then( () => history.push( '/' ) )
+            .then( history.goBack )
             .catch( err => console.log( 'Failed creating user', err ) );
     }
 

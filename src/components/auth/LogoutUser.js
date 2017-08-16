@@ -14,7 +14,7 @@ function LogoutUser()
 {
     return (
 
-        <Link to="/" onClick={ logout }>(logout)</Link>
+        <button onClick={ logout }>Logout</button>
 
     );
 }

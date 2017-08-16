@@ -32,7 +32,7 @@ class Login extends React.Component
         signinUser( { email, password } )
             .then( () => console.log( 'User signed in' ) )
             .then( refetchUser )
-            .then( () => history.push( '/' ) )
+            .then( history.goBack )
             .catch( err => console.log( 'Failed signing in user', err ) );
     }
 
