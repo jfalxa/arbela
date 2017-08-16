@@ -17,7 +17,7 @@ class ShowBoard extends React.Component
     {
         const { user, board, addMember } = this.props;
 
-        addMember( board.data.id, user.id )
+        addMember( board.data.id, user.data.id )
             .then( res => console.log( 'Joined board', res ) )
             .then( board.refetch )
             .catch( err => console.log( 'Failed joining board', err ) );
@@ -28,7 +28,7 @@ class ShowBoard extends React.Component
     {
         const { user, board, removeMember } = this.props;
 
-        removeMember( board.data.id, user.id )
+        removeMember( board.data.id, user.data.id )
             .then( res => console.log( 'Leaved board', res ) )
             .then( board.refetch )
             .catch( err => console.log( 'Failed leaving board', err ) );
@@ -39,7 +39,7 @@ class ShowBoard extends React.Component
     {
         const { updateScore, user } = this.props;
 
-        updateScore( link.id, link.score + vote, user.id )
+        updateScore( link.id, link.score + vote, user.data.id )
             .then( res => console.log( 'Vote was registered', res ) )
             .then( onSuccess )
             .catch( err => console.log( 'Failed voting', err ) );
@@ -78,7 +78,7 @@ const connect = compose(
     withAddMember,
     withRemoveMember,
     withUpdateScore,
-    withLoader( p => p.loadingUser || p.board.loading )
+    withLoader( p => p.user.loading || p.board.loading )
 );
 
 export default connect( ShowBoard );

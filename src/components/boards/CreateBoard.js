@@ -13,7 +13,7 @@ class CreateBoard extends React.Component
     {
         const { user, createBoard, history } = this.props;
 
-        createBoard( board, user.id )
+        createBoard( board, user.data.id )
             .then( res => history.push( `/boards/${ res.slug }` ) )
             .then( () => console.log( 'Board created' ) )
             .catch( err => console.log( 'Failed creating board', err ) );
@@ -22,7 +22,7 @@ class CreateBoard extends React.Component
 
     render()
     {
-        if ( !this.props.user )
+        if ( !this.props.user.data )
         {
             return <Redirect to="/" />;
         }
@@ -39,7 +39,7 @@ class CreateBoard extends React.Component
 const connect = compose(
     withUser,
     withCreateBoard,
-    withLoader( props => props.loadingUser )
+    withLoader( props => props.user.loading )
 );
 
 export default connect( CreateBoard );

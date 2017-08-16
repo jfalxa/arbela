@@ -37,7 +37,7 @@ class EditBoard extends React.Component
     {
         const { board, user } = this.props;
 
-        if ( !user || !board.data )
+        if ( !user.data || !board.data )
         {
             return <Redirect to="/" />;
         }
@@ -59,7 +59,7 @@ const connect = compose(
     withBoard,
     withUpdateBoard,
     withDeleteBoard,
-    withLoader( p => p.loadingUser || p.loadingBoard )
+    withLoader( p => p.user.loading || p.board.loading )
 );
 
 export default connect( EditBoard );

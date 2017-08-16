@@ -39,16 +39,18 @@ function LoggedOutLinks()
 }
 
 
-function Navigation( { user, loadingUser } )
+function Navigation( { user } )
 {
+    const auth = Boolean( user.data );
+
     return (
 
         <nav>
             <Ul row justify="space-between">
                 <li><Link to="/">Home</Link></li>
-                { user && <li><Link to="/new-board">Create board</Link></li> }
-                { user && <li><Link to="/new-link">Post link</Link></li> }
-                { user ? <LoggedInLinks user={ user } /> : <LoggedOutLinks /> }
+                { auth && <li><Link to="/new-board">Create board</Link></li> }
+                { auth && <li><Link to="/new-link">Post link</Link></li> }
+                { auth ? <LoggedInLinks user={ user.data } /> : <LoggedOutLinks /> }
             </Ul>
         </nav>
 

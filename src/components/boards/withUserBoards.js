@@ -1,4 +1,5 @@
 import { gql, graphql }   from 'react-apollo';
+import get                from 'lodash/get';
 import pick               from 'lodash/pick';
 import { mapBoardAccess } from '../../utils/boardAccess';
 import { filterUser }     from '../../utils/boardFilter';
@@ -55,12 +56,11 @@ function mapProps( { data, ownProps } )
         return { userBoards: { loading: true } };
     }
 
-    const User     = data.User;
-    const { user } = ownProps;
+    const user = ownProps.user.data;
 
-    const owner        = pick( User, ['id', 'name'] );
-    const ownedBoards  = mapBoardAccess( User.boards, user );
-    const joinedBoards = mapBoardAccess( User.joinedBoards, user );
+    const owner        = pick( data.User, ['id', 'name'] );
+    const ownedBoards  = mapBoardAccess( data.User.boards, user );
+    const joinedBoards = mapBoardAccess( data.User.joinedBoards, user );
 
     const userBoards =
     {
@@ -73,6 +73,7 @@ function mapProps( { data, ownProps } )
 }
 
 
+// hard dependency on withUser hoc
 function mapOptions( { match, user } )
 {
     const options =
@@ -80,8 +81,8 @@ function mapOptions( { match, user } )
         variables:
         {
             name   : match.params.name,
-            user   : user && user.id,
-            filter : filterUser( user )
+            user   : get( user, 'data.id' ),
+            filter : filterUser( user.data )
         },
 
         fetchPolicy: 'cache-and-network'

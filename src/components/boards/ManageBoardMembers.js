@@ -76,7 +76,7 @@ const connect = compose(
     withBoardMembers,
     withAddMember,
     withRemoveMember,
-    withLoader( p => p.loadingUser || p.members.loading || p.board.loading )
+    withLoader( p => p.user.loading || p.members.loading || p.board.loading )
 );
 
 export default connect( ShowBoard );

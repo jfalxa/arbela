@@ -24,7 +24,7 @@ function ShowUserBoards( { userBoards } )
 const connect = compose(
     withUser,
     withUserBoards,
-    withLoader( p => p.loadingUser || p.userBoards.loading )
+    withLoader( p => p.user.loading || p.userBoards.loading )
 );
 
 

@@ -1,4 +1,5 @@
 import { gql, graphql }             from 'react-apollo';
+import get                          from 'lodash/get';
 import { mapBoardAccess }           from '../../utils/boardAccess';
 import { filterUser, filterSearch } from '../../utils/boardFilter';
 import { boardData }                from './withBoard';
@@ -44,13 +45,14 @@ function mapProps( { data, ownProps } )
 }
 
 
+// hard dependency on withUser hoc
 function mapOptions( { user, search } )
 {
     const filter =
     {
         AND:
         [
-            filterUser( user ),
+            filterUser( user.data ),
             filterSearch( search )
         ]
     };
@@ -58,7 +60,7 @@ function mapOptions( { user, search } )
 
     const options =
     {
-        variables   : { filter, user: user && user.id },
+        variables   : { filter, user: get( user, 'data.id' ) },
         fetchPolicy : 'cache-and-network'
     };
 

@@ -13,14 +13,14 @@ export const user = gql`query user
 
 function mapProps( { data } )
 {
-    const props =
+    const user =
     {
-        user        : data.user,
-        loadingUser : data.loading,
-        refetchUser : data.refetch
+        data    : data.user,
+        loading : data.loading,
+        refetch : data.refetch
     };
 
-    return props;
+    return { user };
 }
 
 

@@ -14,7 +14,7 @@ class PostBoardLink extends React.Component
     {
         const { board, user, createLink, history } = this.props;
 
-        createLink( link, user.id, board.data.id )
+        createLink( link, user.data.id, board.data.id )
             .then( res => console.log( 'Link created', res ) )
             .then( () => history.push( `/boards/${ board.data.slug }` ) )
             .catch( err => console.log( 'Failed creating link', err ) );
@@ -25,7 +25,7 @@ class PostBoardLink extends React.Component
     {
         const { user, board } = this.props;
 
-        if ( !user || !board.data )
+        if ( !user.data || !board.data )
         {
             return <Redirect to="/" />;
         }
@@ -45,7 +45,7 @@ const connect = compose(
     withUser,
     withBoard,
     withCreateLink,
-    withLoader( p => p.loadingUser || p.loadingBoard )
+    withLoader( p => p.user.loading || p.board.loading )
 );
 
 
