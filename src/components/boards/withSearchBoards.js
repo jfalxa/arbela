@@ -29,18 +29,18 @@ export const searchBoards = gql`
 
 function mapProps( { data, ownProps } )
 {
-    if ( data.loading )
+    if ( data.loading && !data.allBoards )
     {
-        return { loadingBoards: true };
+        return { boards: { loading: true } };
     }
 
-    const props =
+    const boards =
     {
-        boards        : mapBoardAccess( data.allBoards, ownProps.user ),
-        loadingBoards : false
+        data    : mapBoardAccess( data.allBoards, ownProps.user ),
+        loading : data.loading
     };
 
-    return props;
+    return { boards };
 }
 
 

@@ -1,5 +1,4 @@
 import { gql, graphql } from 'react-apollo';
-import get              from 'lodash/get';
 
 
 export const boardMembers = gql`query boardMembers( $slug: String! )
