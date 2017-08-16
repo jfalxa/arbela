@@ -26,22 +26,22 @@ class ShowBoard extends React.Component
 
     handleAddMember = ( userID ) =>
     {
-        const { board, addMember, refetchBoardMembers } = this.props;
+        const { board, members, addMember } = this.props;
 
         addMember( board.data.id, userID )
             .then( res => console.log( 'Added user to board', res ) )
-            .then( refetchBoardMembers )
+            .then( members.refetch )
             .catch( err => console.log( 'Failed adding user to board', err ) );
     }
 
 
     handleRemoveMember = ( userID ) =>
     {
-        const { board, removeMember, refetchBoardMembers } = this.props;
+        const { board, members, removeMember } = this.props;
 
         removeMember( board.data.id, userID )
             .then( res => console.log( 'Removed user from board', res ) )
-            .then( refetchBoardMembers )
+            .then( members.refetch )
             .catch( err => console.log( 'Failed removing user from board', err ) );
     }
 
@@ -59,7 +59,7 @@ class ShowBoard extends React.Component
 
             <BoardMembers
                 board={ board.data }
-                members={ members }
+                members={ members.data }
                 searchedUser={ this.state.searchedUser }
                 onSearchUser={ this.handleSearchUser }
                 onAddMember={ this.handleAddMember }
@@ -76,7 +76,7 @@ const connect = compose(
     withBoardMembers,
     withAddMember,
     withRemoveMember,
-    withLoader( p => p.loadingUser || p.loadingMembers || p.board.loading )
+    withLoader( p => p.loadingUser || p.members.loading || p.board.loading )
 );
 
 export default connect( ShowBoard );

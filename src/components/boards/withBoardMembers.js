@@ -8,12 +8,6 @@ export const boardMembers = gql`query boardMembers( $slug: String! )
     {
         id
 
-        owner
-        {
-            id
-            name
-        }
-
         members
         {
             id
@@ -25,15 +19,19 @@ export const boardMembers = gql`query boardMembers( $slug: String! )
 
 function mapProps( { data } )
 {
-    const props =
+    if ( data.loading && !data.Board )
     {
-        owner               : get( data, 'Board.owner' ),
-        members             : get( data, 'Board.members' ),
-        loadingMembers      : data.loading,
-        refetchBoardMembers : data.refetch
+        return { members: { loading: true } };
+    }
+
+    const members =
+    {
+        data    : data.Board.members,
+        loading : data.loading,
+        refetch : data.refetch
     };
 
-    return props;
+    return { members };
 }
 
 
