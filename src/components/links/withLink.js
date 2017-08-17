@@ -69,7 +69,7 @@ function mapProps( { data, ownProps } )
     const link =
     {
         data    : data.Link,
-        access  : getLinkAccess( data.Link, ownProps.user ),
+        access  : getLinkAccess( data.Link, ownProps.user.data ),
         loading : data.loading
     };
 

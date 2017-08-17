@@ -37,7 +37,7 @@ function mapProps( { data, ownProps } )
 
     const boards =
     {
-        data    : mapBoardAccess( data.allBoards, ownProps.user ),
+        data    : mapBoardAccess( data.allBoards, ownProps.user.data ),
         loading : data.loading
     };
 

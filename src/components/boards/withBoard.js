@@ -53,7 +53,7 @@ function mapProps( { data, ownProps } )
     const board =
     {
         data    : data.Board,
-        access  : getBoardAccess( data.Board, ownProps.user ),
+        access  : getBoardAccess( data.Board, ownProps.user.data ),
         refetch : data.refetch,
         loading : data.loading
     };
