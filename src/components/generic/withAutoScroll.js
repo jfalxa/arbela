@@ -10,19 +10,26 @@ function withAutoScroll( Component )
     {
         componentDidMount()
         {
-            const el   = findDOMNode( this );
-            const hash = this.props.location.hash;
-
-            if ( el.id === hash.slice( 1 ) )
+            if ( this.isTargeted() )
             {
-                el.scrollIntoView();
+                findDOMNode( this ).scrollIntoView();
             }
+        }
+
+
+        isTargeted()
+        {
+            const el   = findDOMNode( this );
+            const id   = el ? el.id : this.props.id;
+            const hash = this.props.location.hash.slice( 1 );
+
+            return ( hash === id );
         }
 
 
         render()
         {
-            return <Component { ...this.props } />;
+            return <Component { ...this.props } targeted={ this.isTargeted() } />;
         }
     }
 }

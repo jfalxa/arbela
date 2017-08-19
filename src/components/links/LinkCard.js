@@ -14,7 +14,7 @@ import withAutoScroll from '../generic/withAutoScroll';
 const Li = Box.withComponent( 'li' );
 
 
-function LinkCard( { access, id, title, url, description, score, author, board, trail, onVote } )
+function LinkCard( { id, title, url, description, score, author, board, trail, access, targeted, onVote } )
 {
     return (
 
@@ -25,7 +25,7 @@ function LinkCard( { access, id, title, url, description, score, author, board, 
                 locked={ !canVote( access ) }
                 onVote={ onVote } />
 
-            <Card>
+            <Card targeted={ targeted }>
 
                 <CardHeader title={ title } url={ url } target="blank">
                     { access.isAuthor && <Link to={ `/links/${ id }/edit` }>(edit)</Link> }
