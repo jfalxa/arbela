@@ -15,7 +15,7 @@ function LinkTrail( { author, board, trail } )
             <Link to={ `/users/${ author.name }` }>@{ author.name }</Link>
             <Separator />
             <Link to={ `/boards/${ board.slug }` }>/{ board.title }</Link>
-            { hasTrail && <Separator children="&" /> }
+            { hasTrail && <Separator children="from" /> }
             { hasTrail && <Link to={ `/boards/${ trail.board.slug }` }>/{ trail.board.title }</Link> }
         </CardLinks>
 
