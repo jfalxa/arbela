@@ -13,7 +13,7 @@ const Aside = Box.withComponent( 'aside' ).extend`width: 570px`;
 
 function Board( { search, board, access, onVote, onSearch, onJoinBoard, onLeaveBoard } )
 {
-    const { title, slug, description, owner, closed } = board;
+    const { title, slug, description, owner, closed, members } = board;
 
     return (
 
@@ -29,6 +29,7 @@ function Board( { search, board, access, onVote, onSearch, onJoinBoard, onLeaveB
                 closed={ closed }
                 access={ access }
                 owner={ owner }
+                members={ members.count }
                 onJoinBoard={ onJoinBoard }
                 onLeaveBoard={ onLeaveBoard } />
 

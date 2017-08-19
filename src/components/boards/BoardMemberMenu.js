@@ -16,12 +16,12 @@ const Aside = Box.withComponent( 'aside' ).extend`
 `;
 
 
-function BoardMemberMenu( { slug, closed, owner, access, onJoinBoard, onLeaveBoard } )
+function BoardMemberMenu( { slug, closed, owner, members, access, onJoinBoard, onLeaveBoard } )
 {
     return (
 
         <Aside>
-            { hasAccess( access ) && <Link to={ `/boards/${ slug }/members` }>Members</Link> }
+            { hasAccess( access ) && <Link to={ `/boards/${ slug }/members` }>Members ({ members + 1 })</Link> }
             { !closed && canJoin( access ) && <button onClick={ onJoinBoard }>Join board</button> }
             { canLeave( access ) && <button onClick={ onLeaveBoard }>Leave board</button> }
             by <Link to={ `/users/${ owner.name }` }>@{ owner.name }</Link>

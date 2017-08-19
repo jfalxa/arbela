@@ -19,6 +19,16 @@ export const boardData = gql`
             id
             name
         }
+
+        members: _membersMeta
+        {
+            count
+        }
+
+        joined: _membersMeta( filter: { id: $user } )
+        {
+            count
+        }
     }
 
 `;
@@ -30,11 +40,6 @@ export const board = gql`
         Board( slug: $slug )
         {
             ...BoardData
-
-            _membersMeta( filter: { id: $user } )
-            {
-                count
-            }
         }
     }
 

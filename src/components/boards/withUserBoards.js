@@ -22,7 +22,7 @@ export const userBoards = gql`
             {
                 ...BoardData
 
-                _membersMeta( filter: { id: $user } )
+                joined: _membersMeta( filter: { id: $user } )
                 {
                     count
                 }
@@ -36,7 +36,7 @@ export const userBoards = gql`
 
                 ...BoardData
 
-                _membersMeta( filter: { id: $user } )
+                joined: _membersMeta( filter: { id: $user } )
                 {
                     count
                 }

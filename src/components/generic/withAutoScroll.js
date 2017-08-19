@@ -19,8 +19,7 @@ function withAutoScroll( Component )
 
         isTargeted()
         {
-            const el   = findDOMNode( this );
-            const id   = el ? el.id : this.props.id;
+            const id   = this.props.id;
             const hash = this.props.location.hash.slice( 1 );
 
             return ( hash === id );

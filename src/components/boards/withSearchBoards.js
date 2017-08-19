@@ -15,11 +15,6 @@ export const searchBoards = gql`
         )
         {
             ...BoardData
-
-            _membersMeta( filter: { id: $user } )
-            {
-                count
-            }
         }
     }
 

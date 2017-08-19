@@ -6,7 +6,7 @@ export function getBoardAccess( board, user )
     const access =
     {
         isAuth   : hasUser,
-        isMember : hasBoard && board._membersMeta.count === 1,
+        isMember : hasBoard && board.joined.count === 1,
         isOwner  : hasBoard && hasUser && ( board.owner.id === user.id )
     };
 
