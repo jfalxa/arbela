@@ -15,11 +15,6 @@ export const feedLinks = gql`
         )
         {
             ...LinkData
-
-            _votersMeta( filter: { id: $user } )
-            {
-                count
-            }
         }
     }
 

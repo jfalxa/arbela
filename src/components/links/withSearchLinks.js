@@ -19,11 +19,6 @@ export const searchLinks = gql`
             )
             {
                 ...LinkData
-
-                _votersMeta( filter: { id: $user } )
-                {
-                    count
-                }
             }
         }
     }

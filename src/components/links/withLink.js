@@ -36,6 +36,11 @@ export const linkData = gql`
                 hidden
             }
         }
+
+        voted: _votersMeta( filter: { id: $user } )
+        {
+            count
+        }
     }
 
 `;
@@ -48,11 +53,6 @@ export const link = gql`
         Link( id: $id )
         {
             ...LinkData
-
-            _votersMeta( filter: { id: $user } )
-            {
-                count
-            }
         }
     }
 
