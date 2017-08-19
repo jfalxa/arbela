@@ -27,6 +27,8 @@ export const linkData = gql`
 
         trail
         {
+            id
+
             board
             {
                 title
