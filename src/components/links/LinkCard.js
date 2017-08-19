@@ -1,13 +1,14 @@
-import React       from 'react';
-import { Link }    from 'react-router-dom';
-import { canVote } from '../../utils/linkAccess';
-import Box         from '../generic/Box';
-import Card        from '../generic/Card';
-import CardHeader  from '../generic/CardHeader';
-import CardBody    from '../generic/CardBody';
-import CardAside   from '../generic/CardAside';
-import LinkVote    from './LinkVote';
-import LinkTrail   from './LinkTrail';
+import React          from 'react';
+import { Link }       from 'react-router-dom';
+import { canVote }    from '../../utils/linkAccess';
+import Box            from '../generic/Box';
+import Card           from '../generic/Card';
+import CardHeader     from '../generic/CardHeader';
+import CardBody       from '../generic/CardBody';
+import CardAside      from '../generic/CardAside';
+import LinkVote       from './LinkVote';
+import LinkTrail      from './LinkTrail';
+import withAutoScroll from '../generic/withAutoScroll';
 
 
 const Li = Box.withComponent( 'li' );
@@ -17,7 +18,7 @@ function LinkCard( { access, id, title, url, description, score, author, board, 
 {
     return (
 
-        <Li align="center">
+        <Li id={ id } align="center">
 
             <LinkVote
                 score={ score }
@@ -46,4 +47,4 @@ function LinkCard( { access, id, title, url, description, score, author, board, 
 }
 
 
-export default LinkCard;
+export default withAutoScroll( LinkCard );
