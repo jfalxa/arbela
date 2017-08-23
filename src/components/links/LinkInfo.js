@@ -1,10 +1,11 @@
 import React     from 'react';
+import format    from 'date-fns/format';
 import { Link }  from 'react-router-dom';
 import CardLinks from '../generic/CardLinks';
 import Separator from '../generic/Separator';
 
 
-function LinkTrail( { id, author, board, trail } )
+function LinkInfo( { id, date, author, board, trail } )
 {
     // only show trails that lead to public boards
     const hasTrail = trail ? !trail.board.hidden : false;
@@ -13,6 +14,8 @@ function LinkTrail( { id, author, board, trail } )
 
         <CardLinks>
             <Link to={ `/users/${ author.name }` }>@{ author.name }</Link>
+            <Separator />
+            { format( date, 'YYYY-MM-DD' ) }
             <Separator />
             <Link to={ `/boards/${ board.slug }#${ id }` }>/{ board.title }</Link>
             { hasTrail && <Separator children="from" /> }
@@ -23,4 +26,4 @@ function LinkTrail( { id, author, board, trail } )
 }
 
 
-export default LinkTrail;
+export default LinkInfo;

@@ -7,14 +7,14 @@ import CardHeader     from '../generic/CardHeader';
 import CardBody       from '../generic/CardBody';
 import CardAside      from '../generic/CardAside';
 import LinkVote       from './LinkVote';
-import LinkTrail      from './LinkTrail';
+import LinkInfo      from './LinkInfo';
 import withAutoScroll from '../generic/withAutoScroll';
 
 
 const Li = Box.withComponent( 'li' );
 
 
-function LinkCard( { id, title, url, description, score, author, board, trail, access, targeted, onVote } )
+function LinkCard( { id, title, url, description, score, author, board, trail, createdAt, access, targeted, onVote } )
 {
     return (
 
@@ -31,8 +31,9 @@ function LinkCard( { id, title, url, description, score, author, board, trail, a
                     { access.isAuthor && <Link to={ `/links/${ id }/edit` }>(edit)</Link> }
                 </CardHeader>
 
-                <LinkTrail
+                <LinkInfo
                     id={ id }
+                    date={ createdAt }
                     author={ author }
                     board={ board }
                     trail={ trail } />
