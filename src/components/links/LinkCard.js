@@ -36,7 +36,7 @@ function LinkCard( { id, title, url, description, score, author, board, trail, c
                     board={ board }
                     trail={ trail } />
 
-                <CardBody>{ description || '...' }</CardBody>
+                { description && <CardBody>{ description }</CardBody> }
 
             </Card>
 
