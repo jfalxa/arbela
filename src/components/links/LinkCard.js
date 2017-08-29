@@ -6,8 +6,9 @@ import Card           from '../generic/Card';
 import CardHeader     from '../generic/CardHeader';
 import CardBody       from '../generic/CardBody';
 import CardAside      from '../generic/CardAside';
+import HostName       from '../generic/HostName';
 import LinkVote       from './LinkVote';
-import LinkInfo      from './LinkInfo';
+import LinkInfo       from './LinkInfo';
 import withAutoScroll from '../generic/withAutoScroll';
 
 
@@ -22,8 +23,9 @@ function LinkCard( { id, title, url, description, score, author, board, trail, c
 
             <Card targeted={ targeted }>
 
-                <CardHeader title={ title } url={ url } target="blank">
-                    { access.isAuthor && <Link to={ `/links/${ id }/edit` }>(edit)</Link> }
+                <CardHeader>
+                    <Link to={ url } target="blank">{ title }</Link>
+                    <HostName url={ url } />
                 </CardHeader>
 
                 <LinkInfo

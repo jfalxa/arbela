@@ -4,12 +4,9 @@ import { Link } from 'react-router-dom';
 import Box      from './Box';
 
 
-const Header = Box.withComponent( 'header' );
+const Header = styled.header`
 
-const H4 = styled.h4`
-
-    margin: 0;
-    font-size: 1.1em;
+   display: inline;
 
 `;
 
@@ -18,8 +15,7 @@ function CardHeader( { title, url, target, children } )
 {
     return (
 
-        <Header row justify="space-between" align="center">
-            <H4><Link to={ url } target={ target }>{ title }</Link></H4>
+        <Header row>
             { children }
         </Header>
 
