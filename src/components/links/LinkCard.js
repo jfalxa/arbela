@@ -20,11 +20,6 @@ function LinkCard( { id, title, url, description, score, author, board, trail, c
 
         <Li id={ id } align="center">
 
-            <LinkVote
-                score={ score }
-                locked={ !canVote( access ) }
-                onVote={ onVote } />
-
             <Card targeted={ targeted }>
 
                 <CardHeader title={ title } url={ url } target="blank">
@@ -33,6 +28,7 @@ function LinkCard( { id, title, url, description, score, author, board, trail, c
 
                 <LinkInfo
                     id={ id }
+                    score={ score }
                     date={ createdAt }
                     author={ author }
                     board={ board }
