@@ -4,9 +4,11 @@ import Box from './Box';
 const CardBody = Box.withComponent( 'p' ).extend`
 
     margin: 0;
-    margin-top: 10px;
+    margin-top: 5px;
+    margin-left: 10px;
 
-    color: #777;
+    font-size: 0.8em;
+    color: #444;
 
 `;
 
