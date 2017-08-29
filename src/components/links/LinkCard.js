@@ -40,10 +40,6 @@ function LinkCard( { id, title, url, description, score, author, board, trail, c
 
             </Card>
 
-            <CardAside>
-                { access.isAuth && <Link to={ `/links/${ id }/share` }>(share)</Link> }
-            </CardAside>
-
         </Li>
 
     );
