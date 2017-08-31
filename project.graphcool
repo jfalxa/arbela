@@ -1,5 +1,5 @@
 # project: cj5wnhjzb7vg80183gyux1vf6
-# version: 138
+# version: 194
 
 type File implements Node {
   id: ID! @isUnique
@@ -21,7 +21,6 @@ type User implements Node {
   password: String
   links: [Link!]! @relation(name: "UserLinks")
   boards: [Board!]! @relation(name: "UserBoards")
-  joinedBoards: [Board!]! @relation(name: "BoardMembers")
   votes: [Link!]! @relation(name: "LinkVoters")
 }
 
@@ -45,11 +44,9 @@ type Board implements Node {
   createdAt: DateTime!
   updatedAt: DateTime!
   title: String!
-  slug: String!
+  slug: String! @isUnique
   description: String
   hidden: Boolean!
-  closed: Boolean!
   owner: User! @relation(name: "UserBoards")
-  members: [User!]! @relation(name: "BoardMembers")
   links: [Link!]! @relation(name: "BoardLinks")
 }
