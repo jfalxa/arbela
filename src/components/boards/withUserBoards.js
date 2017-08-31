@@ -59,7 +59,7 @@ function mapOptions( { match, user } )
     {
         variables:
         {
-            name   : match.params.name,
+            name   : match.params.user,
             user   : get( user, 'data.id' ),
             filter : filterUser( user.data )
         },

@@ -17,7 +17,7 @@ function LinkInfo( { id, score, date, author, board, trail } )
             <Separator />
             <span>{ getTime( date ) }</span>
             <Separator />
-            <Link to={ `/users/${ author.name }` }>@{ author.name }</Link>
+            <Link to={ `/${ author.name }` }>@{ author.name }</Link>
             <Separator children="on" />
             <Link to={ `/boards/${ board.slug }#${ id }` }>/{ board.title }</Link>
             { hasTrail && <Separator children="from" /> }

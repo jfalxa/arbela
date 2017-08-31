@@ -17,7 +17,7 @@ function LoggedInLinks( { user } )
     return (
 
         <li>
-            <Link to={ `/users/${ user.name }` }>{ user.name }</Link>
+            <Link to={ `/${ user.name }` }>{ user.name }</Link>
             <LogoutUser />
         </li>
 
