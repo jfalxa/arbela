@@ -48,7 +48,6 @@ function Navigation( { user } )
         <nav>
             <Ul row justify="space-between">
                 <li><Link to="/">Home</Link></li>
-                <li><Link to="/boards">Boards</Link></li>
                 { auth && <li><Link to="/new-board">Create board</Link></li> }
                 { auth && <li><Link to="/new-link">Post link</Link></li> }
                 { auth ? <LoggedInLinks user={ user.data } /> : <LoggedOutLinks /> }
