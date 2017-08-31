@@ -6,7 +6,10 @@ import CreateBoard       from './boards/CreateBoard';
 import ShowBoardSearch   from './boards/ShowBoardSearch';
 import ShowUserBoards    from './boards/ShowUserBoards';
 import ShowBoard         from './boards/ShowBoard';
+import EditBoard         from './boards/EditBoard';
+import PostBoardLink     from './boards/PostBoardLink';
 import PostLink          from './links/PostLink';
+import EditLink          from './links/EditLink';
 import LoginUser         from './auth/LoginUser';
 import RegisterUser      from './auth/RegisterUser';
 
@@ -31,8 +34,11 @@ function App()
                     <Route path="/new-link" component={ PostLink } />
                     <Route path="/login" component={ LoginUser } />
                     <Route path="/register" component={ RegisterUser } />
-                    <Route exact path="/boards/:slug" component={ ShowBoard } />
-                    <Route path="/:user" component={ ShowUserBoards } />
+                    <Route exact path="/:user" component={ ShowUserBoards } />
+                    <Route exact path="/:user/:board" component={ ShowBoard } />
+                    <Route path="/:user/:board/edit" component={ EditBoard } />
+                    <Route path="/:user/:board/new-link" component={ PostBoardLink } />
+                    <Route path="/:user/:board/:link/edit" component={ EditLink } />
                 </Switch>
 
             </Main>

@@ -64,7 +64,7 @@ function mapOptions( { user, match } )
         variables :
         {
             user : get( user, 'data.id' ),
-            slug : match.params.slug
+            slug : match.params.board
         },
 
         fetchPolicy : 'cache-and-network'

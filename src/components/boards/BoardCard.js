@@ -19,7 +19,7 @@ function BoardCard( { slug, title, description, hidden, owner } )
             <Card>
 
                 <CardHeader>
-                    <Link to={ `/boards/${ slug }` }>{ title }</Link>
+                    <Link to={ `/${ owner.name }/${ slug }` }>{ title }</Link>
                 </CardHeader>
 
                 <CardLinks>

@@ -12,7 +12,7 @@ const Aside = Box.withComponent( 'aside' ).extend`width: 570px`;
 
 function Board( { search, board, access, onVote, onSearch } )
 {
-    const { title, slug, description } = board;
+    const { title, slug, description, owner } = board;
 
     return (
 
@@ -20,12 +20,12 @@ function Board( { search, board, access, onVote, onSearch } )
 
             <PageInfo>
                 { description }
-                { access.isOwner && <Link to={ `/boards/${ slug }/edit` }>(edit)</Link> }
+                { access.isOwner && <Link to={ `/${ owner.name }/${ slug }/edit` }>(edit)</Link> }
             </PageInfo>
 
             <Aside justify="space-between">
                 <input placeholder="Search..." value={ search } onChange={ onSearch } />
-                { hasAccess( access ) && <Link to={ `/boards/${ slug }/new-link` }>Post link to { title }</Link> }
+                { hasAccess( access ) && <Link to={ `/${ owner.name }/${ slug }/new-link` }>Post link to { title }</Link> }
             </Aside>
 
             <SearchLinks

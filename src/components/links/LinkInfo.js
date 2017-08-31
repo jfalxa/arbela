@@ -19,9 +19,9 @@ function LinkInfo( { id, score, date, author, board, trail } )
             <Separator />
             <Link to={ `/${ author.name }` }>@{ author.name }</Link>
             <Separator children="on" />
-            <Link to={ `/boards/${ board.slug }#${ id }` }>/{ board.title }</Link>
+            <Link to={ `/${ board.owner.name }/${ board.slug }#${ id }` }>/{ board.title }</Link>
             { hasTrail && <Separator children="from" /> }
-            { hasTrail && <Link to={ `/boards/${ trail.board.slug }#${ trail.id }` }>/{ trail.board.title }</Link> }
+            { hasTrail && <Link to={ `/${ trail.board.owner.name }/${ trail.board.slug }#${ trail.id }` }>/{ trail.board.title }</Link> }
         </CardLinks>
 
     );

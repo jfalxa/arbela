@@ -16,7 +16,7 @@ class PostBoardLink extends React.Component
 
         createLink( link, user.data.id, board.data.id )
             .then( res => console.log( 'Link created', res ) )
-            .then( () => history.push( `/boards/${ board.data.slug }` ) )
+            .then( () => history.push( `/${ board.data.owner.name }/${ board.data.slug }` ) )
             .catch( err => console.log( 'Failed creating link', err ) );
     }
 

@@ -1,12 +1,11 @@
-import React          from 'react';
-import { Link }       from 'react-router-dom';
-import Box            from '../generic/Box';
-import Card           from '../generic/Card';
-import CardHeader     from '../generic/CardHeader';
-import CardBody       from '../generic/CardBody';
-import HostName       from '../generic/HostName';
-import LinkInfo       from './LinkInfo';
-import withAutoScroll from '../generic/withAutoScroll';
+import React      from 'react';
+import { Link }   from 'react-router-dom';
+import Box        from '../generic/Box';
+import Card       from '../generic/Card';
+import CardHeader from '../generic/CardHeader';
+import CardBody   from '../generic/CardBody';
+import HostName   from '../generic/HostName';
+import LinkInfo   from './LinkInfo';
 
 
 const Li = Box.withComponent( 'li' );
@@ -43,4 +42,5 @@ function LinkCard( { id, title, url, description, score, author, board, trail, c
 }
 
 
-export default withAutoScroll( LinkCard );
+export default LinkCard;
+

@@ -23,6 +23,11 @@ export const linkData = gql`
         {
             slug
             title
+
+            owner
+            {
+                name
+            }
         }
 
         trail
@@ -34,6 +39,11 @@ export const linkData = gql`
                 title
                 slug
                 hidden
+
+                owner
+                {
+                    name
+                }
             }
         }
 
