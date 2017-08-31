@@ -12,7 +12,7 @@ const Aside = Box.withComponent( 'aside' ).extend`width: 570px`;
 
 function Board( { search, board, access, onVote, onSearch } )
 {
-    const { title, slug, description, owner } = board;
+    const { title, slug, description } = board;
 
     return (
 

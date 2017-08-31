@@ -22,12 +22,7 @@ export function mapLinkAccess( links, user )
 }
 
 
-export function canVote( access, closed )
+export function canVote( access )
 {
-    if ( closed )
-    {
-        return access.isMember && !access.hasVoted;
-    }
-
     return access.isAuth && !access.hasVoted;
 }

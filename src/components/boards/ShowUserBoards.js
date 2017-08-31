@@ -8,14 +8,13 @@ import withUserBoards from './withUserBoards';
 
 function ShowUserBoards( { userBoards } )
 {
-    const { owner, joinedBoards, ownedBoards } = userBoards.data;
+    const { owner, boards } = userBoards.data;
 
     return (
 
         <UserBoards
             owner={ owner }
-            joinedBoards={ joinedBoards }
-            ownedBoards={ ownedBoards } />
+            boards={ boards } />
 
     );
 }

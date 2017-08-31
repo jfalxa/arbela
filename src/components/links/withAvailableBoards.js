@@ -1,6 +1,4 @@
 import { gql, graphql } from 'react-apollo';
-import get              from 'lodash/get';
-import unionBy          from 'lodash/unionBy';
 
 
 export const availableBoards = gql`query availableBoards
@@ -10,13 +8,6 @@ export const availableBoards = gql`query availableBoards
         id
 
         boards( orderBy: createdAt_DESC )
-        {
-            id
-            title
-            description
-        }
-
-        joinedBoards( orderBy: createdAt_DESC )
         {
             id
             title
@@ -33,12 +24,9 @@ function mapProps( { data } )
         return { availableBoards: { loading: true } };
     }
 
-    const joinedBoards = get( data, 'user.boards' );
-    const ownedBoards  = get( data, 'user.joinedBoards' );
-
     const availableBoards =
     {
-        data    : unionBy( ownedBoards, joinedBoards, 'id' ),
+        data    : data.user.boards,
         loading : data.loading
     };
 

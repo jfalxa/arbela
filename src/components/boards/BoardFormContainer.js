@@ -13,8 +13,7 @@ class BoardFormContainer extends React.Component
         title       : '',
         slug        : '',
         description : '',
-        hidden      : false,
-        closed      : false
+        hidden      : false
     }
 
 
@@ -64,7 +63,7 @@ class BoardFormContainer extends React.Component
 
     render()
     {
-        const { title, slug, description, hidden, closed } = this.state;
+        const { title, slug, description, hidden } = this.state;
 
         return (
 
@@ -73,7 +72,6 @@ class BoardFormContainer extends React.Component
                 slug={ slug }
                 description={ description }
                 hidden={ hidden }
-                closed={ closed }
                 onChange={ this.handleChange }
                 onSubmit={ this.handleSubmit } />
 

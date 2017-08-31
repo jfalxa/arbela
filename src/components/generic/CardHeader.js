@@ -1,7 +1,5 @@
-import React    from 'react';
-import styled   from 'styled-components';
-import { Link } from 'react-router-dom';
-import Box      from './Box';
+import React  from 'react';
+import styled from 'styled-components';
 
 
 const Header = styled.header`

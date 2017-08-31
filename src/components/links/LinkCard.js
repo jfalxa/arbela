@@ -1,13 +1,10 @@
 import React          from 'react';
 import { Link }       from 'react-router-dom';
-import { canVote }    from '../../utils/linkAccess';
 import Box            from '../generic/Box';
 import Card           from '../generic/Card';
 import CardHeader     from '../generic/CardHeader';
 import CardBody       from '../generic/CardBody';
-import CardAside      from '../generic/CardAside';
 import HostName       from '../generic/HostName';
-import LinkVote       from './LinkVote';
 import LinkInfo       from './LinkInfo';
 import withAutoScroll from '../generic/withAutoScroll';
 

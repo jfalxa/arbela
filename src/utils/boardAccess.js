@@ -26,15 +26,3 @@ export function hasAccess( access )
     return ( access.isOwner || access.isMember );
 }
 
-
-export function canJoin( access )
-{
-    return ( access.isAuth && !hasAccess( access ) );
-}
-
-
-export function canLeave( access )
-{
-    return ( access.isAuth && access.isMember );
-}
-

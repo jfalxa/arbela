@@ -8,7 +8,7 @@ import { boardData }      from './withBoard';
 
 export const userBoards = gql`
 
-    query userBoards( $name: String!, $user: ID, $filter: BoardFilter! )
+    query userBoards( $name: String!, $filter: BoardFilter! )
     {
         User( name: $name )
         {
@@ -16,14 +16,6 @@ export const userBoards = gql`
             name
 
             boards(
-                orderBy: createdAt_DESC,
-                filter: $filter
-            )
-            {
-                ...BoardData
-            }
-
-            joinedBoards(
                 orderBy: createdAt_DESC,
                 filter: $filter
             )
@@ -47,15 +39,13 @@ function mapProps( { data, ownProps } )
 
     const user = ownProps.user.data;
 
-    const owner        = pick( data.User, ['id', 'name'] );
-    const ownedBoards  = mapBoardAccess( data.User.boards, user );
-    const joinedBoards = mapBoardAccess( data.User.joinedBoards, user );
+    const owner  = pick( data.User, ['id', 'name'] );
+    const boards = mapBoardAccess( data.User.boards, user );
 
     const userBoards =
     {
         loading : data.loading,
-        error   : data.error,
-        data    : { owner, joinedBoards, ownedBoards }
+        data    : { owner, boards }
     };
 
     return { userBoards };

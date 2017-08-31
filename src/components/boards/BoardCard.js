@@ -10,7 +10,7 @@ import CardBody   from '../generic/CardBody';
 const Li = Box.withComponent( 'li' );
 
 
-function BoardCard( { access, slug, title, description, closed, hidden, owner } )
+function BoardCard( { slug, title, description, hidden, owner } )
 {
     return (
 
