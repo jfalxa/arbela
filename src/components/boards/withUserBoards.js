@@ -21,11 +21,6 @@ export const userBoards = gql`
             )
             {
                 ...BoardData
-
-                joined: _membersMeta( filter: { id: $user } )
-                {
-                    count
-                }
             }
 
             joinedBoards(
@@ -33,13 +28,7 @@ export const userBoards = gql`
                 filter: $filter
             )
             {
-
                 ...BoardData
-
-                joined: _membersMeta( filter: { id: $user } )
-                {
-                    count
-                }
             }
         }
     }

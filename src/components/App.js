@@ -12,7 +12,6 @@ import FeedLinks             from './links/FeedLinks';
 import PostLink              from './links/PostLink';
 import EditLink              from './links/EditLink';
 import ShareLink             from './links/ShareLink';
-import ManageBoardMembers    from './boards/ManageBoardMembers';
 import LoginUser             from './auth/LoginUser';
 import RegisterUser          from './auth/RegisterUser';
 
@@ -38,7 +37,6 @@ function App()
                 <Route exact path="/boards/:slug" component={ ShowBoard } />
                 <Route path="/boards/:slug/edit" component={ EditBoard } />
                 <Route path="/boards/:slug/new-link" component={ PostBoardLink } />
-                <Route path="/boards/:slug/members" component={ ManageBoardMembers } />
 
                 <Route path="/new-link" component={ PostLink } />
                 <Route path="/links/:id/edit" component={ EditLink } />

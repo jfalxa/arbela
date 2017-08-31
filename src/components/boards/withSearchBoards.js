@@ -7,7 +7,7 @@ import { boardData }                from './withBoard';
 
 export const searchBoards = gql`
 
-    query allBoards( $filter: BoardFilter!, $user: ID )
+    query allBoards( $filter: BoardFilter! )
     {
         allBoards(
             orderBy: createdAt_DESC,

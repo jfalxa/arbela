@@ -1,11 +1,10 @@
-import React            from 'react';
-import { Link }         from 'react-router-dom';
-import Box              from '../generic/Box';
-import Card             from '../generic/Card';
-import CardHeader       from '../generic/CardHeader';
-import CardLinks        from '../generic/CardLinks';
-import CardBody         from '../generic/CardBody';
-import BoardAccessBadge from './BoardAccessBadge';
+import React      from 'react';
+import { Link }   from 'react-router-dom';
+import Box        from '../generic/Box';
+import Card       from '../generic/Card';
+import CardHeader from '../generic/CardHeader';
+import CardLinks  from '../generic/CardLinks';
+import CardBody   from '../generic/CardBody';
 
 
 const Li = Box.withComponent( 'li' );
@@ -19,12 +18,8 @@ function BoardCard( { access, slug, title, description, closed, hidden, owner } 
 
             <Card>
 
-                <CardHeader title={ title } url={ `/boards/${ slug }` }>
-
-                    <BoardAccessBadge
-                        board={ { slug, hidden, closed } }
-                        access={ access } />
-
+                <CardHeader>
+                    <Link to={ `/boards/${ slug }` }>{ title }</Link>
                 </CardHeader>
 
                 <CardLinks>

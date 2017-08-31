@@ -1,19 +1,18 @@
-import React           from 'react';
-import { Link }        from 'react-router-dom';
-import { hasAccess }   from '../../utils/boardAccess';
-import Page            from '../generic/Page';
-import PageInfo        from '../generic/PageInfo';
-import Box             from '../generic/Box';
-import SearchLinks     from '../links/SearchLinks';
-import BoardMemberMenu from './BoardMemberMenu';
+import React         from 'react';
+import { Link }      from 'react-router-dom';
+import { hasAccess } from '../../utils/boardAccess';
+import Page          from '../generic/Page';
+import PageInfo      from '../generic/PageInfo';
+import Box           from '../generic/Box';
+import SearchLinks   from '../links/SearchLinks';
 
 
 const Aside = Box.withComponent( 'aside' ).extend`width: 570px`;
 
 
-function Board( { search, board, access, onVote, onSearch, onJoinBoard, onLeaveBoard } )
+function Board( { search, board, access, onVote, onSearch } )
 {
-    const { title, slug, description, owner, closed, members } = board;
+    const { title, slug, description, owner } = board;
 
     return (
 
@@ -23,15 +22,6 @@ function Board( { search, board, access, onVote, onSearch, onJoinBoard, onLeaveB
                 { description }
                 { access.isOwner && <Link to={ `/boards/${ slug }/edit` }>(edit)</Link> }
             </PageInfo>
-
-            <BoardMemberMenu
-                slug={ slug }
-                closed={ closed }
-                access={ access }
-                owner={ owner }
-                members={ members.count }
-                onJoinBoard={ onJoinBoard }
-                onLeaveBoard={ onLeaveBoard } />
 
             <Aside justify="space-between">
                 <input placeholder="Search..." value={ search } onChange={ onSearch } />

@@ -6,35 +6,11 @@ import withUser         from '../auth/withUser';
 import withLoader       from '../generic/withLoader';
 import withSearch       from '../generic/withSearch';
 import withBoard        from './withBoard';
-import withAddMember    from './withAddMember';
-import withRemoveMember from './withRemoveMember';
 import withUpdateScore  from '../links/withUpdateScore';
 
 
 class ShowBoard extends React.Component
 {
-    handleJoinBoard = () =>
-    {
-        const { user, board, addMember } = this.props;
-
-        addMember( board.data.id, user.data.id )
-            .then( res => console.log( 'Joined board', res ) )
-            .then( board.refetch )
-            .catch( err => console.log( 'Failed joining board', err ) );
-    }
-
-
-    handleLeaveBoard = () =>
-    {
-        const { user, board, removeMember } = this.props;
-
-        removeMember( board.data.id, user.data.id )
-            .then( res => console.log( 'Leaved board', res ) )
-            .then( board.refetch )
-            .catch( err => console.log( 'Failed leaving board', err ) );
-    }
-
-
     render()
     {
         if ( !this.props.board.data )
@@ -51,9 +27,7 @@ class ShowBoard extends React.Component
                 access={ board.access }
                 search={ search }
                 onVote={ this.handleVote }
-                onSearch={ onSearch }
-                onJoinBoard={ this.handleJoinBoard }
-                onLeaveBoard={ this.handleLeaveBoard } />
+                onSearch={ onSearch } />
 
         );
     }
@@ -64,8 +38,6 @@ const connect = compose(
     withUser,
     withBoard,
     withSearch,
-    withAddMember,
-    withRemoveMember,
     withUpdateScore,
     withLoader( p => p.user.loading || p.board.loading )
 );

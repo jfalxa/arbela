@@ -12,22 +12,11 @@ export const boardData = gql`
         slug
         description
         hidden
-        closed
 
         owner
         {
             id
             name
-        }
-
-        members: _membersMeta
-        {
-            count
-        }
-
-        joined: _membersMeta( filter: { id: $user } )
-        {
-            count
         }
     }
 
@@ -35,7 +24,7 @@ export const boardData = gql`
 
 export const board = gql`
 
-    query board( $slug: String!, $user: ID )
+    query board( $slug: String! )
     {
         Board( slug: $slug )
         {

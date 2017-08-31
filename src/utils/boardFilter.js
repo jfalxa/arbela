@@ -6,14 +6,13 @@ export function filterUser( user )
         return { hidden: false };
     }
 
-    // when logged in also show hidden boards that the user is member/owner of
+    // when logged in also show hidden boards that the user owns
     const userFilter =
     {
         OR:
         [
             { hidden: false },
-            { owner: { id: user.id } },
-            { members_some: { id: user.id } }
+            { owner: { id: user.id } }
         ]
     };
 
