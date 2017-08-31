@@ -1,19 +1,36 @@
-import React     from 'react';
-import CardAside from '../generic/CardAside';
+import React  from 'react';
+import styled from 'styled-components';
 
 
-function BoardLinkVote( { score, locked, onVote } )
+const Aside = styled.aside`
+
+    display: inline;
+    font-size: 0.8em;
+
+`;
+
+
+const Upvote = styled.span.attrs( { children: '▲' } )`
+
+    margin-right: 3px;
+    color: ${ p => p.locked ? '#CCC' : 'initial' };
+    cursor: pointer;
+    pointer-events: ${ p => p.locked ? 'none' : 'initial' };
+
+`;
+
+
+function LinkVote( { score, locked, onVote } )
 {
     return (
 
-        <CardAside>
-            { !locked && <button onClick={ e => onVote( 1 ) }>+</button> }
-            <span>{ score || 0 }</span>
-            { !locked && <button onClick={ e => onVote( -1 ) }>-</button> }
-        </CardAside>
+        <Aside>
+            <Upvote locked={ locked } onClick={ e => onVote( 1 ) } />
+            <span>{ score || 0 } points</span>
+        </Aside>
 
     );
 }
 
 
-export default BoardLinkVote;
+export default LinkVote;

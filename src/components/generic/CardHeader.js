@@ -4,7 +4,7 @@ import styled from 'styled-components';
 
 const Header = styled.header`
 
-   display: inline;
+    display: inline;
 
 `;
 

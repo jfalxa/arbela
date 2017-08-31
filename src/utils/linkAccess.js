@@ -6,8 +6,8 @@ export function getLinkAccess( link, user )
     const access =
     {
         isAuth   : hasUser,
-        hasVoted : hasLink && ( link.voted.count === 1 ),
-        isAuthor : hasLink && hasUser && ( link.author.id === user.id )
+        isAuthor : hasLink && hasUser && ( link.author.id === user.id ),
+        canVote  : hasUser && hasLink && ( link.voted.count === 0 )
     };
 
     return access;
@@ -21,8 +21,3 @@ export function mapLinkAccess( links, user )
     ) );
 }
 
-
-export function canVote( access )
-{
-    return access.isAuth && !access.hasVoted;
-}
